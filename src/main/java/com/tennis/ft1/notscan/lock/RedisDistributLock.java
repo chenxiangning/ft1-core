@@ -1,4 +1,4 @@
-package com.tennis.ft1.lock;
+package com.tennis.ft1.notscan.lock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
