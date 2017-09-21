@@ -6,7 +6,7 @@
 
     <groupId>com.tennis.ft1</groupId>
     <artifactId>ft1-core</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>tools.0.1.evolution</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
