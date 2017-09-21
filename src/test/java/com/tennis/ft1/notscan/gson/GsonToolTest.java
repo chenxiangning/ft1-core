@@ -1,16 +1,19 @@
 package com.tennis.ft1.notscan.gson;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class GsonToolTest {
-    @Test
-    public void objectToJson() throws Exception {
-        Map map = new HashMap();
 
+    String jsonx = "{\"kkkkk\":null,\"name\":\"cxn\",\"age\":3,\"code\":1001,\"fen\":88.32,\"xxxxx\":null,\"time\":\"Sep 21, 2017 8:09:53 PM\",\"delFlag\":0,\"createAt\":1505976480000,\"curtime\":1505976606634}";
+
+    Map map = new HashMap();
+    Gbean gbean = new Gbean();
+
+    @Before
+    public void init() {
         map.put("name", "cxn");
         map.put("age", "3");
         map.put("time", new Date());
@@ -18,27 +21,61 @@ public class GsonToolTest {
         map.put("code", 1001);
         map.put("fen", 88.32);
 
-        System.out.println(GsonTool.objectToAllFieldJson(map));
-        String json = GsonTool.objectToAllFieldJson(map);
+        gbean = GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Gbean.class);
+    }
 
-        System.out.println(GsonTool.objectToNotNullJson(map));
-        System.out.println(GsonTool.objectToExposeJson(map));
-        System.out.println(GsonTool.objectToJsonDateSerializer(map, "yyyy-MM-dd"));
-
-        Gbean gbean = GsonTool.jsonToBean(GsonTool.getGsonNotNull(), json, Gbean.class);
-
+    @Test
+    public void init2() {
         System.out.println(gbean);
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println(GsonTool.objectToNotNullJson(gbean));
-        System.out.println(GsonTool.objectToExposeJson(gbean));
-        System.out.println(GsonTool.objectToJsonDateSerializer(gbean, "yyyy-MM-dd HH:mm:ss"));
-
-
-        System.out.println(GsonTool.objectToAllFieldJson(gbean));
-        System.out.println(GsonTool.objectToAllFieldJson222(gbean));
-
-
     }
+
+    @Test
+    public void objectToJsonDateSerializer() {
+        String j = GsonTool.objectToJsonDateSerializer(gbean, "yyyy-MM-dd : HH:mm:ss");
+        System.out.println("objectToJsonDateSerializer " + j);
+    }
+
+    @Test
+    public void objectToAllFieldEmptyJson() {
+        System.out.println("objectToAllFieldEmptyJson " + GsonTool.objectToAllFieldEmptyJson(gbean));
+    }
+
+
+    @Test
+    public void objectToAllFieldNullJson() {
+        System.out.println("objectToAllFieldNullJson " + GsonTool.objectToAllFieldNullJson(gbean));
+    }
+
+    @Test
+    public void objectToNotNullJson() {
+        System.out.println("objectToNotNullJson " + GsonTool.objectToNotNullJson(gbean));
+    }
+
+    @Test
+    public void objectToExposeJson() {
+        System.out.println("objectToExposeJson " + GsonTool.objectToExposeJson(gbean));
+    }
+
+    @Test
+    public void jsonToBean() {
+        System.out.println("@@ " + GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Gbean.class));
+        System.out.println("@@ " + GsonTool.jsonToBean(GsonTool.getGsonToBeanNullToEmpty(), jsonx, Gbean.class));
+        System.out.println("@@ " + GsonTool.jsonToBean(GsonTool.getBeanToGsonNullToEmpty(), jsonx, Gbean.class));
+        System.out.println("@@ " + GsonTool.jsonToBean(GsonTool.getGsonExpose(), jsonx, Gbean.class));
+        System.out.println("@@ " + GsonTool.jsonToBean(GsonTool.getGsonNotNull(), jsonx, Gbean.class));
+    }
+
+    @Test
+    public void jsonToList() {
+        List<Gbean> gbeanList = Arrays.asList(gbean);
+        String listJson = GsonTool.objectToAllFieldEmptyJson(gbeanList);
+        System.out.println("json:" + listJson);
+        String listJson2 = GsonTool.objectToAllFieldEmptyJson(gbean);
+        System.out.println("json2:" + listJson2);
+
+        System.out.println("%% " + GsonTool.jsonToList(GsonTool.getGsonToBeanNullToEmpty(), listJson));
+    }
+
 
 }

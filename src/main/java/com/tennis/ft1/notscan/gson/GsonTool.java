@@ -1,6 +1,7 @@
 package com.tennis.ft1.notscan.gson;
 
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,16 +14,27 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * Created by chenxiangning on 2015/8/9.
+ * Created with IntelliJ IDEA.
+ * User: xiangning
+ * Date: 2017/9/21 21:28
+ * To change this template use File | Settings | File Templates.
+ * chenxiangning@reachauto.com
  */
 public final class GsonTool {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GsonTool.class);
 
     private static Gson gsonAll;
+    private static Gson gsonTobeanNullToEmpty;
+    private static Gson beanToGsonNullToEmpty;
     private static Gson gsonNotNull;
     private static Gson gsonExpose;
+
+    private GsonTool() {
+    }
+
 
     static {
         if (gsonAll == null) {
@@ -32,17 +44,33 @@ public final class GsonTool {
             gsonAll = gb.create();
         }
 
+        if (gsonTobeanNullToEmpty == null) {
+            GsonBuilder gb = new GsonBuilder();
+            gb.registerTypeAdapterFactory(new NullStringToEmptyAdapterFactory());
+            gb.registerTypeAdapter(Date.class, new DateSerializer()).setDateFormat(DateFormat.LONG);
+            gb.registerTypeAdapter(Date.class, new DateDeserializer()).setDateFormat(DateFormat.LONG);
+            gsonTobeanNullToEmpty = gb.create();
+        }
+
+        if (beanToGsonNullToEmpty == null) {
+            GsonBuilder gb = new GsonBuilder();
+            gb.registerTypeAdapter(String.class, new StringConverter());
+            gb.registerTypeAdapter(Date.class, new DateSerializer()).setDateFormat(DateFormat.LONG);
+            gb.registerTypeAdapter(Date.class, new DateDeserializer()).setDateFormat(DateFormat.LONG);
+            beanToGsonNullToEmpty = gb.create();
+        }
+
         if (gsonNotNull == null) {
             GsonBuilder gb = new GsonBuilder();
-            gb.registerTypeAdapter(java.util.Date.class, new DateSerializer()).setDateFormat(DateFormat.LONG);
-            gb.registerTypeAdapter(java.util.Date.class, new DateDeserializer()).setDateFormat(DateFormat.LONG);
+            gb.registerTypeAdapter(Date.class, new DateSerializer()).setDateFormat(DateFormat.LONG);
+            gb.registerTypeAdapter(Date.class, new DateDeserializer()).setDateFormat(DateFormat.LONG);
             gsonNotNull = gb.create();
         }
 
         if (gsonExpose == null) {
             GsonBuilder gb = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
-            gb.registerTypeAdapter(java.util.Date.class, new DateSerializer()).setDateFormat(DateFormat.LONG);
-            gb.registerTypeAdapter(java.util.Date.class, new DateDeserializer()).setDateFormat(DateFormat.LONG);
+            gb.registerTypeAdapter(Date.class, new DateSerializer()).setDateFormat(DateFormat.LONG);
+            gb.registerTypeAdapter(Date.class, new DateDeserializer()).setDateFormat(DateFormat.LONG);
             gsonExpose = gb.create();
         }
     }
@@ -59,30 +87,53 @@ public final class GsonTool {
         return gsonExpose;
     }
 
-    private GsonTool() {
+    public static Gson getGsonToBeanNullToEmpty() {
+        return gsonTobeanNullToEmpty;
     }
 
+    public static Gson getBeanToGsonNullToEmpty() {
+        return beanToGsonNullToEmpty;
+    }
+
+    /**
+     * 将一个bean转换成Json
+     * 范围:bean 中标记了 @Expose 的属性
+     * @param o
+     * @return
+     */
     public static String objectToExposeJson(Object o) {
         return gsonExpose.toJson(o);
     }
 
+    /**
+     * 将一个bean转换成Json
+     * 范围:bean中不等于null的字段
+     * @param o
+     * @return
+     */
     public static String objectToNotNullJson(Object o) {
         return gsonNotNull.toJson(o);
     }
 
-    public static String objectToAllFieldJson(Object o) {
+    /**
+     * 将一个bean转换成Json
+     * 范围:bean的全部属性
+     * @param o
+     * @return
+     */
+    public static String objectToAllFieldNullJson(Object o) {
         return gsonAll.toJson(o);
-
-    }
-    public static String objectToAllFieldJson222(Object o) {
-        GsonBuilder gson = new GsonBuilder()
-                .serializeNulls();
-//        gson.registerTypeAdapter(java.util.Date.class, new DateSerializer()).setDateFormat(DateFormat.LONG);
-//        gson.registerTypeAdapter(java.util.Date.class, new DateDeserializer()).setDateFormat(DateFormat.LONG);
-
-        return gson.create().toJson(o);
     }
 
+    /**
+     * 将一个bean转换成Json
+     * 范围:bean的全部属性,null的字符串对象会变为""空串
+     * @param o
+     * @return
+     */
+    public static String objectToAllFieldEmptyJson(Object o) {
+        return beanToGsonNullToEmpty.toJson(o);
+    }
 
     /**
      * 将对象转换成json格式(并自定义日期格式)
@@ -91,15 +142,15 @@ public final class GsonTool {
      * @return
      */
     public static synchronized String objectToJsonDateSerializer(Object ts, final String dateformat) {
-        gsonAll = new GsonBuilder().registerTypeHierarchyAdapter(Date.class, new JsonSerializer<Date>() {
+        Gson gson = new GsonBuilder().registerTypeHierarchyAdapter(Date.class, new JsonSerializer<Date>() {
             @Override
             public JsonElement serialize(Date src, Type typeOfSrc,
                                          JsonSerializationContext context) {
                 SimpleDateFormat format = new SimpleDateFormat(dateformat);
                 return new JsonPrimitive(format.format(src));
             }
-        }).setDateFormat(dateformat).create();
-        return gsonAll.toJson(ts);
+        }).serializeNulls().setDateFormat(dateformat).create();
+        return gson.toJson(ts);
     }
 
     /**
@@ -112,7 +163,7 @@ public final class GsonTool {
     public static List jsonToList(Gson gson, String jsonStr) {
         List<?> objList = null;
         if (gson != null) {
-            Type type = new com.google.gson.reflect.TypeToken<List<?>>() {
+            Type type = new TypeToken<List<?>>() {
             }.getType();
             objList = gson.fromJson(jsonStr, type);
         }
@@ -142,7 +193,7 @@ public final class GsonTool {
     public static Map jsonToMap(Gson gson, String jsonStr) {
         Map<?, ?> objMap = null;
         if (gson != null) {
-            Type type = new com.google.gson.reflect.TypeToken<Map<?, ?>>() {
+            Type type = new TypeToken<Map<?, ?>>() {
             }.getType();
             objMap = gson.fromJson(jsonStr, type);
         }
@@ -173,7 +224,7 @@ public final class GsonTool {
      * @return
      */
     public static synchronized <T> T jsonToBeanDateSerializer(String jsonStr, Class<T> cl, final String pattern) {
-        gsonAll = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
+        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
             @Override
             public Date deserialize(JsonElement json, Type typeOfT,
                                     JsonDeserializationContext context) {
@@ -187,8 +238,8 @@ public final class GsonTool {
                 return null;
             }
         }).setDateFormat(pattern).create();
-        if (gsonAll != null) {
-            return gsonAll.fromJson(jsonStr, cl);
+        if (gson != null) {
+            return gson.fromJson(jsonStr, cl);
         }
         return null;
     }

@@ -13,18 +13,54 @@ import java.util.Date;
  */
 public class Gbean {
 
-    @Expose
+    private String ooooxxx;
+    private Integer kkkkk;
     private String name;
-    @Expose
     private Integer age;
     @Expose
     private int code;
     @Expose
     private Double fen;
     @Expose
-    private String xx;
+    private String xxxxx;
     @Expose
     private Date time;
+
+    private Date createAt;
+    @Expose
+    private Date curtime;
+
+    public Integer getKkkkk() {
+        return kkkkk;
+    }
+
+    public void setKkkkk(Integer kkkkk) {
+        this.kkkkk = kkkkk;
+    }
+
+    public String getOoooxxx() {
+        return ooooxxx;
+    }
+
+    public void setOoooxxx(String ooooxxx) {
+        this.ooooxxx = ooooxxx;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getCurtime() {
+        return curtime;
+    }
+
+    public void setCurtime(Date curtime) {
+        this.curtime = curtime;
+    }
 
     public String getName() {
         return name;
@@ -58,12 +94,12 @@ public class Gbean {
         this.fen = fen;
     }
 
-    public String getXx() {
-        return xx;
+    public String getXxxxx() {
+        return xxxxx;
     }
 
-    public void setXx(String xx) {
-        this.xx = xx;
+    public void setXxxxx(String xxxxx) {
+        this.xxxxx = xxxxx;
     }
 
     public Date getTime() {
@@ -76,13 +112,17 @@ public class Gbean {
 
     @Override
     public String toString() {
-        return "Gbean{" +
+        return "{" +
+                "ooooxxx='" + ooooxxx + '\'' +
+                "kkkkk='" + kkkkk + '\'' +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", code=" + code +
                 ", fen=" + fen +
-                ", xx='" + xx + '\'' +
+                ", xxxxx='" + xxxxx + '\'' +
                 ", time=" + time +
+                ", createAt=" + createAt +
+                ", curtime=" + curtime +
                 '}';
     }
 }
