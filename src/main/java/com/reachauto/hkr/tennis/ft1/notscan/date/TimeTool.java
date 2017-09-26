@@ -1,7 +1,5 @@
 package com.reachauto.hkr.tennis.ft1.notscan.date;
 
-import com.reachauto.hkr.tennis.ft1.DatePattern;
-
 import java.math.BigDecimal;
 import java.util.Date;
 

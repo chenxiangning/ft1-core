@@ -101,7 +101,7 @@ public final class CalendarTool {
      * 将{@link Calendar}转成{@link String}.
      *
      * @param calendar    calendar
-     * @param datePattern 日期pattern {@link com.reachauto.hkr.tennis.ft1.DatePattern}
+     * @param datePattern 日期pattern {@link DatePattern}
      * @return 如果 <code>calendar</code> 是null,抛出 {@link NullPointerException}
      */
     static String toString(Calendar calendar, String datePattern) {

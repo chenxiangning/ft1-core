@@ -21,6 +21,62 @@ import java.util.Map;
  * Date: 2017/9/21 21:28
  * To change this template use File | Settings | File Templates.
  * chenxiangning@reachauto.com
+ * <p>
+ * <blockquote>
+ * <p>
+ * <h3>示例:</h3>
+ * <p>
+ * </blockquote>
+ * <p>
+ * <blockquote>
+ * String jsonx = "{\"kkkkk\":null,\"name\":\"cxn\",\"age\":3,\"code\":1001,\"fen\":88.32,\"xxxxx\":null,\"time\":\"Sep 21, 2017 8:09:53 PM\",\"delFlag\":0,\"createAt\":1505976480000,\"curtime\":1505976606634}";
+ * <p>
+ * </blockquote>
+ * <blockquote>
+ * Map map = new HashMap();
+ * <p>
+ * map.put("name", "cxn");
+ * map.put("age", "3");
+ * map.put("time", new Date());
+ * map.put("xx", null);
+ * map.put("code", 1001);
+ * map.put("fen", 88.32);
+ * <p>
+ * Gbean gbean = GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Gbean.class);
+ * </blockquote>
+ * <p>
+ * <p>
+ * <blockquote>
+ * GsonTool.objectToJsonDateSerializer(gbean, "yyyy-MM-dd : HH:mm:ss");
+ * <p>-> 序列化时自定义date {"ooooxxx":null,"kkkkk":null,"name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":null,"time":"2017-09-21 : 20:09:53","createAt":"2017-09-21 : 14:48:00","curtime":"2017-09-21 : 14:50:06"}
+ * <p>
+ * GsonTool.objectToAllFieldEmptyJson(gbean);
+ * <p>-> 序列化bean中全部字段时null串替换为"" {"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
+ * <p>
+ * GsonTool.objectToAllFieldNullJson(gbean);
+ * <p>-> 序列化bean中全部字段 {"ooooxxx":null,"kkkkk":null,"name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":null,"time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
+ * <p>
+ * SGsonTool.objectToNotNullJson(gbean);
+ * <p>-> 序列化bean中不等于null的字段 {"name":"cxn","age":3,"code":1001,"fen":88.32,"time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
+ * <p>
+ * GsonTool.objectToExposeJson(gbean);
+ * <p>->序列化bean中属性添加了@Export的字段 {"code":1001,"fen":88.32,"time":1505995793000,"curtime":1505976606634}
+ * <p>
+ * <p> @@ {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
+ * <p> @@ {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
+ * <p> @@ {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
+ * <p> @@ {ooooxxx='null'kkkkk='null'name='null', age=null, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=null, curtime=Thu Sep 21 14:50:06 CST 2017}
+ * <p> @@ {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
+ * <p>
+ * List<Gbean> gbeanList = Arrays.asList(gbean);
+ * String listJson = GsonTool.objectToAllFieldEmptyJson(gbeanList);
+ * String listJson2 = GsonTool.objectToAllFieldEmptyJson(gbean);
+ * <p>
+ * ->
+ * <p>json:[{"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}]
+ * <p>json2:{"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
+ * <p>json3 [{ooooxxx=, name=cxn, age=3.0, code=1001.0, fen=88.32, xxxxx=, time=1.505995793E12, createAt=1.50597648E12, curtime=1.505976606634E12}]
+ * </blockquote>
  */
 public final class GsonTool {
 

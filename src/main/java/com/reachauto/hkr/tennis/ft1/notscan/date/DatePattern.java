@@ -1,4 +1,4 @@
-package com.reachauto.hkr.tennis.ft1;
+package com.reachauto.hkr.tennis.ft1.notscan.date;
 
 /**
  * Created with IntelliJ IDEA.

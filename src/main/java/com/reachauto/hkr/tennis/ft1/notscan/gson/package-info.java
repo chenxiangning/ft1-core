@@ -56,6 +56,16 @@ package com.reachauto.hkr.tennis.ft1.notscan.gson;
  * @Since(1.2) private int shirtNumber;
  * @Until(0.5) private int shirtNumber;
  * 也就是说我们利用方法builder.setVersion(1.0)定义版本1.0，如下
+ * @SerializedName("字段别名")
+ * @Expose 该注解能够指定该字段是否能够序列化或者反序列化，默认的是都支持（true）
+ * @Expose(deserialize = true)
+ * @Expose(deserialize = false)
+ * 需要注意的通过 builder.excludeFieldsWithoutExposeAnnotation()方法是该注解生效
+ * @Since和@Until注解 Since代表“自从”，Until 代表”一直到”。它们都是针对该字段生效的版本。
+ * 比如说 @Since(1.2)代表从版本1.2之后才生效，@Until(0.9)代表着在0.9版本之前都是生效的。
+ * @Since(1.2) private int shirtNumber;
+ * @Until(0.5) private int shirtNumber;
+ * 也就是说我们利用方法builder.setVersion(1.0)定义版本1.0，如下
  */
 /**
  * @SerializedName("字段别名")

@@ -1,6 +1,5 @@
 package com.reachauto.hkr.tennis.ft1.notscan.date;
 
-import com.reachauto.hkr.tennis.ft1.DatePattern;
 import com.reachauto.hkr.tennis.ft1.Slf4jTool;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -111,6 +110,8 @@ import static java.util.Calendar.*;
  * <td>
  * <ul>
  * <li>{@link DateTool#isInTime(Date, Date, Date)}</li>
+ * <li>{@link DateTool#checkDateToBetween(java.lang.String data, java.lang.String before, java.lang.String after)}</li>
+ * <li>{@link DateTool#getNumberOfMinutesBetweenTheTwoTime(java.lang.String before, java.lang.String after)}</li>
  * </ul>
  * </td>
  * </tr>
@@ -867,7 +868,7 @@ public final class DateTool {
      *
      * @param date1       日期1
      * @param date2       日期2
-     * @param datePattern 格式 {@link com.reachauto.hkr.tennis.ft1.DatePattern}
+     * @param datePattern 格式 {@link DatePattern}
      * @return 相等返回true, 不相等则为false<br>
      * 如果 <code>date1</code> 是null,抛出 {@link NullPointerException}<br>
      * 如果 <code>date2</code> 是null,抛出 {@link NullPointerException}<br>
@@ -898,7 +899,7 @@ public final class DateTool {
      * </blockquote>
      *
      * @param date        任意时间
-     * @param datePattern 模式 {@link com.reachauto.hkr.tennis.ft1.DatePattern}
+     * @param datePattern 模式 {@link DatePattern}
      * @return 如果 <code>date</code> 是null,抛出 {@link NullPointerException}<br>
      * 如果 <code>pattern</code> 是 null,抛出 {@link NullPointerException}<br>
      * 如果 <code>pattern</code> 是 blank,抛出 {@link IllegalArgumentException}<br>
@@ -972,7 +973,7 @@ public final class DateTool {
      * </blockquote>
      *
      * @param dateString   时间字符串
-     * @param datePatterns 模式,时间字符串的模式{@link com.reachauto.hkr.tennis.ft1.DatePattern}
+     * @param datePatterns 模式,时间字符串的模式{@link DatePattern}
      * @return 如果 <code>dateString</code> 是null,抛出 {@link NullPointerException}<br>
      * 如果 <code>dateString</code> 是blank,抛出 {@link IllegalArgumentException}<br>
      * 如果 <code>datePatterns</code> 是 null,抛出 {@link NullPointerException}<br>
