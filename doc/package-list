@@ -1,0 +1,7 @@
+com.reachauto.hkr.tennis.ft1
+com.reachauto.hkr.tennis.ft1.notscan.bean
+com.reachauto.hkr.tennis.ft1.notscan.date
+com.reachauto.hkr.tennis.ft1.notscan.gson
+com.reachauto.hkr.tennis.ft1.notscan.lock
+com.reachauto.hkr.tennis.ft1.springscan.cache
+com.reachauto.hkr.tennis.ft1.springscan.cache.redis
