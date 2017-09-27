@@ -55,3 +55,50 @@
 2017年9月24日 16:52:03
 
 DatePattern,CharsetType
+
+### cache 注解使用
+2017年9月27日 23:35:15
+
+添加了2个注解,这两个注解完全解放模版代码.
+
+`@HkrCache` 和 `@HkrCacheDel`
+
+@HkrCache 的参数列表
+* String model 模块名称 例如 mn, fe, he 等
+* int expire 缓存失效的时间,默认是60秒钟.
+      
+想使用@HkrCache缓存方法的返回值,需要注意的事项
+* 参数中的自定义Class必须要实现toString方法.
+* 缓存的存储模式 key-val 不支持 key-hash
+
+@HkrCache 作用范围读写,缓存方法的返回结果到Redis,缓存的key是用的类明.方法(参数列表).参数值
+
+    例如 : hkr:cache:mn:DemoServiceImpl.demoFindById(String):sdsd
+          hkr:cache:mn:DemoServiceImpl.getBean(int,Integer,String,DemoBean):1,2,3,DemoBean{name='demo'}
+     
+
+@HkrCacheDel 缓存清除的主要注解
+
+参数列表
+* String model 模块名称 例如 mn, fe, he 等
+* String[] delKey 要删除的key,它的格式参照生成缓存的key去设置.最后给个*号
+
+注意事项
+* 缓存暂时不支持Hash类型的删除
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

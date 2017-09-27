@@ -1,5 +1,3 @@
-package com.reachauto.hkr.tennis.ft1.notscan.gson;
-
 
 /**
  * Gson处理对象的几个重要点
@@ -85,3 +83,5 @@ package com.reachauto.hkr.tennis.ft1.notscan.gson;
  * @Until(0.5) private int shirtNumber;
  * 也就是说我们利用方法builder.setVersion(1.0)定义版本1.0，如下
  */
+package com.reachauto.hkr.tennis.ft1.notscan.gson;
+
