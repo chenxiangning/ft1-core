@@ -29,7 +29,16 @@ public class DemoController {
     @RequestMapping("/")
     @ResponseBody
     public String g() {
+        demoService.demoFindByIdAndName("111", "222sss");
+        demoService.demoFindById("sdsd");
+        demoService.getBean(1, 2, "3", new DemoBean("demo"));
+        return "";
+    }
 
-        return demoService.getBean(1, 2, "3", new DemoBean("demo")).toString();
+    @RequestMapping("/del")
+    @ResponseBody
+    public String del() {
+        demoService.del("xxxxxx");
+        return "";
     }
 }

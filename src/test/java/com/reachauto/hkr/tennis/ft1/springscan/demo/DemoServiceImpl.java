@@ -1,6 +1,7 @@
 package com.reachauto.hkr.tennis.ft1.springscan.demo;
 
 import com.reachauto.hkr.tennis.ft1.springscan.cache.annotation.HkrCache;
+import com.reachauto.hkr.tennis.ft1.springscan.cache.annotation.HkrCacheDel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +21,26 @@ public class DemoServiceImpl {
     @Autowired
     private DemoDao demoDao;
 
-    @HkrCache(key = HkrCache.DEFAULT_PREFIX_KEY + "mn", expire = 99)
+    @HkrCache(model = "mn", expire = 33)
     public Object demoFindById(String id) {
         LOGGER.info("service 层调用 demoFindById({})", id);
         return demoDao.findById(id);
     }
 
-    @HkrCache(key = HkrCache.DEFAULT_PREFIX_KEY + "mn", expire = 120)
+    @HkrCache(model = "mn", expire = 33)
     public Object demoFindByIdAndName(String id, String name) {
         LOGGER.info("service 层调用 demoFindByIdAndName({},{})", id, name);
         return demoDao.findByIdAndName(id, name);
     }
 
-    @HkrCache(key = HkrCache.DEFAULT_PREFIX_KEY + "mn", expire = 120)
+    @HkrCache(model = "mn", expire = 33)
     public DemoBean getBean(int a, Integer b, String c, DemoBean d) {
         return demoDao.getB(a, b, c, d);
 
+    }
+
+    @HkrCacheDel(model = "mn", delKey = {"*"})
+    public void del(String xx) {
+        System.out.println("清理缓存");
     }
 }

@@ -25,6 +25,7 @@ import java.lang.reflect.Method;
  * Date: 2017/9/26 21:54
  * To change this template use File | Settings | File Templates.
  * chenxiangning@reachauto.com
+ * 缓存的读写切面,环绕型处理.
  */
 @Component
 @Aspect
@@ -66,11 +67,19 @@ public class HkrCacheAspect {
     /**
      * 根据类名、方法名和参数值获取唯一的缓存键
      *
-     * @return 格式为 "包名.类名.方法名.参数类型.参数值"，类似 "your.package.SomeService.getById(int).123"
+     * @return 格式为 "包名.类名.方法名.参数类型.参数值"，类似 "class.getById(int).123"
      */
     private Key getCacheKey(ProceedingJoinPoint joinPoint, HkrCache hkrCache) {
-        return new Key(String.format("%s:%s:%s",
-                hkrCache.key(), joinPoint.getSignature().toString().split("\\s")[1], StringUtils.join(joinPoint.getArgs(), ",")));
+        String classname = joinPoint.getSignature().toShortString();
+        classname = classname.substring(0, classname.indexOf('.'));
+        String methodKey = joinPoint.getSignature().toString();
+        methodKey = methodKey.substring(methodKey.lastIndexOf('.'));
+
+        return new Key(String.format("%s%s:%s:%s",
+                HkrCache.DEFAULT_PREFIX_KEY,
+                hkrCache.model(),
+                String.format("%s%s", classname, methodKey),
+                StringUtils.join(joinPoint.getArgs(), ",")));
     }
 
     private <T extends Annotation> T getAnnotation(ProceedingJoinPoint jp, Class<T> clazz) {
