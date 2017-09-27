@@ -5,6 +5,7 @@ import com.reachauto.hkr.tennis.ft1.notscan.gson.GsonTool;
 import com.reachauto.hkr.tennis.ft1.springscan.cache.HkrKeyValCache;
 import com.reachauto.hkr.tennis.ft1.springscan.cache.annotation.HkrCache;
 import com.reachauto.hkr.tennis.ft1.springscan.cache.redis.Key;
+import org.apache.commons.lang.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -35,39 +36,41 @@ public class HkrCacheAspect {
     private HkrKeyValCache hkrKeyValCache;
 
     public HkrCacheAspect() {
-        LOGGER.info("########## init HkrCacheAspect");
+        LOGGER.info("########## init HkrCacheAspect ##########");
     }
 
     @Around("@annotation(com.reachauto.hkr.tennis.ft1.springscan.cache.annotation.HkrCache)")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 
         HkrCache hkrCache = getAnnotation(joinPoint, HkrCache.class);
-        String key = getKey(hkrCache.key(), joinPoint.getArgs());
+        Key key = getCacheKey(joinPoint, hkrCache);
 
-        String cacheJson = hkrKeyValCache.get(new Key(key));
+        String cacheJson = hkrKeyValCache.get(key);
 
         if (ValidatorTool.isNotNullOrEmpty(cacheJson)) {
-            LOGGER.info("get cache，key [{}]", key);
+            LOGGER.info("get cache，key [{}]", key.getTrueKey());
             return GsonTool.jsonToBean(GsonTool.getGsonAll(), cacheJson, getReturnType(joinPoint));
         } else {
-            LOGGER.info("get db set cache key [{}] expire [{}]", key, hkrCache.expire());
+            LOGGER.info("get db set cache key [{}] expire [{}]", key.getTrueKey(), hkrCache.expire());
             Object result = joinPoint.proceed(joinPoint.getArgs());
             if (result == null) {
-                LOGGER.error("fail to get data from source，key [{}]", key);
+                LOGGER.error("fail to get data from source，key [{}]", key.getTrueKey());
             } else {
-                hkrKeyValCache.setObject(new Key(key), GsonTool.objectToAllFieldNullJson(result), hkrCache.expire());
+                hkrKeyValCache.setObject(key, GsonTool.objectToAllFieldNullJson(result), hkrCache.expire());
             }
             return result;
         }
 
     }
 
-    private String getKey(String key, Object[] args) {
-        String result = key;
-        for (int i = 0; i < args.length; i++) {
-            result = result.replace(HkrCache.ARGS + i, String.valueOf(args[i]));
-        }
-        return result;
+    /**
+     * 根据类名、方法名和参数值获取唯一的缓存键
+     *
+     * @return 格式为 "包名.类名.方法名.参数类型.参数值"，类似 "your.package.SomeService.getById(int).123"
+     */
+    private Key getCacheKey(ProceedingJoinPoint joinPoint, HkrCache hkrCache) {
+        return new Key(String.format("%s:%s:%s",
+                hkrCache.key(), joinPoint.getSignature().toString().split("\\s")[1], StringUtils.join(joinPoint.getArgs(), ",")));
     }
 
     private <T extends Annotation> T getAnnotation(ProceedingJoinPoint jp, Class<T> clazz) {

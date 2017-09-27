@@ -20,21 +20,21 @@ public class DemoServiceImpl {
     @Autowired
     private DemoDao demoDao;
 
-    @HkrCache(key = "hkr:cache:mn:demo:#args0", expire = 99)
+    @HkrCache(key = HkrCache.DEFAULT_PREFIX_KEY + "mn", expire = 99)
     public Object demoFindById(String id) {
         LOGGER.info("service 层调用 demoFindById({})", id);
         return demoDao.findById(id);
     }
 
-    @HkrCache(key = "hkr:cache:mn:demo:#args0.#args1", expire = 120)
+    @HkrCache(key = HkrCache.DEFAULT_PREFIX_KEY + "mn", expire = 120)
     public Object demoFindByIdAndName(String id, String name) {
         LOGGER.info("service 层调用 demoFindByIdAndName({},{})", id, name);
         return demoDao.findByIdAndName(id, name);
     }
 
-    @HkrCache(key = "hkr:cache:mn:demo:" + HkrCache.ARGS + "0." + HkrCache.ARGS + "1." + HkrCache.ARGS + "2." + HkrCache.ARGS + "3", expire = 120)
+    @HkrCache(key = HkrCache.DEFAULT_PREFIX_KEY + "mn", expire = 120)
     public DemoBean getBean(int a, Integer b, String c, DemoBean d) {
-        return demoDao.getB(a,b,c,d);
+        return demoDao.getB(a, b, c, d);
 
     }
 }

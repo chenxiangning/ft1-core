@@ -14,7 +14,7 @@ import java.lang.annotation.*;
 @Inherited
 @Documented
 public @interface HkrCache {
-    String ARGS = "#args";
+    String DEFAULT_PREFIX_KEY = "hkr:cache:";
 
     /**
      * 自定义缓存Key，支持表达式
