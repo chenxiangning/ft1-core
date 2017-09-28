@@ -21,6 +21,10 @@ public class BigDecimalCalculation {
         this.amount = new BigDecimal(amount);
     }
 
+    public BigDecimalCalculation plus(BigDecimal value, int scale) {
+        return new BigDecimalCalculation(this.amount.add(value).setScale(scale, RoundingMode.FLOOR));
+    }
+
     public BigDecimalCalculation plus(BigDecimal value) {
         return new BigDecimalCalculation(this.amount.add(value));
     }
@@ -29,13 +33,19 @@ public class BigDecimalCalculation {
         return plus(new BigDecimal(value));
     }
 
+
     public BigDecimalCalculation minus(BigDecimal value) {
         return new BigDecimalCalculation(this.amount.subtract(value));
+    }
+
+    public BigDecimalCalculation minus(BigDecimal value, int scale) {
+        return new BigDecimalCalculation(this.amount.subtract(value).setScale(scale, RoundingMode.FLOOR));
     }
 
     public BigDecimalCalculation minus(String value) {
         return minus(new BigDecimal(value));
     }
+
 
     public BigDecimalCalculation mul(BigDecimal value) {
         return new BigDecimalCalculation(this.amount.multiply(value));
@@ -46,7 +56,7 @@ public class BigDecimalCalculation {
     }
 
     public BigDecimalCalculation div(BigDecimal value) {
-        return new BigDecimalCalculation(this.amount.divide(value, RoundingMode.HALF_EVEN));
+        return new BigDecimalCalculation(this.amount.divide(value, RoundingMode.FLOOR));
     }
 
     public BigDecimalCalculation div(String value) {
@@ -54,7 +64,7 @@ public class BigDecimalCalculation {
     }
 
     public BigDecimalCalculation div(BigDecimal value, int scale) {
-        return new BigDecimalCalculation(this.amount.divide(value, scale, RoundingMode.HALF_EVEN));
+        return new BigDecimalCalculation(this.amount.divide(value, scale, RoundingMode.FLOOR));
     }
 
     public BigDecimalCalculation div(String value, int scale) {

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
+import static com.reachauto.hkr.tennis.ft1.notscan.math.BigDecimalTool.cal;
 import static com.reachauto.hkr.tennis.ft1.notscan.math.BigDecimalTool.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -66,5 +67,20 @@ public class BigDecimalToolTest {
         assertTrue(is(five).isNullOrZero());
         assertTrue(is("0").isNullOrZero());
         assertFalse(is("1").isNullOrZero());
+    }
+
+    @Test
+    public void calk() {
+        System.out.println(cal(new BigDecimal("12")).plus(new BigDecimal(12)).result());
+        System.out.println(cal(new BigDecimal("12.2222")).plus(new BigDecimal("12.0193094")).result());
+        System.out.println(cal(new BigDecimal("12.2222")).plus(new BigDecimal("12.0193094"),2).result());
+        System.out.println(cal(new BigDecimal("8")).div(new BigDecimal("9")).result());
+        System.out.println(cal(new BigDecimal("8")).div(new BigDecimal("9"),1).result());
+        System.out.println(cal(new BigDecimal("8")).div(new BigDecimal("9"),2).result());
+        System.out.println(cal(new BigDecimal("8")).div(new BigDecimal("9"),3).result());
+        System.out.println(cal(new BigDecimal("8")).div(new BigDecimal("9"),4).result());
+
+        System.out.println(is("123").gt("123"));
+        System.out.println(is("123").gteq("123"));
     }
 }
