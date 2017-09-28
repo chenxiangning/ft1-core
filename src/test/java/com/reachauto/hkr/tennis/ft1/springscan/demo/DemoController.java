@@ -17,6 +17,8 @@ public class DemoController {
 
     @Autowired
     private DemoServiceImpl demoService;
+    @Autowired
+    private DemoSer demoSer;
 
     @RequestMapping("/demo")
     @ResponseBody
@@ -32,6 +34,7 @@ public class DemoController {
         demoService.demoFindByIdAndName("111", "222sss");
         demoService.demoFindById("sdsd");
         demoService.getBean(1, 2, "3", new DemoBean("demo"));
+        demoService.getBean(1, 2, "3", new com.reachauto.hkr.tennis.ft1.springscan.cache.DemoBean("22222"));
         return "";
     }
 
@@ -40,5 +43,11 @@ public class DemoController {
     public String del() {
         demoService.del("xxxxxx");
         return "";
+    }
+    @RequestMapping("/i")
+    @ResponseBody
+    public String i() {
+        demoSer.demoFindById("123123");
+        return "123";
     }
 }

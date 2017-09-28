@@ -39,6 +39,12 @@ public class DemoServiceImpl {
 
     }
 
+    @HkrCache(model = "mn", expire = 33)
+    public com.reachauto.hkr.tennis.ft1.springscan.cache.DemoBean getBean(int a, Integer b, String c, com.reachauto.hkr.tennis.ft1.springscan.cache.DemoBean d) {
+        return new com.reachauto.hkr.tennis.ft1.springscan.cache.DemoBean("陈湘宁1");
+
+    }
+
     @HkrCacheDel(model = "mn", delKey = {"*"})
     public void del(String xx) {
         System.out.println("清理缓存");
