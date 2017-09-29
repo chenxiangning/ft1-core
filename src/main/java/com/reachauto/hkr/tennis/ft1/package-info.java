@@ -1,4 +1,6 @@
 /**
- * Created by chenxiangning on 2017-07-21.
+ * Created by chenxiangning on 2017-09-21.
+ *
+ * 我们ft1组内的工具包
  */
 package com.reachauto.hkr.tennis.ft1;

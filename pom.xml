@@ -6,7 +6,7 @@
 
     <groupId>com.reachauto.hkr.tennis.ft1</groupId>
     <artifactId>ft1-core</artifactId>
-    <version>tools.0.1.evolution</version>
+    <version>tools.1.1.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -61,6 +61,17 @@
             <version>${commons-collections4.version}</version>
         </dependency>
 
+        <!-- AOP依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
