@@ -89,7 +89,11 @@ DatePattern,CharsetType
 ### add BigDecimalTool
 2017年9月28日 00:50:10
 
+### add RegExTool 
 
+### add google guava 
+
+封装 JoinTool SplitTool
 
 
 

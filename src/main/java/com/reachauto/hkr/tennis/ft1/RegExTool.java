@@ -96,10 +96,98 @@ public final class RegExTool {
      *
      * @param source 要匹配的字符串
      * @param regex  正则表达式
+     *
      * @return
      */
     public static List<String> groupCaseInsensitive(String source, String regex) {
         return group(source, regex, Pattern.CASE_INSENSITIVE);
+    }
+
+    /**
+     * 正则匹配,开启反向引用,返回引用中的值
+     * <blockquote>
+     * <style type="text/css">
+     * .tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #9dcc7a;border-collapse: collapse;}
+     * .tftable th {font-size:12px;background-color:#abd28e;border-width: 1px;padding: 8px;border-style: solid;border-color: #9dcc7a;text-align:left;}
+     * .tftable tr {background-color:#ffffff;}
+     * .tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #9dcc7a;}
+     * </style>
+     * <p>
+     * <table id="tfhover" class="tftable" border="1">
+     * <tr><th>示例</th></tr>
+     * <tr><td>
+     * String regex = "(\\w+)@(\\w+\\.\\w+)"<br/>
+     * String souse = "chenxiangning@126.com"<br/>
+     * RegExTool.groupAndMatches(souse, regex, Pattern.MULTILINE,0);<br/>
+     * ---> chenxiangning@126.com<br/>
+     * RegExTool.groupAndMatches(souse, regex, Pattern.MULTILINE,1);<br/>
+     * ---> chenxiangning<br/>
+     * RegExTool.groupAndMatches(souse, regex, Pattern.MULTILINE,2);<br/>
+     * ---> 126.com
+     * </td></tr>
+     * </table>
+     * </blockquote>
+     *
+     * @param source     要匹配的字符串
+     * @param regex      正则表达式
+     * @param flags      匹配模式
+     * @param groupIndex 反向引用值下标
+     * @return
+     */
+    public static String groupAndMatches(String source, String regex, int flags, int groupIndex) {
+        Validate.notNull(source, "source can't be null");
+        Validate.notBlank(source, "source can't be blank!");
+        Validate.notNull(regex, "regex can't be null");
+        Validate.notBlank(regex, "source can't be blank!");
+
+        Pattern pattern = Pattern.compile(regex, flags);
+        Matcher matcher = pattern.matcher(source);
+        matcher.matches();
+        return matcher.group(groupIndex);
+    }
+
+    /**
+     * 正则匹配,开启反向引用,返回引用中的值
+     * <blockquote>
+     * <style type="text/css">
+     * .tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #9dcc7a;border-collapse: collapse;}
+     * .tftable th {font-size:12px;background-color:#abd28e;border-width: 1px;padding: 8px;border-style: solid;border-color: #9dcc7a;text-align:left;}
+     * .tftable tr {background-color:#ffffff;}
+     * .tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #9dcc7a;}
+     * </style>
+     * <p>
+     * <table id="tfhover" class="tftable" border="1">
+     * <tr><th>示例</th></tr>
+     * <tr><td>
+     * String regex = "(\\w+)@(\\w+\\.\\w+)"<br/>
+     * String souse = "chenxiangning@126.com"<br/>
+     * RegExTool.groupAndMatches(souse, regex, Pattern.MULTILINE,0);<br/>
+     * ---> [chenxiangning@126.com, chenxiangning, 126.com]<br/>
+     * </td></tr>
+     * </table>
+     * </blockquote>
+     *
+     * @param source     要匹配的字符串
+     * @param regex      正则表达式
+     * @param flags      匹配模式
+     * @return
+     */
+    public static List<String> groupAndMatches(String source, String regex, int flags) {
+        Validate.notNull(source, "source can't be null");
+        Validate.notBlank(source, "source can't be blank!");
+        Validate.notNull(regex, "regex can't be null");
+        Validate.notBlank(regex, "source can't be blank!");
+
+        Pattern pattern = Pattern.compile(regex, flags);
+        Matcher matcher = pattern.matcher(source);
+        matcher.matches();
+        List<String> results = new ArrayList<>();
+
+        for (int i = 0; i < matcher.groupCount() + 1; i++) {
+            results.add(matcher.group(i));
+        }
+
+        return results;
     }
 
     /**

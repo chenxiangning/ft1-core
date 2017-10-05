@@ -197,7 +197,7 @@ public final class GsonTool {
 
     /**
      * 将一个bean转换成Json
-     * 范围:bean 中标记了 @Expose 的属性
+     * 范围:base 中标记了 @Expose 的属性
      *
      * @param o
      * @return

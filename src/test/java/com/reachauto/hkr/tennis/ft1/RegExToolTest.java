@@ -1,5 +1,6 @@
 package com.reachauto.hkr.tennis.ft1;
 
+import com.google.common.collect.ImmutableList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -46,6 +47,21 @@ public class RegExToolTest {
     public void regexTest3(){
         System.out.println(RegExTool.groupCaseInsensitive("About Cats and dogs----cat", "cat"));
 
+    }
+
+    @Test
+    public void regexTest8() {
+        String regex = "(\\w+)@(\\w+\\.\\w+)";
+        String souse = "chenxiangning@126.com";
+
+        System.out.println(RegExTool.groupAndMatches(souse, regex, Pattern.MULTILINE));
+        System.out.println(RegExTool.groupAndMatches(souse, regex, Pattern.MULTILINE,0));
+        System.out.println(RegExTool.groupAndMatches(souse, regex, Pattern.MULTILINE,1));
+        System.out.println(RegExTool.groupAndMatches(souse, regex, Pattern.MULTILINE,2));
+
+        ImmutableList list = ImmutableList.builder().add(1).add(2).build();
+
+        list.forEach(o -> System.out.println(o));
     }
 
 }
