@@ -19,6 +19,6 @@ public class GoogleGuava {
         System.out.println(Strings.emptyToNull("  "));
         System.out.println(Strings.emptyToNull("ss"));
 
-        Preconditions.checkArgument(1>= 11, "Argument was %s but expected nonnegative", 3);
+        Preconditions.checkArgument(1< 11, "Argument was %s but expected nonnegative", 3);
     }
 }
