@@ -4,9 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+
     <groupId>io.github.chenxiangning</groupId>
     <artifactId>ft1-core</artifactId>
-    <version>tools.3.0.evolution</version>
+    <version>tools.3.2.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -95,6 +102,26 @@
 
     </dependencies>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/chenxiangning/ft1-core</url>
+        <connection>https://github.com/chenxiangning/ft1-core.git</connection>
+        <developerConnection>https://github.com/chenxiangning/ft1-core</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>chenxiangning</name>
+            <email>chenxiangning@reachauto.com</email>
+            <url>https://github.com/chenxiangning/ft1-core</url>
+        </developer>
+    </developers>
 
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>

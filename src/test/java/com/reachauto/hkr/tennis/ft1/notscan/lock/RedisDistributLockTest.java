@@ -21,17 +21,17 @@ public class RedisDistributLockTest extends AbstractJUnit {
     @Test
     public void t() {
 
-        RedisDistributLock lock = new RedisDistributLock(restTemplate, "kaka", 1);
-
-        try {
-            if (lock.lock()) {
-                System.out.println(123);
-            }
-        } catch (InterruptedException e) {
-            lock.unlock();
-        } finally {
-            lock.unlock();
-        }
+//        RedisDistributLock lock = new RedisDistributLock(restTemplate, "kaka", 1);
+//
+//        try {
+//            if (lock.lock()) {
+//                System.out.println(123);
+//            }
+//        } catch (InterruptedException e) {
+//            lock.unlock();
+//        } finally {
+//            lock.unlock();
+//        }
 
     }
 
