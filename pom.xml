@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.reachauto.hkr.tennis.ft1</groupId>
+    <groupId>io.github.chenxiangning</groupId>
     <artifactId>ft1-core</artifactId>
-    <version>tools.2.1.evolution</version>
+    <version>tools.3.0.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
