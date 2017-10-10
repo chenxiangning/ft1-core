@@ -22,11 +22,8 @@ public final class ObjectTool {
 
     /**
      * 如果 <code>object</code> 是null或者empty,返回默认值 <code>defaultValue</code>.
-     * <p>
      * <h3>示例:</h3>
-     * <p>
      * <blockquote>
-     * <p>
      * <pre>
      * ObjectTool.defaultIfNullOrEmpty(null, null)      = null
      * ObjectTool.defaultIfNullOrEmpty(null, "")        = ""
@@ -34,7 +31,7 @@ public final class ObjectTool {
      * ObjectTool.defaultIfNullOrEmpty("abc", *)        = "abc"
      * ObjectTool.defaultIfNullOrEmpty(Boolean.TRUE, *) = Boolean.TRUE
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param <T>          the type of the object
@@ -51,69 +48,47 @@ public final class ObjectTool {
 
     /**
      * 判断指定的对象 <code>object</code>是否是数组.
-     * <p>
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
      * <li>支持判断原始类型数组 <code>primitive</code> 和包装类型数组</li>
      * </ol>
      * </blockquote>
-     * <p>
      * <h3>示例:</h3>
-     * <p>
      * <blockquote>
-     * <p>
      * <pre class="code">
      * int[] i = {};
      * ObjectTool.isArray(i);                       =true
-     * <p>
      * ObjectTool.isArray(new int[] { 1, 2, 3 });   =true
-     * <p>
      * ObjectTool.isArray(new Integer[0]);          =true
      * ObjectTool.isArray(new String[0]);           =true
      * </pre>
-     * <p>
      * </blockquote>
-     * <p>
      * <h3><code>instanceof</code>和 {@link java.lang.Class#isArray()}的区别:</h3>
-     * <p>
      * <blockquote>
-     * <p>
      * 通常使用<code>instanceof</code>操作符去判断一个对象 <code>object</code> 是否是数组 <code>array</code>.<br>
      * 在JVM层次,<code>instanceof</code>操作符 translates to a specific "instanceof" byte code, which is highly optimized in most JVM
      * implementations.<br>
-     * </p>
-     * <p>
-     * <p>
      * 而反射的方法(getClass().isArray()) is compiled to two separate "invokevirtual" instructions.<br>
      * The more generic optimizations applied by the JVM to these may not be as fast as the hand-tuned optimizations inherent in the
      * "instanceof" instruction.<br>
-     * </p>
-     * <p>
-     * <p>
      * 有两种特殊情况: null references 和 primitive arrays.<br>
-     * </p>
-     * <p>
      * <table border="1" cellspacing="0" cellpadding="4" summary="">
-     * <p>
      * <tr style="background-color:#ccccff">
      * <th align="left"></th>
      * <th align="left"><code>instanceof</code></th>
      * <th align="left"><code>getClass().isArray()</code></th>
      * </tr>
-     * <p>
      * <tr valign="top">
      * <td>null reference</td>
      * <td>false</td>
      * <td>NullPointerException</td>
      * </tr>
-     * <p>
      * <tr valign="top" style="background-color:#eeeeff">
      * <td>原始类型数组primitive array</td>
      * <td>false</td>
      * <td>true</td>
      * </tr>
-     * <p>
      * </table>
      * </blockquote>
      *
@@ -132,25 +107,19 @@ public final class ObjectTool {
 
     /**
      * 判断指定的对象 <code>object</code> 是否是原生类型数组.
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
      * <pre class="code">
-     * <p>
      * ObjectUtil.isPrimitiveArray(1)                           = false
      * ObjectUtil.isPrimitiveArray(1L)                          = false
      * ObjectUtil.isPrimitiveArray("1")                         = false
-     * <p>
-     * <p>
      * ObjectUtil.isPrimitiveArray(new int[] {})                = true
      * ObjectUtil.isPrimitiveArray(new int[] { 1, 2 })          = true
      * ObjectUtil.isPrimitiveArray(new byte[] { 1, 2 })         = true
-     * <p>
      * ObjectUtil.isPrimitiveArray(new String[] { "1", "2" })   = false
      * </pre>
-     * <p>
      * </blockquote>
      *
      * @param object the object

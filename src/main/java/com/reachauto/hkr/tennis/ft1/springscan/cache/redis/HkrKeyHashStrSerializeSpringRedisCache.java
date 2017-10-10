@@ -84,9 +84,9 @@ public class HkrKeyHashStrSerializeSpringRedisCache implements HkrKeyHashCache {
      * 把原本的hGetAll操作简化为hGet，也就是说，不再需要遍历hash中的每一个字段，因此即便不能让多个CPU参与运算，
      * 但是却大幅降低了操作数量，所以性能的提升仍然是显著的；
      *
-     * @param key
-     * @param hashKeys
-     * @return
+     * @param key 1
+     * @param hashKeys 1
+     * @return List
      */
     @Override
     public List<String> multiGet(Key key, Collection<String> hashKeys) {

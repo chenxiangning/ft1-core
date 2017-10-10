@@ -18,13 +18,13 @@ public @interface HkrCacheDel {
 
     /**
      * 缓存模块
-     * @return
+     * @return s
      */
     String model();
 
     /**
      * 要删除的key,它的格式参照生成缓存的key去设置.最后给个*号
-     * @return
+     * @return s[]
      */
      String[] delKey();
 

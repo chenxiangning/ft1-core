@@ -11,7 +11,7 @@ public class RegExToolTest {
 
 
     @Test
-    public void matchesTest() throws Exception {
+    public void matchesTest() {
         Assert.assertEquals(RegExTool.matches("iwgoooooooooooood", "i.+d"), true);
         Assert.assertEquals(RegExTool.matches("iwgoooooooooooood", "iwgo+d"), true);
         Assert.assertEquals(RegExTool.matches("iwgoooooooooooood", "iwgo"), false);
@@ -24,7 +24,7 @@ public class RegExToolTest {
      * 如果变成 Java 代码的话就是这样：
      */
     @Test
-    public void regexTest2() throws Exception {
+    public void regexTest2() {
         String str = "Jack is a boy";
         //将字符串编译为正则表达式的对象表示形式
         Pattern pattern = Pattern.compile("\\w");

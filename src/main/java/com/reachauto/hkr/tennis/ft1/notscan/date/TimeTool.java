@@ -31,7 +31,8 @@ public final class TimeTool {
      * @param rentalAfterTime  yyyy-MM-dd HH:mm:ss  租车结束时间
      * @param ruleBeforeTime   HH:mm          优惠开始时间  24小时制度
      * @param ruleAfterTime    HH:mm           优惠结束时间
-     * @return
+     * @param initTime    初始起步时间 数字
+     * @return 时间
      */
     public static long getRentalTimeContainRuleTime(String rentalBeforeTime, String rentalAfterTime,
                                                     String ruleBeforeTime, String ruleAfterTime, int initTime) {
@@ -47,7 +48,8 @@ public final class TimeTool {
      * @param rentalAfterTime  yyyy-MM-dd HH:mm:ss  租车结束时间
      * @param ruleBeforeTime   HH:mm          优惠开始时间  24小时制度
      * @param ruleAfterTime    HH:mm           优惠结束时间
-     * @return
+     * @param initTime    初始起步时间 数字
+     * @return 时间
      */
     public static long getRentalTimeContainRuleTime(Date rentalBeforeTime, Date rentalAfterTime,
                                                     String ruleBeforeTime, String ruleAfterTime, int initTime) {
@@ -65,7 +67,7 @@ public final class TimeTool {
      * @param rentalAfterTime
      * @param ruleBeforeTime
      * @param ruleAfterTime
-     * @return
+     * @return 包含中的时间
      */
     private static long containRuleTime(String rentalBeforeTime, String rentalAfterTime, String ruleBeforeTime, String ruleAfterTime) {
         // 1.计算总时间段包含总时间 min
@@ -203,7 +205,7 @@ public final class TimeTool {
         /**
          * 验证开始结束时间是否时当天的同一秒
          *
-         * @return
+         * @return 布尔值
          */
         public boolean isSameMinuteSecondOfTheDay() {
             return rentalBeforeTime.equals(rentalAfterTime);

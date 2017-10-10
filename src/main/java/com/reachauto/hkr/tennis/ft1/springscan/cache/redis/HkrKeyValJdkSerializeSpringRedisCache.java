@@ -101,8 +101,8 @@ public class HkrKeyValJdkSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 判断key是否存在
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @return 返回
      */
     @Override
     public boolean hasKey(String key) {

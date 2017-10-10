@@ -29,8 +29,8 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 获取缓存 to String
      *
-     * @param key
-     * @return String
+     * @param key 1
+     * @return String 1
      */
     @Override
     public String get(Key key) {
@@ -40,8 +40,8 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 获取缓存 to Obj
      *
-     * @param key
-     * @return Obj
+     * @param key 1
+     * @return Obj 1
      */
     @Override
     public <T> T getObject(Key key) {
@@ -51,10 +51,10 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 设置缓存 String
      *
-     * @param key
-     * @param value
+     * @param key 1
+     * @param value 1
      * @param cacheSeconds 超时时间 0为无限
-     * @return
+     * @return s
      */
     @Override
     public String set(Key key, String value, int cacheSeconds) {
@@ -65,9 +65,9 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 设置缓存 String
      *
-     * @param key
-     * @param value
-     * @return
+     * @param key 1
+     * @param value 1
+     * @return ok
      */
     @Override
     public String set(Key key, String value) {
@@ -78,10 +78,10 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 设置缓存 Obj
      *
-     * @param key
-     * @param value
+     * @param key 1
+     * @param value 1
      * @param cacheSeconds 超时时间 0为无限
-     * @return
+     * @return ok
      */
     @Override
     public String setObject(Key key, Object value, int cacheSeconds) {
@@ -92,9 +92,9 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 设置缓存 Obj
      *
-     * @param key
-     * @param value
-     * @return
+     * @param key 1
+     * @param value 1
+     * @return ok
      */
     @Override
     public String setObject(Key key, Object value) {
@@ -105,9 +105,9 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 设置key的过期时间
      *
-     * @param key
-     * @param sec
-     * @return
+     * @param key 1
+     * @param sec 1
+     * @return ok
      */
     @Override
     public Boolean expire(Key key, long sec) {
@@ -117,8 +117,8 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 删除缓存
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @return 1
      */
     @Override
     public long del(Key key) {
@@ -129,8 +129,8 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 删除缓存
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @return 1
      */
     @Override
     public long delObject(Key key) {
@@ -166,8 +166,8 @@ public class HkrKeyValStrSerializeSpringRedisCache implements HkrKeyValCache {
     /**
      * 判断key是否存在
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @return 1
      */
     @Override
     public boolean hasKey(String key) {

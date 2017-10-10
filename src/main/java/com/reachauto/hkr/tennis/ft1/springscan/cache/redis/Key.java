@@ -31,7 +31,7 @@ public class Key {
     /**
      * 冒号添加
      *
-     * @return
+     * @return 返回this
      */
     public Key colon() {
         this.append(":");

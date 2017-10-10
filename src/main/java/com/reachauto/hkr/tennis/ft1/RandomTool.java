@@ -12,7 +12,7 @@ import java.util.Random;
  * To change this template use File | Settings | File Templates.
  * chenxiangning@reachauto.com
  * 随机数工具类.
- * <p>
+ * 
  * <ul>
  * <li>{@link java.lang.Math#random()}底层也是调用的 new Random(),值＝Random nextDouble()</li>
  * <li>把 {@link java.util.Random}对象作为一个全局实例(static)来使用.Java中 {@link java.util.Random} 是线程安全的(内部进行了加锁处理);</li>
@@ -28,11 +28,11 @@ public class RandomTool {
 
     /**
      * Random object used by random method.
-     * <p>
-     * <p>
+     * 
+     * 
      * 为了确保同一毫秒不能返回相同的值,不同声明在方法里面.<br>
      * 把Random对象作为一个全局实例(static)来使用. Java中Random是线程安全的(内部进行了加锁处理);
-     * </p>
+     * 
      *
      * @see org.apache.commons.lang3.RandomUtils
      * @since 1.0.7
@@ -49,15 +49,13 @@ public class RandomTool {
 
     /**
      * 生成一个指定长度<code>length</code>的 <b>随机正整数</b>.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
-     * <pre class="code">
+     * 
      * RandomUtil.createRandomWithLength(2)
      * 生成的结果是可能是 89
-     * </pre>
-     * <p>
+     *
      * </blockquote>
      *
      * @param length 设定所取出随机数的长度.
@@ -80,21 +78,17 @@ public class RandomTool {
 
     /**
      * 随机抽取字符串<code>char</code>,拼接成指定长度<code>length</code>的字符串.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
      * <li>常用于生成验证码</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
-     * <pre class="code">
-     * <p>
-     * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param str    被抽取的字符串

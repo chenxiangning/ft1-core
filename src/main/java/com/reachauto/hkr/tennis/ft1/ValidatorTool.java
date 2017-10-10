@@ -28,45 +28,35 @@ public final class ValidatorTool {
 
     /**
      * 判断对象 <code>value</code> 是不是 null或者empty.
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
-     * <p>
      * <span style="color:green">// null</span>
      * Validator.isNullOrEmpty(null)                                            = true
-     * <p>
      * <span style="color:green">//CharSequence</span>
      * Validator.isNullOrEmpty("")                                              = true
      * Validator.isNullOrEmpty("   ")                                           = true
-     * <p>
      * Validator.isNullOrEmpty(new StringBuffer())                              = true
      * Validator.isNullOrEmpty(new StringBuffer(""))                            = true
      * Validator.isNullOrEmpty(new StringBuffer(" "))                           = true
-     * <p>
      * Validator.isNullOrEmpty(new StringBuilder())                             = true
      * Validator.isNullOrEmpty(new StringBuilder(""))                           = true
      * Validator.isNullOrEmpty(new StringBuilder(" "))                          = true
-     * <p>
      * <span style="color:green">//Collection</span>
      * Validator.isNullOrEmpty(new ArrayList{@code <String>}())                 = true
-     * <p>
      * <span style="color:green">//Map</span>
      * Validator.isNullOrEmpty(new LinkedHashMap{@code <String, String>}())     = true
-     * <p>
      * <span style="color:green">//Iterator</span>
      * Validator.isNullOrEmpty(new ArrayList{@code <String>}().iterator())      = true
-     * <p>
      * <span style="color:green">//Enumeration</span>
      * Validator.isNullOrEmpty(toEnumeration(new ArrayList{@code <String>}()))  = true
-     * <p>
      * <span style="color:green">//Array</span>
      * Validator.isNullOrEmpty(new String[] {})                                 = true
      * Validator.isNullOrEmpty(new Integer[][] {})                              = true
      * Validator.isNullOrEmpty(new User[] {})                                   = true
-     * <p>
      * <span style="color:green">//Primitive Array</span>
      * Validator.isNullOrEmpty(new double[] {})                                 = true
      * Validator.isNullOrEmpty(new float[] {})                                  = true
@@ -77,11 +67,10 @@ public final class ValidatorTool {
      * Validator.isNullOrEmpty(new byte[] {})                                   = true
      * Validator.isNullOrEmpty(new boolean[] {})                                = true
      * </pre>
-     * <p>
      * </blockquote>
-     * <p>
+     * 
      * <h3>对于empty的判断,使用以下逻辑:</h3>
-     * <p>
+     * 
      * <blockquote>
      * <ol>
      * <li>{@link CharSequence},支持子类有 {@link String},{@link StringBuffer},{@link StringBuilder},使用
@@ -121,13 +110,13 @@ public final class ValidatorTool {
 
     /**
      * 判断对象 <code>value</code> 是否不是null或者empty,调用 !{@link #isNullOrEmpty(Object)} 方法 .
-     * <p>
-     * <p>
+     * 
+     * 
      * 示例参考 {@link #isNullOrEmpty(Object)} 方法
-     * </p>
-     * <p>
+     * 
+     * 
      * <h3>对于empty的判断,使用以下逻辑:</h3>
-     * <p>
+     * 
      * <blockquote>
      * <ol>
      * <li>{@link CharSequence},支持子类有 {@link String},{@link StringBuffer},{@link StringBuilder},使用

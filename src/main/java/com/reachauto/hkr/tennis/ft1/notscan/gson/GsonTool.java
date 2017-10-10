@@ -21,61 +21,59 @@ import java.util.Map;
  * Date: 2017/9/21 21:28
  * To change this template use File | Settings | File Templates.
  * chenxiangning@reachauto.com
- * <p>
+ * 
  * <blockquote>
- * <p>
+ * 
  * <h3>示例:</h3>
- * <p>
+ * 
  * </blockquote>
- * <p>
+ * 
  * <blockquote>
  * String jsonx = "{\"kkkkk\":null,\"name\":\"cxn\",\"age\":3,\"code\":1001,\"fen\":88.32,\"xxxxx\":null,\"time\":\"Sep 21, 2017 8:09:53 PM\",\"delFlag\":0,\"createAt\":1505976480000,\"curtime\":1505976606634}";
- * <p>
+ * 
  * </blockquote>
  * <blockquote>
  * Map map = new HashMap();
- * <p>
+ * 
  * map.put("name", "cxn");
  * map.put("age", "3");
  * map.put("time", new Date());
  * map.put("xx", null);
  * map.put("code", 1001);
  * map.put("fen", 88.32);
- * <p>
+ * 
  * Gbean gbean = GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Gbean.class);
  * </blockquote>
- * <p>
- * <p>
+ *
  * <blockquote>
  * GsonTool.objectToJsonDateSerializer(gbean, "yyyy-MM-dd : HH:mm:ss");
- * <p>-> 序列化时自定义date {"ooooxxx":null,"kkkkk":null,"name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":null,"time":"2017-09-21 : 20:09:53","createAt":"2017-09-21 : 14:48:00","curtime":"2017-09-21 : 14:50:06"}
- * <p>
+ * $$ 序列化时自定义date {"ooooxxx":null,"kkkkk":null,"name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":null,"time":"2017-09-21 : 20:09:53","createAt":"2017-09-21 : 14:48:00","curtime":"2017-09-21 : 14:50:06"}
+ * 
  * GsonTool.objectToAllFieldEmptyJson(gbean);
- * <p>-> 序列化bean中全部字段时null串替换为"" {"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
- * <p>
+ * $$ 序列化bean中全部字段时null串替换为"" {"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
+ * 
  * GsonTool.objectToAllFieldNullJson(gbean);
- * <p>-> 序列化bean中全部字段 {"ooooxxx":null,"kkkkk":null,"name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":null,"time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
- * <p>
+ * $$ 序列化bean中全部字段 {"ooooxxx":null,"kkkkk":null,"name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":null,"time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
+ * 
  * SGsonTool.objectToNotNullJson(gbean);
- * <p>-> 序列化bean中不等于null的字段 {"name":"cxn","age":3,"code":1001,"fen":88.32,"time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
- * <p>
+ * $$ 序列化bean中不等于null的字段 {"name":"cxn","age":3,"code":1001,"fen":88.32,"time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
+ * 
  * GsonTool.objectToExposeJson(gbean);
- * <p>->序列化bean中属性添加了@Export的字段 {"code":1001,"fen":88.32,"time":1505995793000,"curtime":1505976606634}
- * <p>
- * <p> @@ {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
- * <p> @@ {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
- * <p> @@ {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
- * <p> @@ {ooooxxx='null'kkkkk='null'name='null', age=null, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=null, curtime=Thu Sep 21 14:50:06 CST 2017}
- * <p> @@ {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
- * <p>
- * List<Gbean> gbeanList = Arrays.asList(gbean);
- * String listJson = GsonTool.objectToAllFieldEmptyJson(gbeanList);
+ * $$序列化bean中属性添加了@Export的字段 {"code":1001,"fen":88.32,"time":1505995793000,"curtime":1505976606634}
+ * 
+ *  {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
+ *  {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
+ *  {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
+ *  {ooooxxx='null'kkkkk='null'name='null', age=null, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=null, curtime=Thu Sep 21 14:50:06 CST 2017}
+ *  {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
+ * 
+ * String listJson = GsonTool.objectToAllFieldEmptyJson(Arrays.asList(gbean));
  * String listJson2 = GsonTool.objectToAllFieldEmptyJson(gbean);
- * <p>
- * ->
- * <p>json:[{"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}]
- * <p>json2:{"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
- * <p>json3 [{ooooxxx=, name=cxn, age=3.0, code=1001.0, fen=88.32, xxxxx=, time=1.505995793E12, createAt=1.50597648E12, curtime=1.505976606634E12}]
+ * 
+ * $$
+ * json:[{"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}]
+ * json2:{"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
+ * json3 [{ooooxxx=, name=cxn, age=3.0, code=1001.0, fen=88.32, xxxxx=, time=1.505995793E12, createAt=1.50597648E12, curtime=1.505976606634E12}]
  * </blockquote>
  */
 public final class GsonTool {
@@ -199,8 +197,8 @@ public final class GsonTool {
      * 将一个bean转换成Json
      * 范围:base 中标记了 @Expose 的属性
      *
-     * @param o
-     * @return
+     * @param o o
+     * @return json
      */
     public static String objectToExposeJson(Object o) {
         return gsonExpose.toJson(o);
@@ -210,8 +208,8 @@ public final class GsonTool {
      * 将一个bean转换成Json
      * 范围:bean中不等于null的字段
      *
-     * @param o
-     * @return
+     * @param o o
+     * @return json
      */
     public static String objectToNotNullJson(Object o) {
         return gsonNotNull.toJson(o);
@@ -221,8 +219,8 @@ public final class GsonTool {
      * 将一个bean转换成Json
      * 范围:bean的全部属性
      *
-     * @param o
-     * @return
+     * @param o o
+     * @return json
      */
     public static String objectToAllFieldNullJson(Object o) {
         return gsonAll.toJson(o);
@@ -232,8 +230,8 @@ public final class GsonTool {
      * 将一个bean转换成Json
      * 范围:bean的全部属性,null的字符串对象会变为""空串
      *
-     * @param o
-     * @return
+     * @param o o
+     * @return json
      */
     public static String objectToAllFieldEmptyJson(Object o) {
         return beanToGsonNullToEmpty.toJson(o);
@@ -241,9 +239,9 @@ public final class GsonTool {
 
     /**
      * 将对象转换成json格式(并自定义日期格式)
-     *
-     * @param ts
-     * @return
+     * @param ts o
+     * @param dateformat 格式
+     * @return json
      */
     public static synchronized String objectToJsonDateSerializer(Object ts, final String dateformat) {
         Gson gson = new GsonBuilder().registerTypeHierarchyAdapter(Date.class, new JsonSerializer<Date>() {
@@ -260,9 +258,9 @@ public final class GsonTool {
     /**
      * 将json格式转换成list对象
      *
-     * @param gson
-     * @param jsonStr
-     * @return
+     * @param gson gosn
+     * @param jsonStr jsonStr
+     * @return list
      */
     public static List jsonToList(Gson gson, String jsonStr) {
         List<?> objList = null;
@@ -275,11 +273,11 @@ public final class GsonTool {
     }
 
     /**
-     * @param gson
-     * @param jsonStr
-     * @param type
-     * @param <T>
-     * @return
+     * @param gson g
+     * @param jsonStr h
+     * @param type class
+     * @param <T> t
+     * @return list
      */
     public static <T> List<T> jsonToList(Gson gson, String jsonStr, Class<T[]> type) {
         T[] objList = null;
@@ -290,9 +288,9 @@ public final class GsonTool {
     }
 
     /**
-     * @param gson
-     * @param jsonStr
-     * @return
+     * @param gson g
+     * @param jsonStr j
+     * @return map
      */
     public static Map jsonToMap(Gson gson, String jsonStr) {
         Map<?, ?> objMap = null;
@@ -305,10 +303,12 @@ public final class GsonTool {
     }
 
     /**
-     * @param gson
-     * @param jsonStr
-     * @param cl
-     * @return
+     *
+     * @param gson g
+     * @param jsonStr json
+     * @param cl class
+     * @param <T> t
+     * @return bean
      */
     public static <T> T jsonToBean(Gson gson, String jsonStr, Class<?> cl) {
         T obj = null;
@@ -321,11 +321,11 @@ public final class GsonTool {
     /**
      * 将json转换成bean对象
      *
-     * @param jsonStr
-     * @param cl
-     * @param pattern
-     * @param <T>
-     * @return
+     * @param jsonStr json
+     * @param cl class
+     * @param pattern 日期格式
+     * @param <T> 泛型
+     * @return classT
      */
     public static synchronized <T> T jsonToBeanDateSerializer(String jsonStr, Class<T> cl, final String pattern) {
         Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {

@@ -23,11 +23,11 @@ import static java.util.Calendar.*;
  * Date: 2017/9/24 15:11
  * To change this template use File | Settings | File Templates.
  * chenxiangning@reachauto.com
- * <p>
- * <p>
- * <p>
+ * 
+ * 
+ * 
  * <h3>常用方法:</h3>
- * <p>
+ * 
  * <blockquote>
  * <table border="1" cellspacing="0" cellpadding="4" summary="">
  * <tr style="background-color:#ccccff">
@@ -129,7 +129,7 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>,加减年份.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -137,16 +137,16 @@ public final class DateTool {
      * <li>传入的参数 <code>date</code> 不会改变</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.addYear(2012-06-29 00:33:05,5)   =20<span style="color:red">17</span>-06-29 00:33:05
      * DateTool.addYear(2012-06-29 00:33:05,-5)  =20<span style="color:red">07</span>-06-29 00:33:05
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -163,7 +163,7 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>加减月份.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -171,16 +171,16 @@ public final class DateTool {
      * <li>传入的参数 <code>date</code> 不会改变</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.addMonth(2012-10-16 23:12:43,5)  =2013-03-16 23:12:43.932
      * DateTool.addMonth(2012-10-16 23:12:43,-5) =2012-05-16 23:12:43.943
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date  任意时间
@@ -198,7 +198,7 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>加减天数.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -206,18 +206,18 @@ public final class DateTool {
      * <li>传入的参数 <code>date</code> 不会改变</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.addDay(2012-06-29 00:42:26,5)    =2012-07-04 00:42:26
      * DateTool.addDay(2012-06-29 00:42:26,-5)   =2012-06-24 00:42:26
      * DateTool.addDay(2014-12-31 02:10:05,5)    =2015-01-05 02:10:05.000
      * DateTool.addDay(2014-01-01 02:10:05,-5)   =2013-12-27 02:10:05.000
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -240,7 +240,7 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>加减星期 .
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -248,16 +248,16 @@ public final class DateTool {
      * <li>传入的参数 <code>date</code> 不会改变</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.addWeek(2012-06-29 00:45:18,5)   =2012-08-03 00:45:18
      * DateTool.addWeek(2012-06-29 00:45:18,-5)  =2012-05-25 00:45:18
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -273,7 +273,7 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>加减小时.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -281,16 +281,16 @@ public final class DateTool {
      * <li>传入的参数 <code>date</code> 不会改变</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.addHour(2012-06-29 00:46:24,5)   =2012-06-29 05:46:24
      * DateTool.addHour(2012-06-29 00:46:24,-5)  =2012-06-28 19:46:24
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -306,7 +306,7 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>加减分钟.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -314,16 +314,16 @@ public final class DateTool {
      * <li>传入的参数 <code>date</code> 不会改变</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.addMinute(2012-10-16 23:20:33,180)   =2012-10-17 02:20:33.669
      * DateTool.addMinute(2012-10-16 23:20:33,-180)  =2012-10-16 20:20:33.669
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date   任意时间
@@ -343,7 +343,7 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>加减秒.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -351,16 +351,16 @@ public final class DateTool {
      * <li>传入的参数 <code>date</code> 不会改变</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.addSecond(2012-10-16 23:22:02,180)   = 2012-10-16 23:25:02.206
      * DateTool.addSecond(2012-10-16 23:22:02,-180)  = 2012-10-16 23:19:02.206
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date   任意时间
@@ -381,7 +381,7 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>加减毫秒.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -389,16 +389,16 @@ public final class DateTool {
      * <li>传入的参数 <code>date</code> 不会改变</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.addMillisecond(2015-09-07 13:35:02.769,5000)     =2015-09-07 13:35:07.769
      * DateTool.addMillisecond(2015-09-07 13:35:02.769,-5000)    =2015-09-07 13:34:57.769
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date        任意时间
@@ -416,17 +416,17 @@ public final class DateTool {
 
     /**
      * 获得指定日期 <code>date</code>中的<b>年份</b>.
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getYear(toDate("2012-06-29 00:26:53", COMMON_DATE_AND_TIME))    = 2012
      * DateTool.getYear(toDate("2016-07-16", COMMON_DATE))                      = 2016
      * DateTool.getYear(toDate("2016-13-16", COMMON_DATE))                      = 2017
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -440,14 +440,14 @@ public final class DateTool {
 
     /**
      * 获得指定日期 <code>date</code>中的<b>月份</b> <span style="color:red">(已经+1处理)</span>.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getMonth(<code>2012-06-29</code>)    =6
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -461,10 +461,10 @@ public final class DateTool {
 
     /**
      * 指定日期 <code>date</code>年中的<b>星期数</b>.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getWeekOfYear(2014-06-03)    =23
      * DateTool.getWeekOfYear(2014-01-01)    =1
@@ -472,24 +472,23 @@ public final class DateTool {
      * DateTool.getWeekOfYear(2014-12-20)    =51
      * DateTool.getWeekOfYear(2014-12-26)    =52
      * </pre>
-     * <p>
+     * 
      * </blockquote>
-     * <p>
+     * 
      * <h3>注意:</h3>
-     * <p>
+     * 
      * <blockquote>
      * <ol>
      * <li>一年中第一个星期的值为 1,一年52(365/7=52.14)个星期</li>
      * <li>2014年的1-1 1-2 1-3 1-4 得出的{@link Calendar#WEEK_OF_YEAR} 是1; <br>
      * 2014年的12-28 12-29 12-30 12-31 得出的{@link Calendar#WEEK_OF_YEAR} 也是1</li>
-     * <p>
      * <li>{@link Calendar#setMinimalDaysInFirstWeek(int)} 可以来修改第一周最小天数,但是如果设置为7的话
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getWeekOfYear(2014-01-01)    =52
      * DateTool.getWeekOfYear(2014-12-31)    =52
      * </pre>
-     * <p>
+     * 
      * 可以看出,如果从1月1号算开始第一周的话,这年第一周时间不够我们设置的7天,那么1月1号算上一年的星期</li>
      * </ol>
      * </blockquote>
@@ -509,17 +508,17 @@ public final class DateTool {
 
     /**
      * 获得指定日期 <code>date</code>是当年中的第几天.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getDayOfYear(<code>2013-01-01</code>)    =1
      * DateTool.getDayOfYear(<code>2013-01-05</code>)    =5
      * DateTool.getDayOfYear(<code>2016-12-31</code>)    =366
      * DateTool.getDayOfYear(<code>2016-02-01</code>)    =32
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -533,17 +532,17 @@ public final class DateTool {
 
     /**
      * 获得指定日期 <code>date</code>是当前月的几号.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getDayOfMonth(<code>2012-06-29</code>)    =29
      * DateTool.getDayOfMonth(<code>2013-01-05</code>)    =5
      * DateTool.getDayOfMonth(<code>2016-12-31</code>)    =31
      * DateTool.getDayOfMonth(<code>2016-02-01</code>)    =1
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -557,7 +556,7 @@ public final class DateTool {
 
     /**
      * 获得指定日期<code>date</code><b>在当前星期是星期几</b>.
-     * <p>
+     * 
      * <h3>注意:</h3>
      * <blockquote>
      * <ol>
@@ -567,18 +566,18 @@ public final class DateTool {
      * <li>强烈建议拿上述常量来比较判断,而不是拿数字来比较</li>
      * </ol>
      * </blockquote>
-     * <p>
-     * <p>
+     * 
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getDayOfWeek(2012-6-29)  =6  是 {@link Calendar#FRIDAY FRIDAY} 星期5
      * DateTool.getDayOfWeek(2016-08-16)  ={@link Calendar#TUESDAY}
      * DateTool.getDayOfWeek(2016-12-31)  ={@link Calendar#SATURDAY}
      * DateTool.getDayOfWeek(2016-02-01)  ={@link Calendar#MONDAY}
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -599,21 +598,21 @@ public final class DateTool {
 
     /**
      * 获得指定日期<code>date</code>在它<b>一年中的小时数</b>.
-     * <p>
-     * <p>
+     * 
+     * 
      * max value: 8784.
-     * </p>
-     * <p>
+     * 
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getHourOfYear(2013-01-01 00:00:05)   =0
      * DateTool.getHourOfYear(2013-01-01 01:00:05)   =1
      * DateTool.getHourOfYear(2013-01-05 12:00:05)   =108
      * DateTool.getHourOfYear(2013-09-09 17:28)      =6041
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -626,15 +625,15 @@ public final class DateTool {
 
     /**
      * 获得指定日期<code>date</code>中的<b>小时</b>(24小时制).
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getHourOfDay(toDate("2012-06-29 00:26:53", COMMON_DATE_AND_TIME)) =0
      * DateTool.getHourOfDay(toDate("2016-07-16 22:34:00", COMMON_DATE_AND_TIME)) =22
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -648,14 +647,14 @@ public final class DateTool {
 
     /**
      * 获得指定日期<code>date</code>中的<b>分钟</b>.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getMinute(2012-6-29 00:26:53)    =26
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -669,14 +668,14 @@ public final class DateTool {
 
     /**
      * 获得指定日期<code>date</code>中的<b>秒</b>.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getSecond(2012-6-29 00:26:53)    =53
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -691,14 +690,14 @@ public final class DateTool {
 
     /**
      * 获得指定日期<code>date</code>在<b>当天中的秒数</b>,最大值86400.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getSecondOfDay(2013-09-09 16:42:41)= 60161
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -715,14 +714,14 @@ public final class DateTool {
 
     /**
      * 获得指定日期<code>date</code>在<b>当前小时中的秒数</b>,最大值3600 {@link TimeInterval#SECONDS_PER_HOUR}.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.getSecondOfHour(2013-09-15 01:15:23)= 923
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date 任意时间
@@ -739,17 +738,17 @@ public final class DateTool {
 
     /**
      * 判断指定日期 <code>date</code>是否 在 <code>whenDate</code>时间之前.
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * isBefore(null, toDate("2011-03-10", COMMON_DATE))                                =   false
      * isBefore(toDate("2011-05-01", COMMON_DATE), toDate("2011-04-01", COMMON_DATE))   =   false
      * isBefore(toDate("2011-03-05", COMMON_DATE), toDate("2011-03-10", COMMON_DATE))   =   true
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date     指定日期
@@ -767,17 +766,17 @@ public final class DateTool {
 
     /**
      * 判断指定日期 <code>date</code>是否在 <code>whenDate</code>时间之后.
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * isAfter(null,toDate("2011-05-01", COMMON_DATE))                                 =   false
      * isAfter(toDate("2011-04-01", COMMON_DATE),toDate("2011-05-01", COMMON_DATE))    =   false
      * isAfter(toDate("2011-03-10", COMMON_DATE),toDate("2011-03-05", COMMON_DATE))    =   true
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date     指定的日期
@@ -796,14 +795,14 @@ public final class DateTool {
 
     /**
      * 判断指定日期 <code>date</code> 是否在 <code>beginDate</code> 和 <code>endDate</code>两个时间之间.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.isInTime("2012-10-16 23:00:02", "2012-10-10 22:59:00", "2012-10-18 22:59:00") = true
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date      指定日期
@@ -828,7 +827,7 @@ public final class DateTool {
      * @param data   字符串中包含 xx:xx 即可 也可以是 yyyy-MM-dd HH:mm:ss
      * @param before xx:xx 只能是这种 HH:mm
      * @param after  xx:xx 只能是这种 HH:mm
-     * @return
+     * @return  布尔
      */
     public static boolean checkDateToBetween(String data, String before, String after) {
         Matcher m = Pattern.compile("[012]\\d:[012345]\\d").matcher(data);
@@ -849,16 +848,16 @@ public final class DateTool {
 
     /**
      * 在相同格式下 <code>datePattern</code>,将两个日期转成字符串判断是否相等.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.isEquals(toDate("2016-06-16 22:59:00", COMMON_DATE_AND_TIME), toDate("2016-06-16", COMMON_DATE), COMMON_DATE) = true
      * </pre>
-     * <p>
+     * 
      * </blockquote>
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -888,14 +887,14 @@ public final class DateTool {
 
     /**
      * 将指定日期 <code>date</code>转换成特殊格式 <code>datePattern</code> 的字符串.
-     * <p>
+     * 
      * <h3>示例:</h3>
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.format(Tue Oct 16 23:49:21 CST 2012,DatePattern.YYYYMMDD_BAR_HHMMSS_COLON) =2012-10-16 23:49:21.525
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param date        任意时间
@@ -918,19 +917,19 @@ public final class DateTool {
 
     /**
      * 将时间字符串 <code>dateString</code> 使用<b>一个或者多个</b>不同的 <code>datePattern</code> 模式按照顺序转换成date类型.
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * DateTool.toDate("2016-02-33", DatePattern.COMMON_DATE)                   = 2016-03-04
      * DateTool.toDate("2016-06-28T01:21:12-0800", "yyyy-MM-dd'T'HH:mm:ssZ")    = 2016-06-28 17:21:12
      * DateTool.toDate("2016-06-28T01:21:12+0800", "yyyy-MM-dd'T'HH:mm:ssZ")    = 2016-06-28 01:21:12
      * </pre>
-     * <p>
+     * 
      * </blockquote>
-     * <p>
+     * 
      * <h3>注意:</h3>
      * <blockquote>
      * <ol>
@@ -940,13 +939,13 @@ public final class DateTool {
      * <li>如果转换有异常,会将 {@link ParseException} 转成 {@link IllegalArgumentException} 返回,是 UnCheckedException异常 ,不需要强制catch处理</li>
      * </ol>
      * </blockquote>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * 经常我们会看到小伙伴写出下面的代码:
-     * <p>
+     * 
      * <pre class="code">
      * SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
      * Date publishTimeDate = null;
@@ -956,20 +955,19 @@ public final class DateTool {
      * e1.printStackTrace();
      * }
      * </pre>
-     * <p>
-     * <p>
+     * 
+     * 
      * 可以看到直接使用 {@code SimpleDateFormat} 来写代码的话,代码行数较多,并且还需要自行处理 ParseException checkedException异常, 而且catch里面一般都是写的废话
-     * </p>
-     * <p>
-     * <p>
+     * 
+     * 
+     * 
      * 此时你可以一行代码搞定:
-     * </p>
-     * <p>
+     * 
+     * 
      * <pre class="code">
-     * <p>
      * Date publishTimeDate = DateTool.toDate(publishTime, DatePattern.YYYYMMDD_BAR_HHMMSSSSS_COLON);
      * </pre>
-     * <p>
+     * 
      * </blockquote>
      *
      * @param dateString   时间字符串
@@ -1002,41 +1000,39 @@ public final class DateTool {
 
     /**
      * 判断指定年 <code>year</code> 是否为闰年 .
-     * <p>
-     * <p>
+     * 
+     * 
      * 规则: {@code (year % 4 == 0 && year % 100 != 0) || year % 400 == 0}
-     * </p>
-     * <p>
+     * 
+     * 
      * <h3>闰年原因:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
-     * <p>
+     * 
+     * 
      * 地球绕太阳运行周期为<b>365天5小时48分46秒</b>(合365.24219天)即一回归年(tropical year).<br>
      * 公历的平年只有365日,比回归年短约0.2422日,所余下的时间约为四年累计一天,故四年于2月加1天,使当年的历年长度为366日,这一年就为闰年.<br>
-     * </p>
-     * <p>
-     * <p>
+     * 
+     * 
+     * 
      * 现行公历中每400年有97个闰年.按照每四年一个闰年计算,平均每年就要多算出0.0078天,这样经过四百年就会多算出大约3天来,<br>
      * 因此,每四百年中要减少三个闰年.
-     * </p>
-     * <p>
-     * <p>
+     * 
+     * 
+     * 
      * 所以规定,公历年份是整百数的,必须是400的倍数的才是闰年,不是400的倍数的,虽然是100的倍数,也是平年,<br>
      * 这就是通常所说的:<b>四年一闰,百年不闰,四百年再闰</b>.<br>
-     * <p>
+     * 
      * 例如,2000年是闰年,1900年则是平年.<br>
-     * </p>
+     * 
      * </blockquote>
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
-     * <ol>
-     * <li>需要注意的是,有些文章说3200 是平年, 参见<a href="http://baike.baidu.com/item/闰年/27098#6">精确计算方法</a>,但是 jdk中 判定3200 依然是闰年,并且
-     * <a href="https://en.wikipedia.org/wiki/Leap_year">wiki</a> 也没有提及3200是平年的故事</li>
-     * <li>在 {@link java.util.GregorianCalendar#gregorianCutoverYearJulian 1582}年之前是四年一闰,
-     * {@link java.util.GregorianCalendar#gregorianCutoverYearJulian 1582}年之后 四年一闰,百年不闰,四百年再闰</li>
-     * </ol>
+     * 需要注意的是,有些文章说3200 是平年, 参见http://baike.baidu.com/item/闰年/27098#6 精确计算方法,但是 jdk中 判定3200 依然是闰年,并且
+     * https://en.wikipedia.org/wiki/Leap_year 也没有提及3200是平年的故事
+     * {@link java.util.GregorianCalendar#gregorianCutoverYearJulian 1582}年之前是四年一闰,
+     * {@link java.util.GregorianCalendar#gregorianCutoverYearJulian 1582}年之后 四年一闰,百年不闰,四百年再闰
      * </blockquote>
      *
      * @param year 年份
@@ -1051,24 +1047,24 @@ public final class DateTool {
 
     /**
      * 获取两个时间之间的分钟数 <code>before</code> 使用<b>一个或者多个</b>不同的 <code>after</code>
-     * <p>
+     * 
      * <h3>示例:</h3>
-     * <p>
+     * 
      * <blockquote>
-     * <p>
+     * 
      * <pre class="code">
      * Assert.assertEquals(DateTool.getNumberOfMinutesBetweenTheTwoTime("23:00", "00:01"),61);
      * Assert.assertEquals(DateTool.getNumberOfMinutesBetweenTheTwoTime("20:00", "20:30"),30);
      * Assert.assertEquals(DateTool.getNumberOfMinutesBetweenTheTwoTime("01:00", "10:11"),551);
      * Assert.assertEquals(DateTool.getNumberOfMinutesBetweenTheTwoTime("2017-09-25 14:15:00", "2017-09-26 14:30:00"),1455);
      * </pre>
-     * <p>
+     * 
      * </blockquote>
-     * <p>
+     * 
      *
-     * @param before
-     * @param after
-     * @return
+     * @param before 开始时间
+     * @param after 结束时间
+     * @return 获取两个时间之间的分钟数
      */
 
     public static int getNumberOfMinutesBetweenTheTwoTime(String before, String after) {

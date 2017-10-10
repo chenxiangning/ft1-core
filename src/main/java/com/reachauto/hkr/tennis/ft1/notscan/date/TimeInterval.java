@@ -43,7 +43,7 @@ public final class TimeInterval {
 
     /**
      * 1个月 60 * 60 * 24 * 30= 2592000.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -55,7 +55,7 @@ public final class TimeInterval {
 
     /**
      * 1年 60 * 60 * 24 * 365=31536000.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -117,7 +117,7 @@ public final class TimeInterval {
 
     /**
      * 1个月,2592000 000ms(毫秒),<span style="color:red">大于 {@link Integer#MAX_VALUE}:2147483647</span>.
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>
@@ -132,7 +132,7 @@ public final class TimeInterval {
 
     /**
      * 1年 31536000 000ms(毫秒).
-     * <p>
+     * 
      * <h3>说明:</h3>
      * <blockquote>
      * <ol>

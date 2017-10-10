@@ -15,102 +15,104 @@ public interface HkrKeyValCache {
     /**
      * 获取缓存 to String
      *
-     * @param key
-     * @return String
+     * @param key 1
+     * @return String 1
      */
     String get(Key key);
 
+
     /**
      * 获取缓存 to Obj
-     *
-     * @param key
-     * @return Obj
+     * @param key k
+     * @param <T> t
+     * @return 获取缓存 to Obj
      */
     <T> T getObject(Key key);
 
     /**
      * 设置缓存 String
      *
-     * @param key
-     * @param value
+     * @param key 1
+     * @param value 1
      * @param cacheSeconds 超时时间 0为无限
-     * @return
+     * @return 1
      */
     String set(Key key, String value, int cacheSeconds);
 
     /**
      * 设置缓存 String
      *
-     * @param key
-     * @param value
-     * @return
+     * @param key 1
+     * @param value 1
+     * @return 1
      */
     String set(Key key, String value);
 
     /**
      * 设置缓存 Obj
      *
-     * @param key
-     * @param value
+     * @param key 1
+     * @param value 1
      * @param cacheSeconds 超时时间 0为无限
-     * @return
+     * @return 1
      */
     String setObject(Key key, Object value, int cacheSeconds);
 
     /**
      * 设置缓存 Obj
      *
-     * @param key
-     * @param value
-     * @return
+     * @param key 1
+     * @param value 1
+     * @return 1
      */
     String setObject(Key key, Object value);
 
     /**
      * 设置key的过期时间
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @param sec 超时时间
+     * @return 1
      */
     Boolean expire(Key key, long sec);
 
     /**
      * 获取key的到期时间
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @return 1
      */
     long getExpire(Key key);
 
     /**
      * 删除缓存
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @return 1
      */
     long del(Key key);
 
     /**
      * 删除缓存
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @return 1
      */
     long delObject(Key key);
 
     /**
      * 判断key是否存在
      *
-     * @param key
-     * @return
+     * @param key 1
+     * @return 1
      */
     boolean hasKey(String key);
 
     /**
      * keys列表
      *
-     * @param pattern
-     * @return
+     * @param pattern 1
+     * @return 1
      */
     Set keys(String pattern);
 
