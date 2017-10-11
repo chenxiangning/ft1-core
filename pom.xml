@@ -13,7 +13,7 @@
 
     <groupId>io.github.chenxiangning</groupId>
     <artifactId>ft1-core</artifactId>
-    <version>tools.3.5.evolution</version>
+    <version>tools.4.3.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -123,32 +123,32 @@
         </developer>
     </developers>
 
-    <build>
-        <finalName>${project.artifactId}-${project.version}</finalName>
-        <resources>
-            <resource>
-                <directory>${basedir}/src/main/resources</directory>
-            </resource>
-            <resource>
-                <!-- This include everything else under src/main/java directory -->
-                <directory>${basedir}/src/main/java</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-        </resources>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-    </build>
+    <!--<build>-->
+        <!--<finalName>${project.artifactId}-${project.version}</finalName>-->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>${basedir}/src/main/resources</directory>-->
+            <!--</resource>-->
+            <!--<resource>-->
+                <!--&lt;!&ndash; This include everything else under src/main/java directory &ndash;&gt;-->
+                <!--<directory>${basedir}/src/main/java</directory>-->
+                <!--<excludes>-->
+                    <!--<exclude>**/*.java</exclude>-->
+                <!--</excludes>-->
+            <!--</resource>-->
+        <!--</resources>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<version>3.1</version>-->
+                <!--<configuration>-->
+                    <!--<source>1.8</source>-->
+                    <!--<target>1.8</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
 
 
     <repositories>
