@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Eddú Meléndez
  */
 @Configuration
-public class RedisCacheProperties {
+public class FtRedisCacheProperties {
 
     /**
      * Database index used by the connection factory.

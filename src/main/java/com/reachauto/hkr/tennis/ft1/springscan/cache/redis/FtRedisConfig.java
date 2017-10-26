@@ -20,11 +20,11 @@ import redis.clients.jedis.JedisPoolConfig;
  * chenxiangning@reachauto.com
  */
 @Configuration
-public class RedisConfig {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RedisConfig.class);
+public class FtRedisConfig {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FtRedisConfig.class);
 
     @Autowired
-    private RedisCacheProperties redisProperties;
+    private FtRedisCacheProperties redisProperties;
 
     @Bean(name = "createRedisConnectionFactory")
     public RedisConnectionFactory createRedisConnectionFactory() {
