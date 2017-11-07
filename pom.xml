@@ -115,6 +115,8 @@
         <connection>https://github.com/chenxiangning/ft1-core.git</connection>
         <developerConnection>https://github.com/chenxiangning/ft1-core</developerConnection>
     </scm>
+
+
     <developers>
         <developer>
             <name>chenxiangning</name>
@@ -137,6 +139,7 @@
         <resources>
             <resource>
                 <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
             </resource>
             <resource>
                 <!-- This include everything else under src/main/java directory -->
@@ -144,6 +147,9 @@
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
             </resource>
         </resources>
         <plugins>
