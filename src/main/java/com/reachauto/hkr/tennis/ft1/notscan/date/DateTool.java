@@ -117,8 +117,12 @@ import static java.util.Calendar.*;
  * </tr>
  * </table>
  * </blockquote>
+ * @author cxn
  */
 public final class DateTool {
+
+    private static final String D_012345_D = "[012]\\d:[012345]\\d";
+
     /**
      * Do not instantiate DateTool.
      */
@@ -830,7 +834,7 @@ public final class DateTool {
      * @return  布尔
      */
     public static boolean checkDateToBetween(String data, String before, String after) {
-        Matcher m = Pattern.compile("[012]\\d:[012345]\\d").matcher(data);
+        Matcher m = Pattern.compile(D_012345_D).matcher(data);
         m.find();
         data = m.group();
 

@@ -96,6 +96,8 @@ DatePattern,CharsetType
 封装 JoinTool SplitTool
 
 ### redisconfig 修改名称
+### gson 添加default的转换方式.
+### guava添加了几个demo
 
 mvn clean deploy -P sonatype-oss-release
 到时候需要输入 my8640996

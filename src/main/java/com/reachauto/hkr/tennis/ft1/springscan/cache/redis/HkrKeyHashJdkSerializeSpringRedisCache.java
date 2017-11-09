@@ -54,12 +54,14 @@ public class HkrKeyHashJdkSerializeSpringRedisCache implements HkrKeyHashCache {
     }
 
 
+    @Override
     public String put(Key key, String hashKey, String value) {
         hashOperationsStrVal = jdkRedisTemplate.opsForHash();
         hashOperationsStrVal.put(key.getTrueKey(), hashKey, value);
         return "OK";
     }
 
+    @Override
     public String get(Key key, String hashKey) {
         hashOperationsStrVal = jdkRedisTemplate.opsForHash();
         return hashOperationsStrVal.get(key.getTrueKey(), hashKey);

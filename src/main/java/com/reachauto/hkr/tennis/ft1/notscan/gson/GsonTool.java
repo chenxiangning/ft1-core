@@ -258,6 +258,22 @@ public final class GsonTool {
     /**
      * 将json格式转换成list对象
      *
+     * @param jsonStr jsonStr
+     * @return list
+     */
+    public static List jsonToList(String jsonStr) {
+        List<?> objList = null;
+        if (getGsonAll() != null) {
+            Type type = new TypeToken<List<?>>() {
+            }.getType();
+            objList = getGsonAll().fromJson(jsonStr, type);
+        }
+        return objList;
+    }
+
+    /**
+     * 将json格式转换成list对象
+     *
      * @param gson gosn
      * @param jsonStr jsonStr
      * @return list
@@ -303,6 +319,20 @@ public final class GsonTool {
     }
 
     /**
+     * @param jsonStr j
+     * @return map
+     */
+    public static Map jsonToMap(String jsonStr) {
+        Map<?, ?> objMap = null;
+        if (getGsonAll() != null) {
+            Type type = new TypeToken<Map<?, ?>>() {
+            }.getType();
+            objMap = getGsonAll().fromJson(jsonStr, type);
+        }
+        return objMap;
+    }
+
+    /**
      *
      * @param gson g
      * @param jsonStr json
@@ -316,6 +346,18 @@ public final class GsonTool {
             obj = gson.fromJson(jsonStr, (Class<T>) cl);
         }
         return obj;
+    }
+
+
+    /**
+     *
+     * @param jsonStr json
+     * @param cl class
+     * @param <T> t
+     * @return bean
+     */
+    public static <T> T jsonToBean(String jsonStr, Class<?> cl) {
+        return getGsonAll().fromJson(jsonStr, (Class<T>) cl);
     }
 
     /**

@@ -116,7 +116,11 @@ public interface HkrKeyValCache {
      */
     Set keys(String pattern);
 
-
+    /**
+     * 同步删除
+     * @param key
+     * @return
+     */
     long multiDel(Key key);
 
 }

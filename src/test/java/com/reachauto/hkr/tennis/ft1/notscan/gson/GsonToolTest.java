@@ -77,5 +77,12 @@ public class GsonToolTest {
         System.out.println("%% " + GsonTool.jsonToList(GsonTool.getGsonToBeanNullToEmpty(), listJson));
     }
 
+    @Test
+    public void defaultc() {
+        Gbean gbean = GsonTool.jsonToBean(jsonx, Gbean.class);
+
+        System.out.println(gbean);
+    }
+
 
 }

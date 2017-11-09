@@ -10,6 +10,7 @@ import java.util.Date;
  * This is my work in reachauto code.
  * mail:chenxiangning@reachauto.com
  * Description: 租赁车辆订单中的时间与优惠时间段的对比获取优惠时间计算
+ * @author cxn
  */
 public final class TimeTool {
 
@@ -150,7 +151,9 @@ public final class TimeTool {
         private int zAfter;
         private String beforeYh = ZERO_OCLOCK;
         private String afterYh = ZERO_OCLOCK;
-        // 核算时间租车时长开始于优惠时间时收initTime不需要计算进入优惠时间段里
+        /**
+         * 核算时间租车时长开始于优惠时间时收initTime不需要计算进入优惠时间段里
+         */
         private int initTime = 0;
         private int hssj = 0;
 
@@ -274,12 +277,14 @@ public final class TimeTool {
 
             // 优惠时间段结束包含于总时间
             if (yhAfter >= zBefore && yhAfter <= zAfter) {
-                afterYh = ruleAfterTime.substring(0, 5) + ":00"; // 优惠结束时间
+                // 优惠结束时间
+                afterYh = ruleAfterTime.substring(0, 5) + ":00";
             }
 
             // 优惠时间段结束不包含于总时间,优惠开始时间段包含于
             if (yhAfter > zAfter && yhBefore <= zAfter) {
-                afterYh = rentalAfterTime.substring(11); // 优惠结束时间
+                // 优惠结束时间
+                afterYh = rentalAfterTime.substring(11);
             }
 
             // initTime 起步时间到优惠时间之间 计算 优惠时间

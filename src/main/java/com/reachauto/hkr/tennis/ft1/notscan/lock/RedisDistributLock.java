@@ -181,14 +181,16 @@ public class RedisDistributLock {
         int timeout = timeoutMsecs;
         while (timeout >= 0) {
             long expires = System.currentTimeMillis() + expireMsecs + 1;
-            String expiresStr = String.valueOf(expires); //锁到期时间
+            //锁到期时间
+            String expiresStr = String.valueOf(expires);
             if (this.setNX(lockKey, expiresStr)) {
                 // lock acquired
                 locked = true;
                 return true;
             }
 
-            String currentValueStr = this.get(lockKey); //redis里的时间
+            //redis里的时间
+            String currentValueStr = this.get(lockKey);
             if (currentValueStr != null && Long.parseLong(currentValueStr) < System.currentTimeMillis()) {
                 //判断是否为空，不为空的情况下，如果被其他线程设置了值，则第二个条件判断是过不去的
                 // lock is expired
