@@ -99,6 +99,9 @@ DatePattern,CharsetType
 ### gson 添加default的转换方式.
 ### guava添加了几个demo
 
+### add ali mq 封装
+
+
 mvn clean deploy -P sonatype-oss-release
 到时候需要输入 my8640996
 
