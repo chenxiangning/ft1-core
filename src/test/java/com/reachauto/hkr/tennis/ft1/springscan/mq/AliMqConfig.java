@@ -33,8 +33,8 @@ public class AliMqConfig {
         properties.setProperty("Topic", "HKR-CXN-TOPIC");
         properties.setProperty(PropertyKeyConst.ProducerId, "PID-CXN");
         properties.setProperty(PropertyKeyConst.ConsumerId, "CID-CXN");
-        properties.setProperty(PropertyKeyConst.AccessKey, "jN9LHU8IqjXYcRl2");
-        properties.setProperty(PropertyKeyConst.SecretKey, "Tl67HEwJKvvnlw2B0MMihNKFVjVyaz");
+        properties.setProperty(PropertyKeyConst.AccessKey, "xxx");
+        properties.setProperty(PropertyKeyConst.SecretKey, "xxxxx");
         properties.setProperty(PropertyKeyConst.ONSAddr, "http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet");
         propertiesFactoryBean.setProperties(properties);
         return propertiesFactoryBean;
