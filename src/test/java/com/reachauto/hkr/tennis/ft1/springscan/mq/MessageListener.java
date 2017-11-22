@@ -4,7 +4,13 @@ import com.aliyun.openservices.ons.api.Message;
 import com.aliyun.openservices.ons.api.order.ConsumeOrderContext;
 import com.aliyun.openservices.ons.api.order.MessageOrderListener;
 import com.aliyun.openservices.ons.api.order.OrderAction;
+import com.reachauto.hkr.tennis.ft1.notscan.gson.GsonTool;
+import com.reachauto.hkr.tennis.ft1.notscan.mq.FT1AliMqProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +21,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MessageListener implements MessageOrderListener {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MessageListener.class);
+
+
     /**
      * 消费消息接口，由应用来实现<br>
      * 需要注意网络抖动等不稳定的情形可能会带来消息重复，对重复消息敏感的业务可对消息做幂等处理
@@ -27,13 +36,31 @@ public class MessageListener implements MessageOrderListener {
     @Override
     public OrderAction consume(Message message, ConsumeOrderContext context) {
 
-        System.out.println(String.format("message[%s] context:[%s]", message.toString(), context.toString()));
         try {
-            //do something..
+            System.out.println(String.format("message[%s] tag[%s] context:[%s]", new String(message.getBody(), "utf-8"), message.getTag(), context.toString()));
+
+            if (FT1AliMqProperties.TagMsgSMS.equals(message.getTag())) {
+                sms(message);
+            } else if (FT1AliMqProperties.TagMsgPMS.equals(message.getTag())) {
+                pms(message);
+            }
+
+
             return OrderAction.Success;
-        } catch (Exception e) {
-            //消费失败，挂起当前队列
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
             return OrderAction.Suspend;
         }
+
+    }
+
+    private void sms(Message message) throws UnsupportedEncodingException {
+        SendSMSParameter sendSMSParameter = GsonTool.jsonToBean(new String(message.getBody(), "utf-8"), SendSMSParameter.class);
+        LOGGER.info("{}",sendSMSParameter);
+    }
+
+    private void pms(Message message) throws UnsupportedEncodingException {
+        UmengPushParameter pushParameter = GsonTool.jsonToBean(new String(message.getBody(), "utf-8"), UmengPushParameter.class);
+        LOGGER.info("{}",pushParameter);
     }
 }

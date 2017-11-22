@@ -1,13 +1,15 @@
 package com.reachauto.hkr.tennis.ft1;
 
+import com.reachauto.hkr.exception.HkrServerException;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.lang.reflect.Array;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -159,6 +161,16 @@ public final class ValidatorTool {
         return isCollectionOrMap
                 || isEnumerationOrIterator
                 || value.getClass().isArray();
+    }
+
+    public static boolean validationBean(Object o) {
+        ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
+        Validator validator = vf.getValidator();
+        Set<ConstraintViolation<Object>> set = validator.validate(o);
+        for (ConstraintViolation<Object> constraintViolation : set) {
+            throw new HkrServerException(constraintViolation.getMessage());
+        }
+        return true;
     }
 
 }

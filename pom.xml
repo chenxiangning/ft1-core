@@ -107,6 +107,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.reachauto.hkr.util</groupId>
+            <artifactId>hkr-util-exception</artifactId>
+            <version>0.6.4.apidatatotime</version>
+        </dependency>
+
     </dependencies>
 
     <licenses>
@@ -223,6 +229,11 @@
     </profiles>
 
     <repositories>
+        <repository>
+            <id>local-142-182</id>
+            <name>local-nexus</name>
+            <url>http://10.10.142.182:8082/nexus/content/repositories/releases/</url>
+        </repository>
         <repository>
             <id>ali-repo</id>
             <name>Ali Repo</name>
