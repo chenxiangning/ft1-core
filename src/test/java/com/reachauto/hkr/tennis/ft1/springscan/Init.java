@@ -1,7 +1,8 @@
 package com.reachauto.hkr.tennis.ft1.springscan;
 
+import com.reachauto.hkr.tennis.ft1.notscan.mq.FT1AliMqProperties;
 import com.reachauto.hkr.tennis.ft1.notscan.mq.Ft1AliMqFactory;
-import com.reachauto.hkr.tennis.ft1.springscan.mq.MessageListener;
+import com.reachauto.hkr.tennis.ft1.springscan.mq.CidMSGListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
     @Qualifier("ft1AliMqMessageProperties")
     private PropertiesFactoryBean propertiesFactoryBean;
     @Autowired
-    private MessageListener messageListener;
+    private CidMSGListener cidMSGListener;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -38,7 +39,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 
         try {
             Ft1AliMqFactory.initFt1MessageProducer(propertiesFactoryBean.getObject());
-            Ft1AliMqFactory.initFt1MessageConsumer(propertiesFactoryBean.getObject(), messageListener);
+            Ft1AliMqFactory.initFt1MessageConsumer(propertiesFactoryBean.getObject(), FT1AliMqProperties.mgMsgTags(), cidMSGListener);
         } catch (IOException e) {
             e.printStackTrace();
         }

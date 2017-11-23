@@ -25,7 +25,7 @@ public class AliMqConfig {
         properties.setProperty(FT1AliMqProperties.Topic, "HKR-CXN-TOPIC");
         properties.setProperty(FT1AliMqProperties.ProducerId, "PID-CXN");
         properties.setProperty(FT1AliMqProperties.ConsumerId, "CID-CXN");
-        properties.setProperty(FT1AliMqProperties.AccessKey, "xx");
+        properties.setProperty(FT1AliMqProperties.AccessKey, "xxx");
         properties.setProperty(FT1AliMqProperties.SecretKey, "xxxx");
         properties.setProperty(FT1AliMqProperties.ONSAddr, "http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet");
         properties.setProperty(FT1AliMqProperties.OpenTheLogo, String.valueOf(false));

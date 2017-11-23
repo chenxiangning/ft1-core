@@ -29,10 +29,10 @@ public class MqController {
         PMSParameter pushParameter = new PMSParameter();
 
         //循环发送消息
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             pushParameter = new PMSParameter();
             pushParameter.setDeviceNo("63bb5f383664ee5f412d30ef23fc86b6f71aec36d121b18e71da9d3d1267fe87");
-            pushParameter.setDeviceType("11");
+            pushParameter.setDeviceType("1");
             pushParameter.setMessage("消息发送内容测试");
             pushParameter.setMessageType("1");
             pushParameter.setUserId("15524542520");
@@ -63,7 +63,7 @@ public class MqController {
 
 
         //循环发送消息
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             sendSMSParameter = new SMSParameter();
             sendSMSParameter.setPhoneNo("15524542520");
             sendSMSParameter.setSignName("氢氪出行");

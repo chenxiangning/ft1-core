@@ -20,8 +20,8 @@ import java.io.UnsupportedEncodingException;
  * chenxiangning@reachauto.com
  */
 @Service
-public class MessageListener implements MessageOrderListener {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MessageListener.class);
+public class CidMSGListener implements MessageOrderListener {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CidMSGListener.class);
 
 
     /**
@@ -37,14 +37,13 @@ public class MessageListener implements MessageOrderListener {
     public OrderAction consume(Message message, ConsumeOrderContext context) {
 
         try {
-            System.out.println(String.format("message[%s] tag[%s] context:[%s]", new String(message.getBody(), "utf-8"), message.getTag(), context.toString()));
-
-            if (FT1AliMqProperties.TagMsgSMS.equals(message.getTag())) {
-                sms(message);
-            } else if (FT1AliMqProperties.TagMsgPMS.equals(message.getTag())) {
+            LOGGER.info("{}",message.getTag());
+            if (FT1AliMqProperties.TagMsgPMS.equals(message.getTag())) {
                 pms(message);
             }
-
+            if (FT1AliMqProperties.TagMsgSMS.equals(message.getTag())) {
+                sms(message);
+            }
 
             return OrderAction.Success;
         } catch (UnsupportedEncodingException e) {
@@ -56,11 +55,11 @@ public class MessageListener implements MessageOrderListener {
 
     private void sms(Message message) throws UnsupportedEncodingException {
         SendSMSParameter sendSMSParameter = GsonTool.jsonToBean(new String(message.getBody(), "utf-8"), SendSMSParameter.class);
-        LOGGER.info("{}",sendSMSParameter);
+        LOGGER.info("{}", sendSMSParameter);
     }
 
     private void pms(Message message) throws UnsupportedEncodingException {
         UmengPushParameter pushParameter = GsonTool.jsonToBean(new String(message.getBody(), "utf-8"), UmengPushParameter.class);
-        LOGGER.info("{}",pushParameter);
+        LOGGER.info("{}", pushParameter);
     }
 }

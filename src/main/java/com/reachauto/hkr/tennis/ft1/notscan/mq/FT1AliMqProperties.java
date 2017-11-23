@@ -22,4 +22,7 @@ public class FT1AliMqProperties {
     public static final String TagMsgSMS = "tag_sms";
 
 
+    public static String mgMsgTags() {
+        return String.format("%s||%s", TagMsgPMS, TagMsgSMS);
+    }
 }

@@ -17,7 +17,7 @@ import java.util.Properties;
  * Date: 2017-11-22 13:27
  * This is my work in reachauto code.
  * mail:chenxiangning@reachauto.com
- * Description:
+ * Description: xx
  */
 public class Ft1AliMqFactory {
 
@@ -39,6 +39,7 @@ public class Ft1AliMqFactory {
         if ("true".equals(properties.getProperty(FT1AliMqProperties.OpenTheLogo))) {
             ft1MessageProducer.start();
             LOGGER.info("ft1MessageProducer. ##开始启动##");
+            LOGGER.info("消息发送mq生产者配置信息 {}", properties.toString());
         } else {
             LOGGER.info("ft1MessageProducer. ##未启动##");
         }
@@ -46,7 +47,12 @@ public class Ft1AliMqFactory {
         return ft1MessageProducer;
     }
 
-    public static OrderConsumerBean initFt1MessageConsumer(Properties properties, MessageOrderListener messageOrderListener) {
+    /**
+     * @param properties           配置信息
+     * @param tags                 多个tag之间用||分割,如果全部tag,用*替代.
+     * @param messageOrderListener 监控处理程序
+     */
+    public static void initFt1MessageConsumer(Properties properties, String tags, MessageOrderListener messageOrderListener) {
         ft1MessageProperties = properties;
         ft1MessageConsumer = new OrderConsumerBean();
 
@@ -54,7 +60,7 @@ public class Ft1AliMqFactory {
 
         Subscription subscription = new Subscription();
         subscription.setTopic(properties.getProperty(FT1AliMqProperties.Topic));
-        subscription.setExpression("*");
+        subscription.setExpression(tags);
 
         Map<Subscription, MessageOrderListener> map = new HashMap();
         map.put(subscription, messageOrderListener);
@@ -63,11 +69,11 @@ public class Ft1AliMqFactory {
         if ("true".equals(properties.getProperty(FT1AliMqProperties.OpenTheLogo))) {
             ft1MessageConsumer.start();
             LOGGER.info("ft1MessageConsumer. ##开始启动##");
+            LOGGER.info("消息消费者启动信息 properties {} ", properties.toString());
+            LOGGER.info("消息消费者启动信息 tags {} ListenerClass {}", tags, messageOrderListener.getClass());
         } else {
             LOGGER.info("ft1MessageConsumer. ##未启动##");
         }
-
-        return ft1MessageConsumer;
 
     }
 
