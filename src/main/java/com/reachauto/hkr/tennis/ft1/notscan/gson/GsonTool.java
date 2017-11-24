@@ -351,6 +351,22 @@ public final class GsonTool {
 
     /**
      *
+     * @param gson g
+     * @param jsonStr json
+     * @param type class
+     * @param <T> t
+     * @return bean
+     */
+    public static <T> T jsonToBean(Gson gson, String jsonStr, Type type) {
+        T obj = null;
+        if (gson != null) {
+            obj = gson.fromJson(jsonStr, type);
+        }
+        return obj;
+    }
+
+    /**
+     *
      * @param jsonStr json
      * @param cl class
      * @param <T> t
@@ -360,6 +376,16 @@ public final class GsonTool {
         return getGsonAll().fromJson(jsonStr, (Class<T>) cl);
     }
 
+    /**
+     *
+     * @param jsonStr json
+     * @param type class
+     * @param <T> t
+     * @return bean
+     */
+    public static <T> T jsonToBean(String jsonStr, Type type) {
+        return getGsonAll().fromJson(jsonStr, type);
+    }
     /**
      * 将json转换成bean对象
      *

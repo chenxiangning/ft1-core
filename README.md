@@ -101,6 +101,7 @@ DatePattern,CharsetType
 
 ### add ali mq 封装
 
+### 解决cache中反射方法返回体为list泛型的解析bug
 
 mvn clean deploy -P sonatype-oss-release
 到时候需要输入 my8640996
