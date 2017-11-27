@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,7 +51,7 @@ public class HkrCacheAspect {
 
         if (ValidatorTool.isNotNullOrEmpty(cacheJson)) {
             LOGGER.info("get cache，key [{}]", key.getTrueKey());
-            return GsonTool.jsonToBean(GsonTool.getGsonAll(), cacheJson, getReturnType(joinPoint));
+            return GsonTool.jsonToBean(GsonTool.getGsonAll(), cacheJson, getType(joinPoint));
         } else {
             LOGGER.info("get db set cache key [{}] expire [{}]", key.getTrueKey(), hkrCache.expire());
             Object result = joinPoint.proceed(joinPoint.getArgs());
@@ -92,4 +93,10 @@ public class HkrCacheAspect {
         MethodSignature sign = (MethodSignature) jp.getSignature();
         return sign.getMethod().getReturnType();
     }
+
+    private Type getType(ProceedingJoinPoint jp) {
+        MethodSignature sign = (MethodSignature) jp.getSignature();
+        return sign.getMethod().getGenericReturnType();
+    }
+
 }

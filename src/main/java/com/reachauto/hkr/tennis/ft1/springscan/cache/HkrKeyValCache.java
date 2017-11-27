@@ -118,8 +118,8 @@ public interface HkrKeyValCache {
 
     /**
      * 同步删除
-     * @param key
-     * @return
+     * @param key del bz
+     * @return l
      */
     long multiDel(Key key);
 

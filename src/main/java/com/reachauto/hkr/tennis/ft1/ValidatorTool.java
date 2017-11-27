@@ -1,13 +1,15 @@
 package com.reachauto.hkr.tennis.ft1;
 
+import com.reachauto.hkr.exception.HkrServerException;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.lang.reflect.Array;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,11 +30,8 @@ public final class ValidatorTool {
 
     /**
      * 判断对象 <code>value</code> 是不是 null或者empty.
-     * <p>
      * <h3>示例:</h3>
-     * <p>
      * <blockquote>
-     * <p>
      * <pre class="code">
      * <span style="color:green">// null</span>
      * Validator.isNullOrEmpty(null)                                            = true
@@ -68,9 +67,7 @@ public final class ValidatorTool {
      * Validator.isNullOrEmpty(new boolean[] {})                                = true
      * </pre>
      * </blockquote>
-     * <p>
      * <h3>对于empty的判断,使用以下逻辑:</h3>
-     * <p>
      * <blockquote>
      * <ol>
      * <li>{@link CharSequence},支持子类有 {@link String},{@link StringBuffer},{@link StringBuilder},使用
@@ -110,13 +107,8 @@ public final class ValidatorTool {
 
     /**
      * 判断对象 <code>value</code> 是否不是null或者empty,调用 !{@link #isNullOrEmpty(Object)} 方法 .
-     * <p>
-     * <p>
      * 示例参考 {@link #isNullOrEmpty(Object)} 方法
-     * <p>
-     * <p>
      * <h3>对于empty的判断,使用以下逻辑:</h3>
-     * <p>
      * <blockquote>
      * <ol>
      * <li>{@link CharSequence},支持子类有 {@link String},{@link StringBuffer},{@link StringBuilder},使用
@@ -159,6 +151,16 @@ public final class ValidatorTool {
         return isCollectionOrMap
                 || isEnumerationOrIterator
                 || value.getClass().isArray();
+    }
+
+    public static boolean validationBean(Object o) {
+        ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
+        Validator validator = vf.getValidator();
+        Set<ConstraintViolation<Object>> set = validator.validate(o);
+        for (ConstraintViolation<Object> constraintViolation : set) {
+            throw new HkrServerException(constraintViolation.getMessage());
+        }
+        return true;
     }
 
 }

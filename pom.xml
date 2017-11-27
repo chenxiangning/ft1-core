@@ -13,7 +13,7 @@
 
     <groupId>com.reachauto.hkr.tennis.ft1</groupId>
     <artifactId>ft1-core</artifactId>
-    <version>tools.4.2.evolution</version>
+    <version>tools.5.2.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -30,6 +30,7 @@
         <commons-collections4.version>4.0</commons-collections4.version>
         <org.slf4j.version>1.7.12</org.slf4j.version>
         <spring-boot.version>1.5.6.RELEASE</spring-boot.version>
+        <ali.mq.version>1.7.0.Final</ali.mq.version>
     </properties>
 
     <dependencies>
@@ -94,10 +95,22 @@
         </dependency>
 
         <dependency>
+            <groupId>com.aliyun.openservices</groupId>
+            <artifactId>ons-client</artifactId>
+            <version>${ali.mq.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.reachauto.hkr.util</groupId>
+            <artifactId>hkr-util-exception</artifactId>
+            <version>0.6.4.apidatatotime</version>
         </dependency>
 
     </dependencies>
@@ -216,6 +229,11 @@
     </profiles>
 
     <repositories>
+        <repository>
+            <id>local-142-182</id>
+            <name>local-nexus</name>
+            <url>http://10.10.142.182:8082/nexus/content/repositories/releases/</url>
+        </repository>
         <repository>
             <id>ali-repo</id>
             <name>Ali Repo</name>

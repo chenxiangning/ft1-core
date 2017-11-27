@@ -1,4 +1,4 @@
-package com.reachauto.hkr.tennis.ft1.springscan;
+package com.reachauto.hkr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
