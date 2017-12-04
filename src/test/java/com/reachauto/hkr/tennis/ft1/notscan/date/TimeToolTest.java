@@ -431,7 +431,7 @@ public class TimeToolTest {
         int initTime = 10;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 02:10:00\",\"etime\":\"2017-12-04 03:00\",\"lengthMinute\":50},{\"sort\":99,\"stime\":\"2017-12-04 21:00\",\"etime\":\"2017-12-04 22:00:00\",\"lengthMinute\":60}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 02:10:00\",\"etime\":\"2017-12-04 03:00:00\",\"lengthMinute\":50},{\"sort\":99,\"stime\":\"2017-12-04 21:00:00\",\"etime\":\"2017-12-04 22:00:00\",\"lengthMinute\":60}]";
 
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
@@ -448,7 +448,7 @@ public class TimeToolTest {
         int initTime = 0;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 02:00:00\",\"etime\":\"2017-12-04 03:00\",\"lengthMinute\":60},{\"sort\":99,\"stime\":\"2017-12-04 21:00\",\"etime\":\"2017-12-04 22:00:00\",\"lengthMinute\":60}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 02:00:00\",\"etime\":\"2017-12-04 03:00:00\",\"lengthMinute\":60},{\"sort\":99,\"stime\":\"2017-12-04 21:00:00\",\"etime\":\"2017-12-04 22:00:00\",\"lengthMinute\":60}]";
 
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
@@ -465,7 +465,7 @@ public class TimeToolTest {
         int initTime = 10;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":99,\"stime\":\"2017-12-04 21:00\",\"etime\":\"2017-12-04 22:00:00\",\"lengthMinute\":60}]";
+        String result = "[{\"sort\":99,\"stime\":\"2017-12-04 21:00:00\",\"etime\":\"2017-12-04 22:00:00\",\"lengthMinute\":60}]";
 
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
@@ -481,7 +481,7 @@ public class TimeToolTest {
         int initTime = 0;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 01:01:00\",\"etime\":\"2017-12-04 03:00\",\"lengthMinute\":119}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 01:01:00\",\"etime\":\"2017-12-04 03:00:00\",\"lengthMinute\":119}]";
 
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
@@ -499,7 +499,7 @@ public class TimeToolTest {
         int initTime = 0;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 10:01:00\",\"etime\":\"2017-12-04 13:00\",\"lengthMinute\":179}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 10:01:00\",\"etime\":\"2017-12-04 13:00:00\",\"lengthMinute\":179}]";
 
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
@@ -516,7 +516,7 @@ public class TimeToolTest {
         int initTime = 0;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":99,\"stime\":\"2017-12-04 10:00\",\"etime\":\"2017-12-04 12:00:00\",\"lengthMinute\":120}]";
+        String result = "[{\"sort\":99,\"stime\":\"2017-12-04 10:00:00\",\"etime\":\"2017-12-04 12:00:00\",\"lengthMinute\":120}]";
 
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
@@ -532,7 +532,7 @@ public class TimeToolTest {
         int initTime = 0;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 12:01:00\",\"etime\":\"2017-12-04 13:00\",\"lengthMinute\":59}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 12:01:00\",\"etime\":\"2017-12-04 13:00:00\",\"lengthMinute\":59}]";
 
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
@@ -548,7 +548,7 @@ public class TimeToolTest {
         int initTime = 0;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 12:00:00\",\"etime\":\"2017-12-04 13:00\",\"lengthMinute\":60},{\"sort\":2,\"stime\":\"2017-12-05 10:00\",\"etime\":\"2017-12-05 13:00\",\"lengthMinute\":360}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 12:00:00\",\"etime\":\"2017-12-04 13:00:00\",\"lengthMinute\":60},{\"sort\":2,\"stime\":\"2017-12-05 10:00:00\",\"etime\":\"2017-12-05 13:00:00\",\"lengthMinute\":360}]";
 
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
@@ -566,7 +566,7 @@ public class TimeToolTest {
         int initTime = 0;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 17:00:00\",\"etime\":\"2017-12-04 18:00\",\"lengthMinute\":60},{\"sort\":2,\"stime\":\"2017-12-05 12:00\",\"etime\":\"2017-12-09 18:00\",\"lengthMinute\":1800},{\"sort\":99,\"stime\":\"2017-12-10 12:00\",\"etime\":\"2017-12-10 13:00:00\",\"lengthMinute\":60}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-12-04 17:00:00\",\"etime\":\"2017-12-04 18:00:00\",\"lengthMinute\":60},{\"sort\":2,\"stime\":\"2017-12-05 12:00:00\",\"etime\":\"2017-12-09 18:00:00\",\"lengthMinute\":1800},{\"sort\":99,\"stime\":\"2017-12-10 12:00:00\",\"etime\":\"2017-12-10 13:00:00\",\"lengthMinute\":60}]";
 
         long innerTime = TimeTool.getRentalTimeContainRuleTime(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(innerTime);
@@ -584,7 +584,7 @@ public class TimeToolTest {
         int initTime = 0;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":2,\"stime\":\"2017-12-04 12:00\",\"etime\":\"2017-12-04 18:00\",\"lengthMinute\":360}]";
+        String result = "[{\"sort\":2,\"stime\":\"2017-12-04 12:00:00\",\"etime\":\"2017-12-04 18:00:00\",\"lengthMinute\":360}]";
 
         long innerTime = TimeTool.getRentalTimeContainRuleTime(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(innerTime);
@@ -602,7 +602,7 @@ public class TimeToolTest {
         int initTime = 10;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-11-30 07:10:00\",\"etime\":\"2017-11-30 09:00\",\"lengthMinute\":110},{\"sort\":2,\"stime\":\"2017-12-01 17:00\",\"etime\":\"2017-11-30 09:00\",\"lengthMinute\":960},{\"sort\":99,\"stime\":\"2017-12-01 17:00\",\"etime\":\"2017-12-01 23:00:00\",\"lengthMinute\":360}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-11-30 07:10:00\",\"etime\":\"2017-11-30 09:00:00\",\"lengthMinute\":110},{\"sort\":2,\"stime\":\"2017-12-01 17:00:00\",\"etime\":\"2017-11-30 09:00:00\",\"lengthMinute\":960},{\"sort\":99,\"stime\":\"2017-12-01 17:00:00\",\"etime\":\"2017-12-01 23:00:00\",\"lengthMinute\":360}]";
 
         long innerTime = TimeTool.getRentalTimeContainRuleTime(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(innerTime);

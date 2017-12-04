@@ -21,6 +21,7 @@ public final class TimeTool {
     private static final String TWENTY_TWO_OCLOCK_WITH_SPACE = " 24:00";
 
     private static final String ZERO_OCLOCK = "00:00";
+    private static final String ZERO2_OCLOCK = ":00";
     private static final String TWENTY_TWO_OCLOCK = "24:00";
 
     private TimeTool() {
@@ -172,7 +173,7 @@ public final class TimeTool {
             long currentTime = DateTool.toDate(orderBeforeTimeAddInitTimeHHMM, DatePattern.DATE_PATTERNS).getTime();
             // 11 12 结束时间当天
             if (beforeTime < afterTime) {
-                timeSpan.setEtime(DateTool.format(orderBeforeTimeToDateAddInitTime, DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+                timeSpan.setEtime(DateTool.format(orderBeforeTimeToDateAddInitTime, DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
             }
             // 22 03 次日
             if (beforeTime > afterTime) {
@@ -181,7 +182,7 @@ public final class TimeTool {
                     isToMorrow = DateTool.addDay(orderBeforeTimeToDate, 1);
                 }
 
-                timeSpan.setEtime(DateTool.format(isToMorrow, DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+                timeSpan.setEtime(DateTool.format(isToMorrow, DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
             }
 
             long innerTime = TimeTool.getRentalTimeContainRuleTime(timeSpan.getStime(), timeSpan.getEtime(), ruleBefore24Time, ruleAfter24Time, 0);
@@ -196,7 +197,7 @@ public final class TimeTool {
             // 开始时间到规则结束时间
             TimeSpan timeSpan = new TimeSpan();
             timeSpan.setSort(99);
-            timeSpan.setStime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
+            timeSpan.setStime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
             timeSpan.setEtime(DateTool.format(orderAfterTimeToDate, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON));
 
             long innerTime = TimeTool.getRentalTimeContainRuleTime(timeSpan.getStime(), timeSpan.getEtime(), ruleBefore24Time, ruleAfter24Time, 0);
@@ -215,20 +216,20 @@ public final class TimeTool {
             TimeSpan timeSpan = new TimeSpan();
             timeSpan.setSort(2);
             if (timeSpans.size() == 0) {
-                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
-                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
+                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
             }
             if (timeSpans.size() == 1 && timeSpans.get(0).getSort() == 1) {
-                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
-                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
+                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
             }
             if (timeSpans.size() == 1 && timeSpans.get(0).getSort() == 99) {
-                timeSpan.setStime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
-                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+                timeSpan.setStime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
+                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
             }
             if (timeSpans.size() == 2) {
-                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
-                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
+                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
             }
 
             timeSpan.setLengthMinute(zongTime);
