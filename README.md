@@ -107,6 +107,7 @@ DatePattern,CharsetType
 HexTool 16进制转换类
 StringTool 字符串判断等操作类
 PointAreaTool 点区域判断
+add 时间计算
 
 mvn clean deploy -P sonatype-oss-release
 到时候需要输入 my8640996

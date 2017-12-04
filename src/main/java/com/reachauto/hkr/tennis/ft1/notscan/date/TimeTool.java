@@ -1,7 +1,9 @@
 package com.reachauto.hkr.tennis.ft1.notscan.date;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,6 +12,7 @@ import java.util.Date;
  * This is my work in reachauto code.
  * mail:chenxiangning@reachauto.com
  * Description: 租赁车辆订单中的时间与优惠时间段的对比获取优惠时间计算
+ *
  * @author cxn
  */
 public final class TimeTool {
@@ -32,7 +35,7 @@ public final class TimeTool {
      * @param rentalAfterTime  yyyy-MM-dd HH:mm:ss  租车结束时间
      * @param ruleBeforeTime   HH:mm          优惠开始时间  24小时制度
      * @param ruleAfterTime    HH:mm           优惠结束时间
-     * @param initTime    初始起步时间 数字
+     * @param initTime         初始起步时间 数字
      * @return 时间
      */
     public static long getRentalTimeContainRuleTime(String rentalBeforeTime, String rentalAfterTime,
@@ -49,7 +52,7 @@ public final class TimeTool {
      * @param rentalAfterTime  yyyy-MM-dd HH:mm:ss  租车结束时间
      * @param ruleBeforeTime   HH:mm          优惠开始时间  24小时制度
      * @param ruleAfterTime    HH:mm           优惠结束时间
-     * @param initTime    初始起步时间 数字
+     * @param initTime         初始起步时间 数字
      * @return 时间
      */
     public static long getRentalTimeContainRuleTime(Date rentalBeforeTime, Date rentalAfterTime,
@@ -137,6 +140,104 @@ public final class TimeTool {
         }
 
         return 0;
+    }
+
+    /**
+     * @param orderBeforeTime
+     * @param orderAfterTime
+     * @param ruleBefore24Time
+     * @param ruleAfter24Time
+     * @param initTime
+     * @return
+     */
+    public static List<TimeSpan> figureOutTimeSpan(String orderBeforeTime, String orderAfterTime,
+                                                   String ruleBefore24Time, String ruleAfter24Time, int initTime) {
+
+        List<TimeSpan> timeSpans = new ArrayList<>();
+
+        Date orderBeforeTimeToDate = DateTool.toDate(orderBeforeTime, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON);
+
+        Date orderBeforeTimeToDateAddInitTime = DateTool.addMinute(orderBeforeTimeToDate, initTime);
+
+        String orderBeforeTimeAddInitTimeHHMM = DateTool.format(orderBeforeTimeToDateAddInitTime, DatePattern.HHMM_COLON);
+        // 开始时间段
+        if (DateTool.checkDateToBetween(orderBeforeTimeAddInitTimeHHMM, ruleBefore24Time, ruleAfter24Time)) {
+            // 开始时间到规则结束时间
+            TimeSpan timeSpan = new TimeSpan();
+            timeSpan.setSort(1);
+            timeSpan.setStime(DateTool.format(orderBeforeTimeToDateAddInitTime, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON));
+
+            long beforeTime = DateTool.toDate(ruleBefore24Time, DatePattern.DATE_PATTERNS).getTime();
+            long afterTime = DateTool.toDate(ruleAfter24Time, DatePattern.DATE_PATTERNS).getTime();
+            long currentTime = DateTool.toDate(orderBeforeTimeAddInitTimeHHMM, DatePattern.DATE_PATTERNS).getTime();
+            // 11 12 结束时间当天
+            if (beforeTime < afterTime) {
+                timeSpan.setEtime(DateTool.format(orderBeforeTimeToDateAddInitTime, DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+            }
+            // 22 03 次日
+            if (beforeTime > afterTime) {
+                Date isToMorrow = DateTool.addDay(orderBeforeTimeToDate, 0);
+                if (currentTime >= beforeTime && currentTime > afterTime) {
+                    isToMorrow = DateTool.addDay(orderBeforeTimeToDate, 1);
+                }
+
+                timeSpan.setEtime(DateTool.format(isToMorrow, DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+            }
+
+            long innerTime = TimeTool.getRentalTimeContainRuleTime(timeSpan.getStime(), timeSpan.getEtime(), ruleBefore24Time, ruleAfter24Time, 0);
+            timeSpan.setLengthMinute((int) innerTime);
+            timeSpans.add(timeSpan);
+        }
+
+        Date orderAfterTimeToDate = DateTool.toDate(orderAfterTime, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON);
+        String orderAfterTimeToDateHHMM = DateTool.format(orderAfterTimeToDate, DatePattern.HHMM_COLON);
+        // 结束时间段
+        if (DateTool.checkDateToBetween(orderAfterTimeToDateHHMM, ruleBefore24Time, ruleAfter24Time)) {
+            // 开始时间到规则结束时间
+            TimeSpan timeSpan = new TimeSpan();
+            timeSpan.setSort(99);
+            timeSpan.setStime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
+            timeSpan.setEtime(DateTool.format(orderAfterTimeToDate, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON));
+
+            long innerTime = TimeTool.getRentalTimeContainRuleTime(timeSpan.getStime(), timeSpan.getEtime(), ruleBefore24Time, ruleAfter24Time, 0);
+            timeSpan.setLengthMinute((int) innerTime);
+            timeSpans.add(timeSpan);
+        }
+
+        // 中段
+        int zongTime = (int) TimeTool.getRentalTimeContainRuleTime(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
+        int ruleTimeCha = DateTool.getNumberOfMinutesBetweenTheTwoTime(ruleBefore24Time, ruleAfter24Time);
+        for (int i = 0; i < timeSpans.size(); i++) {
+            zongTime = zongTime - timeSpans.get(i).getLengthMinute();
+        }
+
+        if (zongTime >= ruleTimeCha) {
+            TimeSpan timeSpan = new TimeSpan();
+            timeSpan.setSort(2);
+            if (timeSpans.size() == 0) {
+                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
+                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+            }
+            if (timeSpans.size() == 1 && timeSpans.get(0).getSort() == 1) {
+                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
+                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+            }
+            if (timeSpans.size() == 1 && timeSpans.get(0).getSort() == 99) {
+                timeSpan.setStime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
+                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+            }
+            if (timeSpans.size() == 2) {
+                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time));
+                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time));
+            }
+
+            timeSpan.setLengthMinute(zongTime);
+            timeSpans.add(timeSpan);
+        }
+
+        timeSpans.sort((o1, o2) -> o1.getSort().compareTo(o2.getSort()));
+
+        return timeSpans;
     }
 
 
