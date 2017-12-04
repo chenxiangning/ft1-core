@@ -13,7 +13,7 @@
 
     <groupId>com.reachauto.hkr.tennis.ft1</groupId>
     <artifactId>ft1-core</artifactId>
-    <version>tools.5.2.evolution</version>
+    <version>tools.6.2.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
