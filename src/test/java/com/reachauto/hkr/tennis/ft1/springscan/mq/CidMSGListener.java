@@ -4,6 +4,7 @@ import com.aliyun.openservices.ons.api.Message;
 import com.aliyun.openservices.ons.api.order.ConsumeOrderContext;
 import com.aliyun.openservices.ons.api.order.MessageOrderListener;
 import com.aliyun.openservices.ons.api.order.OrderAction;
+import com.google.common.util.concurrent.RateLimiter;
 import com.reachauto.hkr.tennis.ft1.notscan.gson.GsonTool;
 import com.reachauto.hkr.tennis.ft1.notscan.mq.FT1AliMqProperties;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ import java.io.UnsupportedEncodingException;
 public class CidMSGListener implements MessageOrderListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(CidMSGListener.class);
 
-
+    RateLimiter limiter = RateLimiter.create(100D);
     /**
      * 消费消息接口，由应用来实现<br>
      * 需要注意网络抖动等不稳定的情形可能会带来消息重复，对重复消息敏感的业务可对消息做幂等处理
@@ -35,8 +36,8 @@ public class CidMSGListener implements MessageOrderListener {
      */
     @Override
     public OrderAction consume(Message message, ConsumeOrderContext context) {
-
         try {
+            limiter.acquire();
             LOGGER.info("{}",message.getTag());
             if (FT1AliMqProperties.TagMsgPMS.equals(message.getTag())) {
                 pms(message);
@@ -44,7 +45,6 @@ public class CidMSGListener implements MessageOrderListener {
             if (FT1AliMqProperties.TagMsgSMS.equals(message.getTag())) {
                 sms(message);
             }
-
             return OrderAction.Success;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

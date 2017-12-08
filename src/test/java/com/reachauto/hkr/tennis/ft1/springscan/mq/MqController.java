@@ -29,13 +29,13 @@ public class MqController {
         PMSParameter pushParameter = new PMSParameter();
 
         //循环发送消息
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1000; i++) {
             pushParameter = new PMSParameter();
-            pushParameter.setDeviceNo("63bb5f383664ee5f412d30ef23fc86b6f71aec36d121b18e71da9d3d1267fe87");
-            pushParameter.setDeviceType("1");
-            pushParameter.setMessage("消息发送内容测试");
+            pushParameter.setDeviceNo("dd3a89a19aae8de4d9ddcaf270dac244bd6a617aa8eab3693191020a6ae5");
+            pushParameter.setDeviceType("2");
+            pushParameter.setMessage("陈湘宁测试-"+i);
             pushParameter.setMessageType("1");
-            pushParameter.setUserId("15524542520");
+            pushParameter.setUserId("16");
 
             Message msg = Ft1AliMQMessage.buildHkrMgMessage(pushParameter.json(), FT1AliMqProperties.TagMsgPMS);
             // 设置代表消息的业务关键属性，请尽可能全局唯一
@@ -46,7 +46,7 @@ public class MqController {
             try {
                 SendResult sendResult = Ft1AliMqFactory.ft1MessageProducer().send(msg, "Hkr-message-key");
                 assert sendResult != null;
-                System.out.println(sendResult);
+//                System.out.println(sendResult);
             } catch (ONSClientException e) {
                 System.out.println("发送失败" + e.getMessage());
                 //出现异常意味着发送失败，为了避免消息丢失，建议缓存该消息然后进行重试。
@@ -63,7 +63,7 @@ public class MqController {
 
 
         //循环发送消息
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             sendSMSParameter = new SMSParameter();
             sendSMSParameter.setPhoneNo("15524542520");
             sendSMSParameter.setSignName("氢氪出行");
