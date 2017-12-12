@@ -49,13 +49,21 @@ public class HkrCacheDelAspect {
         String classname = joinPoint.getSignature().toShortString();
         classname = classname.substring(0, classname.indexOf('.'));
 
-        LOGGER.info("缓存清除:{}:{}.{}", prefixKey, classname, keys);
 
         String finalClassname = classname;
-        Arrays.stream(keys).forEach(zkey ->
-                hkrKeyValCache.keys(String.format("%s:%s.%s", prefixKey, finalClassname, zkey))
-                        .forEach(delKey -> hkrKeyValCache.del(new Key(String.valueOf(delKey))))
-        );
+        if (hkrCacheDel.isModelAll()) {
+            LOGGER.info("缓存清除:{}:{}", prefixKey, keys);
+            Arrays.stream(keys).forEach(zkey ->
+                    hkrKeyValCache.keys(String.format("%s:%s", prefixKey, zkey))
+                            .forEach(delKey -> hkrKeyValCache.del(new Key(String.valueOf(delKey))))
+            );
+        } else {
+            LOGGER.info("缓存清除:{}:{}.{}", prefixKey, classname, keys);
+            Arrays.stream(keys).forEach(zkey ->
+                    hkrKeyValCache.keys(String.format("%s:%s.%s", prefixKey, finalClassname, zkey))
+                            .forEach(delKey -> hkrKeyValCache.del(new Key(String.valueOf(delKey))))
+            );
+        }
 
     }
 

@@ -42,6 +42,7 @@ public class DemoController {
     @ResponseBody
     public String del() {
         demoService.del("xxxxxx");
+        demoService.del2("xxxxxx");
         return "";
     }
     @RequestMapping("/i")
