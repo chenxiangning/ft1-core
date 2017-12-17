@@ -156,4 +156,18 @@ public class DateToolTest {
 
     }
 
+    @Test
+    public void getNumberOfMinutesBetweenTheTwoTime2() throws Exception {
+
+        System.out.println(DateTool.getNumberOfMinutesBetweenTheTwoTime("2017-09-25 14:15:30", "2017-09-25 14:16:29"));
+        System.out.println(DateTool.getNumberOfMinutesBetweenTheTwoTime("2017-09-25 14:15:30", "2017-09-25 14:16:30"));
+        System.out.println(DateTool.getNumberOfMinutesBetweenTheTwoTime("2017-09-25 14:15:30", "2017-09-25 14:16:31"));
+
+        System.out.println(TimeTool.getNumberOfMinutesBetweenTheTwoTimeAlsoBeforeTimeAbandonSS("2017-09-25 14:15:30", "2017-09-25 14:16:01"));
+        System.out.println(TimeTool.getNumberOfMinutesBetweenTheTwoTimeAlsoBeforeTimeAbandonSS("2017-09-25 14:15:30", "2017-09-25 14:16:01"));
+        System.out.println(TimeTool.getNumberOfMinutesBetweenTheTwoTimeAlsoBeforeTimeAbandonSS("2017-09-25 14:15:30", "2017-09-25 14:16:01"));
+
+
+    }
+
 }
