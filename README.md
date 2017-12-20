@@ -1,4 +1,4 @@
-# ft1-core
+# tennis-core
 
 ### 工具包分包想法
 
@@ -108,6 +108,13 @@ HexTool 16进制转换类
 StringTool 字符串判断等操作类
 PointAreaTool 点区域判断
 add 时间计算
+
+
+add cache del all
+
+### 7.x
+包结构中ft1删除
+
 
 mvn clean deploy -P sonatype-oss-release
 到时候需要输入 my8640996

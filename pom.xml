@@ -11,9 +11,9 @@
     <!--</parent>-->
 
 
-    <groupId>com.reachauto.hkr.tennis.ft1</groupId>
-    <artifactId>ft1-core</artifactId>
-    <version>tools.6.2.evolution</version>
+    <groupId>com.reachauto.hkr.tennis</groupId>
+    <artifactId>tennis-core</artifactId>
+    <version>tools.7.0.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
