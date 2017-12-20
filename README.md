@@ -111,6 +111,11 @@ add 时间计算
 
 
 add cache del all
+
+
+包结构中ft1删除
+
+
 mvn clean deploy -P sonatype-oss-release
 到时候需要输入 my8640996
 
