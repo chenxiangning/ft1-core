@@ -1,9 +1,16 @@
 package com.reachauto.hkr.tennis.notscan.date;
 
+import com.reachauto.hkr.tennis.Slf4jTool;
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static com.reachauto.hkr.tennis.notscan.date.DatePattern.YYYYMMDD_BAR_HHMMSS_COLON;
+import static com.reachauto.hkr.tennis.notscan.date.DatePattern.YYYYMMDD_BAR_HHMM_COLON;
 
 /**
  * Created with IntelliJ IDEA.
@@ -59,8 +66,8 @@ public final class TimeTool {
     public static long getRentalTimeContainRuleTime(Date rentalBeforeTime, Date rentalAfterTime,
                                                     String ruleBeforeTime, String ruleAfterTime, int initTime) {
         return getRentalTimeContainRuleTime(
-                DateTool.format(rentalBeforeTime, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON),
-                DateTool.format(rentalAfterTime, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON),
+                DateTool.format(rentalBeforeTime, YYYYMMDD_BAR_HHMMSS_COLON),
+                DateTool.format(rentalAfterTime, YYYYMMDD_BAR_HHMMSS_COLON),
                 ruleBeforeTime, ruleAfterTime, initTime);
     }
 
@@ -86,7 +93,7 @@ public final class TimeTool {
      * @return 获取两个时间之间的分钟数
      */
     public static int getNumberOfMinutesBetweenTheTwoTimeAlsoBeforeTimeAbandonSS(String before, String after) {
-        return DateTool.getNumberOfMinutesBetweenTheTwoTime(DateTool.format(DateTool.toDate(before,DatePattern.DATE_PATTERNS), DatePattern.YYYYMMDD_BAR_HHMM_COLON), after);
+        return DateTool.getNumberOfMinutesBetweenTheTwoTime(DateTool.format(DateTool.toDate(before, DatePattern.DATE_PATTERNS), YYYYMMDD_BAR_HHMM_COLON), after);
     }
 
 
@@ -169,6 +176,41 @@ public final class TimeTool {
     }
 
     /**
+     * 将yyyy-MM-dd HH:mm:ss的时间类型的字符串中秒钟清零为00
+     *
+     * @param yyyyMMddHHmmss yyyy-MM-dd HH:mm:ss
+     * @return
+     */
+    public static String convertSecondsClearZero(String yyyyMMddHHmmss) {
+
+        try {
+            DateUtils.parseDate(yyyyMMddHHmmss, YYYYMMDD_BAR_HHMMSS_COLON);
+            return yyyyMMddHHmmss.substring(0, yyyyMMddHHmmss.length() - 3).concat(ZERO2_OCLOCK);
+        } catch (ParseException e) {
+            String pattern = "parse dateString [{}] use patterns:[{}] to date exception,message:[{}]";
+            throw new IllegalArgumentException(Slf4jTool.format(pattern, yyyyMMddHHmmss, YYYYMMDD_BAR_HHMMSS_COLON, e.getMessage()), e);
+        }
+    }
+
+    /**
+     *
+     * @param date
+     * @return 转换为yyyy-MM-dd HH:mm:ss的时间类型的字符串中秒钟清零为00
+     */
+    public static String convertSecondsClearZero(long date) {
+        return DateTool.format(new Date(date), YYYYMMDD_BAR_HHMM_COLON).concat(ZERO2_OCLOCK);
+    }
+
+    /**
+     * 时间戳秒钟去除
+     * @param date
+     * @return
+     */
+    public static Date convertSecondsClearZeroToDate(long date) {
+        return DateTool.toDate(convertSecondsClearZero(date),YYYYMMDD_BAR_HHMMSS_COLON);
+    }
+
+    /**
      * @param orderBeforeTime
      * @param orderAfterTime
      * @param ruleBefore24Time
@@ -181,7 +223,7 @@ public final class TimeTool {
 
         List<TimeSpan> timeSpans = new ArrayList<>();
 
-        Date orderBeforeTimeToDate = DateTool.toDate(orderBeforeTime, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON);
+        Date orderBeforeTimeToDate = DateTool.toDate(orderBeforeTime, YYYYMMDD_BAR_HHMMSS_COLON);
 
         Date orderBeforeTimeToDateAddInitTime = DateTool.addMinute(orderBeforeTimeToDate, initTime);
 
@@ -191,7 +233,7 @@ public final class TimeTool {
             // 开始时间到规则结束时间
             TimeSpan timeSpan = new TimeSpan();
             timeSpan.setSort(1);
-            timeSpan.setStime(DateTool.format(orderBeforeTimeToDateAddInitTime, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON));
+            timeSpan.setStime(DateTool.format(orderBeforeTimeToDateAddInitTime, YYYYMMDD_BAR_HHMMSS_COLON));
 
             long beforeTime = DateTool.toDate(ruleBefore24Time, DatePattern.DATE_PATTERNS).getTime();
             long afterTime = DateTool.toDate(ruleAfter24Time, DatePattern.DATE_PATTERNS).getTime();
@@ -215,7 +257,7 @@ public final class TimeTool {
             timeSpans.add(timeSpan);
         }
 
-        Date orderAfterTimeToDate = DateTool.toDate(orderAfterTime, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON);
+        Date orderAfterTimeToDate = DateTool.toDate(orderAfterTime, YYYYMMDD_BAR_HHMMSS_COLON);
         String orderAfterTimeToDateHHMM = DateTool.format(orderAfterTimeToDate, DatePattern.HHMM_COLON);
         // 结束时间段
         if (DateTool.checkDateToBetween(orderAfterTimeToDateHHMM, ruleBefore24Time, ruleAfter24Time)) {
@@ -223,7 +265,7 @@ public final class TimeTool {
             TimeSpan timeSpan = new TimeSpan();
             timeSpan.setSort(99);
             timeSpan.setStime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
-            timeSpan.setEtime(DateTool.format(orderAfterTimeToDate, DatePattern.YYYYMMDD_BAR_HHMMSS_COLON));
+            timeSpan.setEtime(DateTool.format(orderAfterTimeToDate, YYYYMMDD_BAR_HHMMSS_COLON));
 
             long innerTime = getRentalTimeContainRuleTime(timeSpan.getStime(), timeSpan.getEtime(), ruleBefore24Time, ruleAfter24Time, 0);
             timeSpan.setLengthMinute((int) innerTime);
@@ -302,7 +344,7 @@ public final class TimeTool {
 
             // 对比作用
             if (isSameMinuteOfTheDay()) {
-                this.rentalAfterTime = DateTool.format(DateTool.addMinute(rentalAfterTime, 1), DatePattern.YYYYMMDD_BAR_HHMMSS_COLON);
+                this.rentalAfterTime = DateTool.format(DateTool.addMinute(rentalAfterTime, 1), YYYYMMDD_BAR_HHMMSS_COLON);
             }
 
             invoke();
@@ -313,7 +355,7 @@ public final class TimeTool {
 
             if (isSameMinuteSecondOfTheDay()) {
                 // 同一秒钟+1秒 计算
-                this.rentalAfterTime = DateTool.format(DateTool.addSecond(rentalAfterTime, 1), DatePattern.YYYYMMDD_BAR_HHMMSS_COLON);
+                this.rentalAfterTime = DateTool.format(DateTool.addSecond(rentalAfterTime, 1), YYYYMMDD_BAR_HHMMSS_COLON);
             }
 
 
@@ -394,7 +436,7 @@ public final class TimeTool {
             // 4.计算单个时间段是否在总时间跨度中
             // 优惠时间段开始包含于总时间
             if (yhBefore >= zBefore && yhBefore <= zAfter) {
-                beforeYh = ruleBeforeTime.substring(0, 5) + ":00";
+                beforeYh = ruleBeforeTime.substring(0, 5) + ZERO2_OCLOCK;
             }
 
             // 优惠时间段开始不包含于总时间,优惠结束时间段包含于
@@ -405,7 +447,7 @@ public final class TimeTool {
             // 优惠时间段结束包含于总时间
             if (yhAfter >= zBefore && yhAfter <= zAfter) {
                 // 优惠结束时间
-                afterYh = ruleAfterTime.substring(0, 5) + ":00";
+                afterYh = ruleAfterTime.substring(0, 5) + ZERO2_OCLOCK;
             }
 
             // 优惠时间段结束不包含于总时间,优惠开始时间段包含于
@@ -415,17 +457,17 @@ public final class TimeTool {
             }
 
             // initTime 起步时间到优惠时间之间 计算 优惠时间
-            if (DateTool.getNumberOfMinutesBetweenTheTwoTime(rentalBeforeTime.substring(11), ruleBeforeTime.concat(":00")) >= 0) {
-                hssj = initTime - DateTool.getNumberOfMinutesBetweenTheTwoTime(rentalBeforeTime.substring(11), ruleBeforeTime.concat(":00"));
+            if (DateTool.getNumberOfMinutesBetweenTheTwoTime(rentalBeforeTime.substring(11), ruleBeforeTime.concat(ZERO2_OCLOCK)) >= 0) {
+                hssj = initTime - DateTool.getNumberOfMinutesBetweenTheTwoTime(rentalBeforeTime.substring(11), ruleBeforeTime.concat(ZERO2_OCLOCK));
                 if (hssj < 0) {
                     hssj = 0;
                 }
             }
 
-            if (DateTool.getNumberOfMinutesBetweenTheTwoTime(ruleBeforeTime.concat(":00"), rentalBeforeTime.substring(11)) >= 0) {
+            if (DateTool.getNumberOfMinutesBetweenTheTwoTime(ruleBeforeTime.concat(ZERO2_OCLOCK), rentalBeforeTime.substring(11)) >= 0) {
 
                 long jsYhTime = DateTool.getNumberOfMinutesBetweenTheTwoTime(ruleBeforeTime, ruleAfterTime);
-                if (DateTool.getNumberOfMinutesBetweenTheTwoTime(ruleBeforeTime.concat(":00"), rentalBeforeTime.substring(11)) < jsYhTime) {
+                if (DateTool.getNumberOfMinutesBetweenTheTwoTime(ruleBeforeTime.concat(ZERO2_OCLOCK), rentalBeforeTime.substring(11)) < jsYhTime) {
                     hssj = initTime;
                 }
             }

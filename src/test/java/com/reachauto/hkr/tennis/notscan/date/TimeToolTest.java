@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import java.util.Date;
 import java.util.List;
 
+import static com.reachauto.hkr.tennis.notscan.date.DatePattern.YYYYMMDD_BAR_HHMMSS_COLON;
+import static com.reachauto.hkr.tennis.notscan.date.DatePattern.YYYYMMDD_BAR_HHMM_COLON;
+
 public class TimeToolTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TimeToolTest.class);
@@ -488,7 +491,6 @@ public class TimeToolTest {
     }
 
 
-
     @Test
     public void huoqu_getDingShiJianDeTimeSpan_before_lt_after当天_无初始时间_全包含() {
         String ruleBefore24Time = "10:00";
@@ -553,7 +555,6 @@ public class TimeToolTest {
         Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
 
     }
-
 
 
     @Test
@@ -662,4 +663,20 @@ public class TimeToolTest {
 
     }
 
+    @Test
+    public void convertSecondsClearZeroTest() {
+
+        String date = "2017-12-24 14:12:23";
+        System.out.println(TimeTool.convertSecondsClearZero(date));
+
+        System.out.println(DateTool.toDate("2017-12-24 14:12", YYYYMMDD_BAR_HHMM_COLON).getTime());
+        System.out.println(DateTool.toDate(date, YYYYMMDD_BAR_HHMMSS_COLON));
+        System.out.println(DateTool.toDate(date, YYYYMMDD_BAR_HHMMSS_COLON).getTime());
+        System.out.println(TimeTool.convertSecondsClearZero(1514095943000l));
+
+        System.out.println(TimeTool.convertSecondsClearZeroToDate(1514095943000l));
+        System.out.println(TimeTool.convertSecondsClearZeroToDate(1514095920000l));
+
+
+    }
 }
