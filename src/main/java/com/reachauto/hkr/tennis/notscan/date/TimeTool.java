@@ -29,6 +29,7 @@ public final class TimeTool {
 
     private static final String ZERO_OCLOCK = "00:00";
     private static final String ZERO2_OCLOCK = ":00";
+    private static final String ZERO3_OCLOCK = "00:00:00";
     private static final String TWENTY_TWO_OCLOCK = "24:00";
 
     private TimeTool() {
@@ -351,7 +352,9 @@ public final class TimeTool {
 
             // 还原
             this.rentalAfterTime = rentalAfterTime;
-
+            if(rentalAfterTimeIs000000(rentalAfterTime)){
+                this.rentalAfterTime = DateTool.format(DateTool.addSecond(rentalAfterTime, 1), YYYYMMDD_BAR_HHMMSS_COLON);
+            }
 
             if (isSameMinuteSecondOfTheDay()) {
                 // 同一秒钟+1秒 计算
@@ -359,6 +362,10 @@ public final class TimeTool {
             }
 
 
+        }
+
+        private boolean rentalAfterTimeIs000000(String rentalAfterTime) {
+            return rentalAfterTime.endsWith(ZERO3_OCLOCK);
         }
 
         public int getHssj() {

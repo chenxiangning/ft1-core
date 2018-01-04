@@ -679,4 +679,14 @@ public class TimeToolTest {
 
 
     }
+
+    @Test
+    public void timeTest() {
+        System.out.println(TimeTool.getRentalTimeContainRuleTime("2018-01-03 17:39:21", "2018-01-04 00:00:00",
+                "17:30", "09:00", 0));
+        System.out.println(TimeTool.getRentalTimeContainRuleTime("2018-01-03 17:39:21", "2018-01-04 00:00:01",
+                "17:30", "09:00", 0));
+        System.out.println(TimeTool.getRentalTimeContainRuleTime("2018-01-03 17:39:21", "2018-01-04 00:00:02",
+                "17:30", "09:00", 0));
+    }
 }
