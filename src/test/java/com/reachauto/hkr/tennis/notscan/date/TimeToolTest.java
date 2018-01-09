@@ -603,7 +603,44 @@ public class TimeToolTest {
         int initTime = 10;
         List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
-        String result = "[{\"sort\":1,\"stime\":\"2017-11-30 07:10:00\",\"etime\":\"2017-11-30 09:00:00\",\"lengthMinute\":110},{\"sort\":2,\"stime\":\"2017-12-01 17:00:00\",\"etime\":\"2017-11-30 09:00:00\",\"lengthMinute\":960},{\"sort\":99,\"stime\":\"2017-12-01 17:00:00\",\"etime\":\"2017-12-01 23:00:00\",\"lengthMinute\":360}]";
+        String result = "[{\"sort\":1,\"stime\":\"2017-11-30 07:10:00\",\"etime\":\"2017-11-30 09:00:00\",\"lengthMinute\":110},{\"sort\":2,\"stime\":\"2017-11-30 17:00:00\",\"etime\":\"2017-12-01 09:00:00\",\"lengthMinute\":960},{\"sort\":99,\"stime\":\"2017-12-01 17:00:00\",\"etime\":\"2017-12-01 23:00:00\",\"lengthMinute\":360}]";
+
+        long innerTime = TimeTool.getRentalTimeContainRuleTime(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
+        System.out.println(innerTime);
+        Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
+
+    }
+
+
+    @Test
+    public void huoqu_getDingShiJianDeTimeSpan_before_lt_after当天_无初始时间_后部包含xxx2() {
+        String ruleBefore24Time = "17:00";
+        String ruleAfter24Time = "09:00";
+
+        String orderBeforeTime = "2017-11-30 07:00:00";
+        String orderAfterTime = "2017-12-05 23:00:00";
+        int initTime = 10;
+        List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
+        System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
+        String result = "[{\"sort\":1,\"stime\":\"2017-11-30 07:10:00\",\"etime\":\"2017-11-30 09:00:00\",\"lengthMinute\":110},{\"sort\":2,\"stime\":\"2017-11-30 17:00:00\",\"etime\":\"2017-12-05 09:00:00\",\"lengthMinute\":4800},{\"sort\":99,\"stime\":\"2017-12-05 17:00:00\",\"etime\":\"2017-12-05 23:00:00\",\"lengthMinute\":360}]";
+
+        long innerTime = TimeTool.getRentalTimeContainRuleTime(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
+        System.out.println(innerTime);
+        Assert.assertEquals(GsonTool.objectToAllFieldNullJson(timeSpans), result);
+
+    }
+
+    @Test
+    public void huoqu_getDingShiJianDeTimeSpan_before_lt_after当天_无初始时间_后部包含xx3() {
+        String ruleBefore24Time = "17:00";
+        String ruleAfter24Time = "09:00";
+
+        String orderBeforeTime = "2017-11-30 20:00:00";
+        String orderAfterTime = "2017-12-01 18:00:00";
+        int initTime = 10;
+        List<TimeSpan> timeSpans = TimeTool.figureOutTimeSpan(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
+        System.out.println(GsonTool.objectToAllFieldNullJson(timeSpans));
+        String result = "[{\"sort\":1,\"stime\":\"2017-11-30 20:10:00\",\"etime\":\"2017-12-01 09:00:00\",\"lengthMinute\":770},{\"sort\":99,\"stime\":\"2017-12-01 17:00:00\",\"etime\":\"2017-12-01 18:00:00\",\"lengthMinute\":60}]";
 
         long innerTime = TimeTool.getRentalTimeContainRuleTime(orderBeforeTime, orderAfterTime, ruleBefore24Time, ruleAfter24Time, initTime);
         System.out.println(innerTime);

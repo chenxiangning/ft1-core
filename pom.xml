@@ -13,7 +13,7 @@
 
     <groupId>com.reachauto.hkr.tennis</groupId>
     <artifactId>tennis-core</artifactId>
-    <version>tools.7.2.evolution</version>
+    <version>tools.7.3.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -110,7 +110,7 @@
         <dependency>
             <groupId>com.reachauto.hkr.util</groupId>
             <artifactId>hkr-util-exception</artifactId>
-            <version>2018-1.0.0</version>
+            <version>2018-1.1.0</version>
         </dependency>
 
     </dependencies>

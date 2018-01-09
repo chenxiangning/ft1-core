@@ -194,7 +194,6 @@ public final class TimeTool {
     }
 
     /**
-     *
      * @param date
      * @return 转换为yyyy-MM-dd HH:mm:ss的时间类型的字符串中秒钟清零为00
      */
@@ -204,11 +203,12 @@ public final class TimeTool {
 
     /**
      * 时间戳秒钟去除
+     *
      * @param date
      * @return
      */
     public static Date convertSecondsClearZeroToDate(long date) {
-        return DateTool.toDate(convertSecondsClearZero(date),YYYYMMDD_BAR_HHMMSS_COLON);
+        return DateTool.toDate(convertSecondsClearZero(date), YYYYMMDD_BAR_HHMMSS_COLON);
     }
 
     /**
@@ -229,6 +229,7 @@ public final class TimeTool {
         Date orderBeforeTimeToDateAddInitTime = DateTool.addMinute(orderBeforeTimeToDate, initTime);
 
         String orderBeforeTimeAddInitTimeHHMM = DateTool.format(orderBeforeTimeToDateAddInitTime, DatePattern.HHMM_COLON);
+        boolean timeBz = false;
         // 开始时间段
         if (DateTool.checkDateToBetween(orderBeforeTimeAddInitTimeHHMM, ruleBefore24Time, ruleAfter24Time)) {
             // 开始时间到规则结束时间
@@ -245,6 +246,7 @@ public final class TimeTool {
             }
             // 22 03 次日
             if (beforeTime > afterTime) {
+                timeBz = true;
                 Date isToMorrow = DateTool.addDay(orderBeforeTimeToDate, 0);
                 if (currentTime >= beforeTime && currentTime > afterTime) {
                     isToMorrow = DateTool.addDay(orderBeforeTimeToDate, 1);
@@ -296,8 +298,13 @@ public final class TimeTool {
                 timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
             }
             if (timeSpans.size() == 2) {
-                timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
-                timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
+                if (timeBz) {
+                    timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
+                    timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, 0), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
+                } else {
+                    timeSpan.setStime(DateTool.format(DateTool.addDay(orderBeforeTimeToDate, 1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleBefore24Time + ZERO2_OCLOCK));
+                    timeSpan.setEtime(DateTool.format(DateTool.addDay(orderAfterTimeToDate, -1), DatePattern.YYYYMMDD_BAR).concat(" " + ruleAfter24Time + ZERO2_OCLOCK));
+                }
             }
 
             timeSpan.setLengthMinute(zongTime);
@@ -352,7 +359,7 @@ public final class TimeTool {
 
             // 还原
             this.rentalAfterTime = rentalAfterTime;
-            if(rentalAfterTimeIs000000(rentalAfterTime)){
+            if (rentalAfterTimeIs000000(rentalAfterTime)) {
                 this.rentalAfterTime = DateTool.format(DateTool.addSecond(rentalAfterTime, 1), YYYYMMDD_BAR_HHMMSS_COLON);
             }
 
