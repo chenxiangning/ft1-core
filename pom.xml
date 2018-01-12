@@ -112,7 +112,6 @@
             <artifactId>hkr-util-exception</artifactId>
             <version>2018-1.1.0</version>
         </dependency>
-
     </dependencies>
 
     <licenses>

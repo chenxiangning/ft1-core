@@ -32,7 +32,7 @@ public class AliMqConfig {
         properties.setProperty(FT1AliMqProperties.AccessKey, "jN9LHU8IqjXYcRl2");
         properties.setProperty(FT1AliMqProperties.SecretKey, "Tl67HEwJKvvnlw2B0MMihNKFVjVyaz");
         properties.setProperty(FT1AliMqProperties.ONSAddr, "http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet");
-        properties.setProperty(FT1AliMqProperties.OpenTheLogo, String.valueOf(true));
+        properties.setProperty(FT1AliMqProperties.OpenTheLogo, String.valueOf(false));
 
         propertiesFactoryBean.setProperties(properties);
 
