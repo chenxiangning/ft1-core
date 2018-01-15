@@ -2,6 +2,8 @@ package com.reachauto.hkr.tennis.notscan.thread;
 
 
 import com.reachauto.hkr.tennis.TennisUtilException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.*;
 
@@ -9,7 +11,11 @@ import java.util.concurrent.*;
  * 全局公共线程池
  */
 public class GlobalThreadPool {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalThreadPool.class);
+
     private static ExecutorService executor;
+
 
     private GlobalThreadPool() {
     }
@@ -27,6 +33,7 @@ public class GlobalThreadPool {
         }
         executor = new ThreadPoolExecutor(0, 100, 60L, TimeUnit.SECONDS,
                 new SynchronousQueue<Runnable>());
+        LOGGER.info("全局公共线程池初始化 ({},{},{},{},{})", 0, 100, 60, "TimeUnit.SECONDS", "SynchronousQueue");
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.reachauto.hkr.tennis.springscan.demo;
 
 import com.reachauto.hkr.exception.HkrBusinessException;
+import com.reachauto.hkr.tennis.notscan.thread.ThreadPoolTool;
 import com.reachauto.hkr.tennis.springscan.handler.LoginContextTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -104,5 +105,19 @@ public class DemoController {
         System.out.println(Thread.currentThread().getName());
 
         return "ooo_del";
+    }
+
+    @RequestMapping(value = "thread", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public String thread() {
+
+        for (int i = 0; i < 100; i++) {
+            int finalI = i;
+            ThreadPoolTool.execute(() -> {
+                System.out.println(finalI);
+            });
+        }
+
+        return "thread";
     }
 }

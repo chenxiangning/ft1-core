@@ -20,6 +20,13 @@ public class ThreadToolTest {
 
     @Test
     public void newExecutor1() throws Exception {
+        ThreadPoolTool.execute(() -> {
+            System.out.println(666);
+            System.out.println(666);
+            System.out.println(666);
+            System.out.println(666);
+        });
+        System.out.println(123);
 
     }
 
