@@ -13,7 +13,7 @@
 
     <groupId>com.reachauto.hkr.tennis</groupId>
     <artifactId>tennis-core</artifactId>
-    <version>tools.7.3.evolution</version>
+    <version>tools.7.4.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
