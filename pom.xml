@@ -241,7 +241,7 @@
         <repository>
             <id>hkr-repo</id>
             <name>HKr Maven Repo</name>
-            <url>https://raw.githubusercontent.com/hkr-reach/hkr-repo/master/repository/</url>
+            <url>https://raw.githubusercontent.com/chenxiangning/ft1-core-jar/master/repository/</url>
         </repository>
         <repository>
             <id>maven-repo</id>
