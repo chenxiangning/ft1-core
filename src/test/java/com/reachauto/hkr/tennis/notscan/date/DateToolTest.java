@@ -24,30 +24,51 @@ public class DateToolTest {
 
     @Test
     public void addDay() throws Exception {
+        Date date = new Date();
+        System.out.println(DateTool.addDay(date, 2));
+        System.out.println(DateTool.addDay(date, -1));
     }
 
     @Test
     public void addWeek() throws Exception {
+        Date date = new Date();
+        System.out.println(date);
+        System.out.println(DateTool.addWeek(date, 1));
     }
 
     @Test
     public void addHour() throws Exception {
+        Date date = new Date();
+        System.out.println(date);
+        System.out.println(DateTool.addHour(date, 1));
     }
 
     @Test
     public void addMinute() throws Exception {
+        Date date = new Date();
+        System.out.println(DateTool.addMinute(date, 1));
+
     }
 
     @Test
     public void addSecond() throws Exception {
+        Date date = new Date();
+        System.out.println(DateTool.addSecond(date, 1));
     }
 
     @Test
     public void addMillisecond() throws Exception {
+        Date date = new Date();
+        System.out.println(DateTool.addMillisecond(date, 1));
     }
 
     @Test
     public void getYear() throws Exception {
+        System.out.println(DateTool.getYear(new Date()));
+        System.out.println(DateTool.getMonth(new Date()));
+        System.out.println(DateTool.getWeekOfYear(new Date()));
+        System.out.println(DateTool.getDayOfYear(new Date()));
+        System.out.println(DateTool.getDayOfMonth(new Date()));
     }
 
     @Test
@@ -108,10 +129,16 @@ public class DateToolTest {
 
     @Test
     public void isBefore() throws Exception {
+        Date date = new Date();
+
+        System.out.println(DateTool.isBefore(date, DateTool.addSecond(date,1)));
     }
 
     @Test
     public void isAfter() throws Exception {
+        Date date = new Date();
+
+        System.out.println(DateTool.isAfter(date, DateTool.addSecond(date,1)));
     }
 
     @Test
@@ -130,16 +157,17 @@ public class DateToolTest {
     public void toDate() throws Exception {
         System.out.println(DateTool.toDate("2017-9-25 11:48:23", DatePattern.DATE_PATTERNS));
         System.out.println(DateTool.toDate("2017/9/25 11:48:23", DatePattern.DATE_PATTERNS));
-        System.out.println(DateTool.toDate("20:10", DatePattern.DATE_PATTERNS));
-
-        System.out.println(DateTool.format(DateTool.toDate("20:10", DatePattern.DATE_PATTERNS), DatePattern.YYYYMMDD_BAR_HHMMSS_COLON));
-
         System.out.println(DateTool.toDate("170925114823", DatePattern.DATE_PATTERNS));
         System.out.println(DateTool.toDate("170925114823", DatePattern.YYMMDDHHMMSS));
+
+        System.out.println(DateTool.toDate("20:10", DatePattern.DATE_PATTERNS));
+        System.out.println(DateTool.format(DateTool.toDate("20:10", DatePattern.DATE_PATTERNS), DatePattern.YYYYMMDD_BAR_HHMMSS_COLON));
+
     }
 
     @Test
     public void isLeapYear() throws Exception {
+        System.out.println(TimeTool.convertSecondsClearZero("2017-09-25 14:15:46"));
     }
 
 

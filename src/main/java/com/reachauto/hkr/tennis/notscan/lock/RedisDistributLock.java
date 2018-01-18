@@ -16,37 +16,37 @@ import java.util.concurrent.TimeUnit;
  * Date: 2017-08-02 10:48
  * chenxiangning@reachauto.com
  * Description: redis 分布式锁
- * 
+ * <p>
  * <blockquote>
  * <h3>使用示例:</h3>
  * </blockquote>
- * 
+ * <p>
  * <blockquote>
  * RedisDistributLock redisLock = new RedisDistributLock(redisTemplate, "锁头1(keyName)");
- * 
+ * <p>
  * try {
- * 
+ * <p>
  * if (redisLock.lock()) {
- * 
+ * <p>
  * 这块写需要同步执行的业务代码
  * ...
- * 
+ * <p>
  * }
- * 
+ * <p>
  * } catch (InterruptedException e) {
- * 
+ * <p>
  * LOGGER.error("{}", e);
- * 
+ * <p>
  * redisLock.unlock();
- * 
+ * <p>
  * Thread.currentThread().interrupt();
- * 
+ * <p>
  * } finally {
- * 
+ * <p>
  * redisLock.unlock();
- * 
+ * <p>
  * }
- * 
+ * <p>
  * </blockquote>
  */
 public class RedisDistributLock {
@@ -61,19 +61,20 @@ public class RedisDistributLock {
     /**
      * 锁超时时间，防止线程在入锁以后，无限的执行等待
      */
-    private int expireMsecs = 60 * 5000;
+    private int expireMsecs = 60000;
 
     /**
      * 锁等待时间，防止线程饥饿
      */
-    private int timeoutMsecs = 10 * 5000;
+    private int timeoutMsecs = 40000;
 
     private volatile boolean locked = false;
 
     /**
      * 详细的构造函数默认获得超时10000毫秒超时和60000毫秒锁定期满的实例
+     *
      * @param redisTemplate redisTemplate
-     * @param lockKey lock key (ex. account:1, ...)
+     * @param lockKey       lock key (ex. account:1, ...)
      */
     public RedisDistributLock(RedisTemplate redisTemplate, String lockKey) {
         this.redisTemplate = redisTemplate;

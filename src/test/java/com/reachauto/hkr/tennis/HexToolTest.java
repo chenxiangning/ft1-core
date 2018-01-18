@@ -12,7 +12,7 @@ public class HexToolTest {
 
         System.out.println(chenxiangning);
 
-        System.out.println(HexTool.decodeHexStr("6368656e7869616e676e696e67"));
+        System.out.println(HexTool.decodeHexStr(HexTool.encodeHexStr("chenxiangning")));
     }
 
     @Test

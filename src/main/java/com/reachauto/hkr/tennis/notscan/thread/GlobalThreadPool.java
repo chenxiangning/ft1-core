@@ -1,7 +1,7 @@
 package com.reachauto.hkr.tennis.notscan.thread;
 
 
-import com.reachauto.hkr.tennis.TennisUtilException;
+import com.reachauto.hkr.tennis.TennisToolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,7 +69,7 @@ public class GlobalThreadPool {
         try {
             executor.execute(runnable);
         } catch (Exception e) {
-            throw new TennisUtilException("Exception when running task!", e);
+            throw new TennisToolException("Exception when running task!", e);
         }
     }
 

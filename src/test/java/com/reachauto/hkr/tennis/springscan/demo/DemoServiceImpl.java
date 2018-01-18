@@ -45,7 +45,7 @@ public class DemoServiceImpl {
 
     }
 
-    @HkrCacheDel(model = "mn", delKey = {"*"},isModelAll = true)
+    @HkrCacheDel(model = "mn", delKey = {"*"}, isModelAll = true)
     public void del(String xx) {
         System.out.println("清理缓存");
     }

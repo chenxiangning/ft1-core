@@ -1,6 +1,5 @@
 package com.reachauto.hkr.tennis;
 
-import com.reachauto.hkr.tennis.RandomTool;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,6 +12,13 @@ public class RandomToolTest {
         System.out.println(RandomTool.createRandomWithLength(4));
         System.out.println(RandomTool.createRandomWithLength(5));
 
+        /**
+         9
+         46
+         201
+         9124
+         14132
+         */
 
         for (int i = 0; i < 10000; i++) {
             long r = RandomTool.createRandomWithLength(5);
@@ -29,6 +35,12 @@ public class RandomToolTest {
         System.out.println(RandomTool.createRandomFromString("chenxiangning", 4));
         System.out.println(RandomTool.createRandomFromString("chenxiangning", 4));
         System.out.println(RandomTool.createRandomFromString("chenxiangning", 4));
+        /*
+        ngnn
+        ignh
+        xnxn
+        nihg
+         */
     }
 
 }
