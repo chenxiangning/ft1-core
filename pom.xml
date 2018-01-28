@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--<parent>-->
-        <!--<groupId>org.sonatype.oss</groupId>-->
-        <!--<artifactId>oss-parent</artifactId>-->
-        <!--<version>7</version>-->
+    <!--<groupId>org.sonatype.oss</groupId>-->
+    <!--<artifactId>oss-parent</artifactId>-->
+    <!--<version>7</version>-->
     <!--</parent>-->
 
 
     <groupId>com.reachauto.hkr.tennis</groupId>
     <artifactId>tennis-core</artifactId>
-    <version>tools.7.7.evolution</version>
+    <version>tools.7.8.evolution</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -110,7 +110,7 @@
         <dependency>
             <groupId>com.reachauto.hkr.util</groupId>
             <artifactId>hkr-util-exception</artifactId>
-            <version>2018-1.1.1</version>
+            <version>2018-1.1.3</version>
         </dependency>
     </dependencies>
 
@@ -237,6 +237,11 @@
             <id>ali-repo</id>
             <name>Ali Repo</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>ft1-core-jar</id>
+            <name>HKr Maven Repo</name>
+            <url>https://raw.githubusercontent.com/chenxiangning/ft1-core-jar/master/repository/</url>
         </repository>
         <repository>
             <id>hkr-repo</id>

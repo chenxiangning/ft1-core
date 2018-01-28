@@ -128,6 +128,10 @@ add 工具
 \tennis\notscan\xgj\MD5Tool.java
 \tennis\notscan\xgj\TokenTool.java
 
+add ConvertTool
+ 
+mapToBean beanToMap
+
 gson 版本升级 2.8.2
 
 mvn clean deploy -P sonatype-oss-release

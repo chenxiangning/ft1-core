@@ -304,6 +304,20 @@ public final class GsonTool {
     }
 
     /**
+     * List<Gbean> gbeans = GsonTool.jsonToList(listjson, new TypeToken<List<Gbean>>() {}.getType());
+     *
+     * @param jsonStr h
+     * @param type    class
+     * @param <T>     t
+     * @return list
+     */
+    public static <T> List<T> jsonToList(String jsonStr, Type type) {
+        if (getGsonAll() != null) {
+            return getGsonAll().fromJson(jsonStr, type);
+        }
+        return Arrays.asList();
+    }
+    /**
      * @param gson g
      * @param jsonStr j
      * @return map
