@@ -132,6 +132,8 @@ add ConvertTool
  
 mapToBean beanToMap
 
+添加 dozer bean的映射
+
 gson 版本升级 2.8.2
 
 mvn clean deploy -P sonatype-oss-release
