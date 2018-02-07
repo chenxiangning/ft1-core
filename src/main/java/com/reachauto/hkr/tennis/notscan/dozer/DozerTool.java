@@ -26,11 +26,24 @@ public class DozerTool {
         throw new AssertionError("不能实例化,因为它是私有的构造方法! ".concat(getClass().getName()));
     }
 
-
+    /**
+     *
+     * @param source 源
+     * @param destinationClass 映射的类
+     * @param <T> 泛型
+     * @return t
+     */
     public static <T> T deepCopy(Object source, Class<T> destinationClass) {
         return mapper.map(source, destinationClass);
     }
 
+    /**
+     *
+     * @param source 源
+     * @param destinationClass 映射的类
+     * @param <T> 泛型
+     * @return list<T>
+     */
     public static <T> List<T> deepListCopy(List<?> source, Class<T> destinationClass) {
         return source.stream().map(o -> deepCopy(o, destinationClass)).collect(Collectors.toList());
     }

@@ -32,7 +32,7 @@ public class ConvertTool {
      * @param map 1
      * @param c   class
      * @param <T> 泛型
-     * @return
+     * @return T
      */
     public static <T> T mapToBean(Map map, Class<T> c) {
         return GsonTool.jsonToBean(GsonTool.objectToAllFieldNullJson(map), c);
@@ -44,7 +44,7 @@ public class ConvertTool {
      *
      * @param bean 带转换bean
      * @param <T>  泛型
-     * @return
+     * @return map
      */
     public static <T> Map beanToMap(T bean) {
         if (ValidatorTool.isNullOrEmpty(bean)) {

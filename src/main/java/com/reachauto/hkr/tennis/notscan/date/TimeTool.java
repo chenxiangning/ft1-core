@@ -75,18 +75,18 @@ public final class TimeTool {
 
     /**
      * 获取两个时间之间的分钟数,第一个时间舍弃秒,或者说秒=00 <code>before</code> 使用<b>一个或者多个</b>不同的 <code>after</code>
-     * <p>
+     *
      * <h3>示例:</h3>
-     * <p>
+     *
      * <blockquote>
-     * <p>
+     *
      * <pre class="code">
      * Assert.assertEquals(DateTool.getNumberOfMinutesBetweenTheTwoTime("23:00", "00:01"),61);
      * Assert.assertEquals(DateTool.getNumberOfMinutesBetweenTheTwoTime("20:00", "20:30"),30);
      * Assert.assertEquals(DateTool.getNumberOfMinutesBetweenTheTwoTime("01:00", "10:11"),551);
      * Assert.assertEquals(DateTool.getNumberOfMinutesBetweenTheTwoTime("2017-09-25 14:15:00", "2017-09-26 14:30:00"),1455);
      * </pre>
-     * <p>
+     *
      * </blockquote>
      *
      * @param before 开始时间

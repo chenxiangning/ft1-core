@@ -130,7 +130,7 @@ public final class UUIDGenerator {
      * 得到一组id（排除重复）
      * Date 2014年10月30日 下午3:42:42
      *
-     * @param size
+     * @param size size
      * @return UUID
      */
     public static Long[] getDateUUID(int size) {
@@ -151,7 +151,7 @@ public final class UUIDGenerator {
 
     /**
      * 得到日期格式数字型UUID yyMMddhhmmssSS + 4位随机数,共19位
-     * @return uuid
+     * @return uuid uuid
      */
     public static Long getDateUUID() {
         Date date = new Date();
@@ -171,7 +171,7 @@ public final class UUIDGenerator {
      * 根据传入的业务时间得到日期格式数字型UUID
      * Date 2014年10月30日 下午3:41:42
      *
-     * @param date
+     * @param date date
      * @return UUID
      */
     public static Long getDateUUID(Date date) {
@@ -188,7 +188,7 @@ public final class UUIDGenerator {
      * 生成随机数，前面补零
      * Date 2014年7月3日 下午4:27:17
      *
-     * @param digits
+     * @param digits digits
      * @return 随机数
      */
     private static StringBuilder getRandom(int digits) {

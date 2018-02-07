@@ -50,13 +50,13 @@ public class HkrCacheAspect {
         String cacheJson = hkrKeyValCache.get(key);
 
         if (ValidatorTool.isNotNullOrEmpty(cacheJson)) {
-            LOGGER.info("get cache，key [{}]", key.getTrueKey());
+            LOGGER.debug("get cache，key [{}]", key.getTrueKey());
             return GsonTool.jsonToBean(GsonTool.getGsonAll(), cacheJson, getType(joinPoint));
         } else {
-            LOGGER.info("get db set cache key [{}] expire [{}]", key.getTrueKey(), hkrCache.expire());
+            LOGGER.debug("get db set cache key [{}] expire [{}]", key.getTrueKey(), hkrCache.expire());
             Object result = joinPoint.proceed(joinPoint.getArgs());
             if (result == null) {
-                LOGGER.error("fail to get data from source，key [{}]", key.getTrueKey());
+                LOGGER.debug("fail to get data from source，key [{}]", key.getTrueKey());
             } else {
                 hkrKeyValCache.setObject(key, GsonTool.objectToAllFieldNullJson(result), hkrCache.expire());
             }
