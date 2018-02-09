@@ -14,9 +14,9 @@ public class PointAreaTool {
     /**
      * 判断一个指定的经纬度点是否落在一个多边形区域内
      *
-     * @param ALon
-     * @param ALat
-     * @param jingWeiDuJiHeList
+     * @param ALon 1
+     * @param ALat 2
+     * @param jingWeiDuJiHeList 3
      * @return
      */
     public final static boolean isPtInPoly(double ALon, double ALat, List<Points> jingWeiDuJiHeList) {

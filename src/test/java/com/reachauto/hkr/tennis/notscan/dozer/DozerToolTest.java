@@ -42,36 +42,29 @@ public class DozerToolTest {
 
     @Test
     public void deepCopy() throws Exception {
-//        Dage dage2 = DozerTool.deepCopy(dage, Dage.class);
-//        Gbean gbean3 = DozerTool.deepCopy(gbean2, Gbean.class);
-//        System.out.println(gbean3);
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println(DozerTool.deepCopy(gbean2, Gbean.class));
-
-        }
-
+        Gbean gbean3 = DozerTool.deepCopy(gbean2, Gbean.class);
+        System.out.println(gbean3);
     }
 
 
-//    @Test
-//    public void deepCopy2() throws Exception {
-//        List<Tbean> tbeans = Arrays.asList(GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Tbean.class),
-//                GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Tbean.class));
-//
-//        List<TbeanVO> tbeanVOS = DozerTool.deepCopy(tbeans, List.class);
-//
-//        System.out.println(tbeanVOS);
-//    }
-//
-//    @Test
-//    public void deepCopyList() throws Exception {
-//        List<Tbean> tbeans = Arrays.asList(GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Tbean.class),
-//                GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Tbean.class));
-//
-//        List<TbeanVO> tbeanVOS = DozerTool.deepListCopy(tbeans, TbeanVO.class);
-//
-//        System.out.println(tbeanVOS);
-//    }
+    @Test
+    public void deepCopy2() throws Exception {
+        List<Tbean> tbeans = Arrays.asList(GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Tbean.class),
+                GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Tbean.class));
+
+        List<TbeanVO> tbeanVOS = DozerTool.deepCopy(tbeans, List.class);
+
+        System.out.println(tbeanVOS);
+    }
+
+    @Test
+    public void deepCopyList() throws Exception {
+        List<Tbean> tbeans = Arrays.asList(GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Tbean.class),
+                GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Tbean.class));
+
+        List<TbeanVO> tbeanVOS = DozerTool.deepListCopy(tbeans, TbeanVO.class);
+
+        System.out.println(tbeanVOS);
+    }
 
 }

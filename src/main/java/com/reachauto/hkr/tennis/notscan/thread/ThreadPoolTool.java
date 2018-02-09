@@ -350,6 +350,7 @@ public class ThreadPoolTool {
      *
      * @return 线程组
      * @since 3.1.2
+     * @return ThreadGroup
      */
     public static ThreadGroup currentThreadGroup() {
         final SecurityManager s = System.getSecurityManager();
@@ -362,6 +363,7 @@ public class ThreadPoolTool {
      * @param prefix   线程名前缀
      * @param isDeamon 是否守护线程
      * @since 4.0.0
+     * @return ThreadFactory
      */
     public static ThreadFactory newNamedThreadFactory(String prefix, boolean isDeamon) {
         return new NamedThreadFactory(prefix, isDeamon);
@@ -374,6 +376,7 @@ public class ThreadPoolTool {
      * @param threadGroup 线程组，可以为null
      * @param isDeamon    是否守护线程
      * @since 4.0.0
+     * @return ThreadFactory
      */
     public static ThreadFactory newNamedThreadFactory(String prefix, ThreadGroup threadGroup, boolean isDeamon) {
         return new NamedThreadFactory(prefix, threadGroup, isDeamon);
@@ -387,6 +390,7 @@ public class ThreadPoolTool {
      * @param isDeamon    是否守护线程
      * @param handler     未捕获异常处理
      * @since 4.0.0
+     * @return ThreadFactory
      */
     public static ThreadFactory newNamedThreadFactory(String prefix, ThreadGroup threadGroup, boolean isDeamon, UncaughtExceptionHandler handler) {
         return new NamedThreadFactory(prefix, threadGroup, isDeamon, handler);

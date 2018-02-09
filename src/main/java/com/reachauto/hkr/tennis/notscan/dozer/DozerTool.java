@@ -13,9 +13,13 @@ import java.util.stream.Collectors;
  * This is my work in reachauto code.
  * mail:chenxiangning@reachauto.com
  * Description:
+ * @author cxn
  */
 public class DozerTool {
 
+    /**
+     * 初始化mapper
+     */
     private static Mapper mapper = new DozerBeanMapper();
 
 
@@ -27,10 +31,9 @@ public class DozerTool {
     }
 
     /**
-     *
-     * @param source 源
+     * @param source           源
      * @param destinationClass 映射的类
-     * @param <T> 泛型
+     * @param <T>              泛型
      * @return t
      */
     public static <T> T deepCopy(Object source, Class<T> destinationClass) {
@@ -38,15 +41,14 @@ public class DozerTool {
     }
 
     /**
-     *
-     * @param source 源
+     * @param source           源
      * @param destinationClass 映射的类
-     * @param <T> 泛型
-     * @return list<T>
+     * @param <T>              泛型
+     * @return list
      */
     public static <T> List<T> deepListCopy(List<?> source, Class<T> destinationClass) {
         return source.stream().map(o -> deepCopy(o, destinationClass)).collect(Collectors.toList());
     }
 
-
 }
+

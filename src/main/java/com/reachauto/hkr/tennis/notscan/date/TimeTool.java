@@ -180,7 +180,7 @@ public final class TimeTool {
      * 将yyyy-MM-dd HH:mm:ss的时间类型的字符串中秒钟清零为00
      *
      * @param yyyyMMddHHmmss yyyy-MM-dd HH:mm:ss
-     * @return
+     * @return string
      */
     public static String convertSecondsClearZero(String yyyyMMddHHmmss) {
 
@@ -194,7 +194,7 @@ public final class TimeTool {
     }
 
     /**
-     * @param date
+     * @param date *
      * @return 转换为yyyy-MM-dd HH:mm:ss的时间类型的字符串中秒钟清零为00
      */
     public static String convertSecondsClearZero(long date) {
@@ -204,20 +204,20 @@ public final class TimeTool {
     /**
      * 时间戳秒钟去除
      *
-     * @param date
-     * @return
+     * @param date *
+     * @return *
      */
     public static Date convertSecondsClearZeroToDate(long date) {
         return DateTool.toDate(convertSecondsClearZero(date), YYYYMMDD_BAR_HHMMSS_COLON);
     }
 
     /**
-     * @param orderBeforeTime
-     * @param orderAfterTime
-     * @param ruleBefore24Time
-     * @param ruleAfter24Time
-     * @param initTime
-     * @return
+     * @param orderBeforeTime *
+     * @param orderAfterTime *
+     * @param ruleBefore24Time *
+     * @param ruleAfter24Time *
+     * @param initTime *
+     * @return *
      */
     public static List<TimeSpan> figureOutTimeSpan(String orderBeforeTime, String orderAfterTime,
                                                    String ruleBefore24Time, String ruleAfter24Time, int initTime) {

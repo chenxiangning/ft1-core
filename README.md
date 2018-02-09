@@ -132,9 +132,17 @@ add ConvertTool
  
 mapToBean beanToMap
 
+gson 版本升级 2.8.2
+
 添加 dozer bean的映射
 
-gson 版本升级 2.8.2
+    log4j记录日志输出上面调试信息，关闭的解决方法：log4j.properties可以关闭
+    在log4j.properties中添加如下：
+    log4j.logger.org.apache.commons.beanutils.converters=off 
+    log4j.logger.org.apache.commons.beanutils.MethodUtils=off
+    或
+    log4j.logger.org.apache.commons.beanutils=off
+
 
 mvn clean deploy -P sonatype-oss-release
 

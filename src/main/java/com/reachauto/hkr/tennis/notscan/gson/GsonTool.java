@@ -304,7 +304,7 @@ public final class GsonTool {
     }
 
     /**
-     * List<Gbean> gbeans = GsonTool.jsonToList(listjson, new TypeToken<List<Gbean>>() {}.getType());
+     * json to list
      *
      * @param jsonStr h
      * @param type    class
