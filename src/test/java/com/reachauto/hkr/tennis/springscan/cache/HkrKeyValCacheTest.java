@@ -22,6 +22,7 @@ public class HkrKeyValCacheTest extends AbstractJUnit {
     @Qualifier(value = "hkrKeyHashStrSerializeSpringRedisCache")
     private HkrKeyHashCache hkrKeyHashCache;
 
+
     @Test
     public void xx() {
         System.out.println(hkrKeyValCache);
@@ -40,16 +41,25 @@ public class HkrKeyValCacheTest extends AbstractJUnit {
     public void hashMapSetTest() {
 
         Map<String, String> stringStringMap = new HashMap<>();
-        stringStringMap.put("111111", "{1:1,2:2}");
-        stringStringMap.put("222222", "{2:1,2:2}");
-        stringStringMap.put("333333", "{3:1,2:2}");
-        stringStringMap.put("444444", "{4:1,2:2}");
+        stringStringMap.put("/hkr-am/api/v1/log_operators*", "rest[log_operators:list]");
 
-        Key key = new Key().append("demoz.key").colon().append("hash.key.1");
+        Key key = new Key().append("auth").colon().append("table");
 
         hkrKeyHashCache.setStrValMap(key, stringStringMap);
 
         System.out.println(hkrKeyHashCache.getStrValMap(key));
+
+
+        System.out.println(hkrKeyHashCache.deleteHashKey(new Key().append("role").colon().append("1"),"log_operators:list:read","xlog_operators:list:read"));
+        Map<String, String> xxx2 = new HashMap<>();
+        xxx2.put("log_operators:list:read", "666111");
+
+        Key key22 = new Key().append("role").colon().append("1");
+
+        hkrKeyHashCache.setStrValMap(key22, xxx2);
+
+        System.out.println(hkrKeyHashCache.getStrValMap(key22));
+
 
 
     }

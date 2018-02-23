@@ -44,7 +44,41 @@ public class FtRedisConfig {
         return jedisConnectionFactory;
     }
 
+    @Bean(name = "createRedisConnectionFactory4")
+    public RedisConnectionFactory createRedisConnectionFactory4() {
+        LOGGER.debug("创建 redis  工厂");
+        JedisPoolConfig poolConfig = new JedisPoolConfig();
+        poolConfig.setMaxIdle(redisProperties.getPool().getMaxIdle());
+        poolConfig.setMinIdle(redisProperties.getPool().getMinIdle());
+        poolConfig.setTestOnBorrow(true);
+        poolConfig.setTestOnReturn(true);
+        poolConfig.setTestWhileIdle(true);
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(poolConfig);
+        LOGGER.debug("redis connection information is :{}", redisProperties);
+        jedisConnectionFactory.setHostName(redisProperties.getHost());
+        jedisConnectionFactory.setDatabase(redisProperties.getDatabaseShiro4());
+        jedisConnectionFactory.setPassword(redisProperties.getPassword());
+        jedisConnectionFactory.setPort(redisProperties.getPort());
+        return jedisConnectionFactory;
+    }
 
+    @Bean(name = "createRedisConnectionFactory12")
+    public RedisConnectionFactory createRedisConnectionFactory12() {
+        LOGGER.debug("创建 redis  工厂");
+        JedisPoolConfig poolConfig = new JedisPoolConfig();
+        poolConfig.setMaxIdle(redisProperties.getPool().getMaxIdle());
+        poolConfig.setMinIdle(redisProperties.getPool().getMinIdle());
+        poolConfig.setTestOnBorrow(true);
+        poolConfig.setTestOnReturn(true);
+        poolConfig.setTestWhileIdle(true);
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(poolConfig);
+        LOGGER.debug("redis connection information is :{}", redisProperties);
+        jedisConnectionFactory.setHostName(redisProperties.getHost());
+        jedisConnectionFactory.setDatabase(redisProperties.getDatabaseAuth12());
+        jedisConnectionFactory.setPassword(redisProperties.getPassword());
+        jedisConnectionFactory.setPort(redisProperties.getPort());
+        return jedisConnectionFactory;
+    }
     @Bean(name = "jdkRedisTemplate")
     public RedisTemplate<String, Object> jdkRedisTemplate() {
         RedisTemplate jdkRedisTemplate = new RedisTemplate();
@@ -59,6 +93,51 @@ public class FtRedisConfig {
     public RedisTemplate<String, Object> strRedisTemplate() {
         RedisTemplate strRedisTemplate = new RedisTemplate();
         strRedisTemplate.setConnectionFactory(createRedisConnectionFactory());
+        strRedisTemplate.setKeySerializer(new StringRedisSerializer());
+        strRedisTemplate.setValueSerializer(new StringRedisSerializer());
+        strRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        strRedisTemplate.setHashValueSerializer(new StringRedisSerializer());
+        LOGGER.info("######## RedisConfig:strRedisTemplate 初始化完毕");
+        return strRedisTemplate;
+    }
+
+
+    @Bean(name = "jdkRedisTemplateShiro4")
+    public RedisTemplate<String, Object> jdkRedisTemplateShiro4() {
+        RedisTemplate jdkRedisTemplate = new RedisTemplate();
+        jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory4());
+        jdkRedisTemplate.setKeySerializer(new StringRedisSerializer());
+        jdkRedisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
+        LOGGER.info("######## RedisConfig:jdkRedisTemplate 初始化完毕");
+        return jdkRedisTemplate;
+    }
+
+    @Bean(name = "strRedisTemplateShiro4")
+    public RedisTemplate<String, Object> strRedisTemplateAuth4() {
+        RedisTemplate strRedisTemplate = new RedisTemplate();
+        strRedisTemplate.setConnectionFactory(createRedisConnectionFactory4());
+        strRedisTemplate.setKeySerializer(new StringRedisSerializer());
+        strRedisTemplate.setValueSerializer(new StringRedisSerializer());
+        strRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        strRedisTemplate.setHashValueSerializer(new StringRedisSerializer());
+        LOGGER.info("######## RedisConfig:strRedisTemplate 初始化完毕");
+        return strRedisTemplate;
+    }
+
+    @Bean(name = "jdkRedisTemplateAuth12")
+    public RedisTemplate<String, Object> jdkRedisTemplateAuth12() {
+        RedisTemplate jdkRedisTemplate = new RedisTemplate();
+        jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory12());
+        jdkRedisTemplate.setKeySerializer(new StringRedisSerializer());
+        jdkRedisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
+        LOGGER.info("######## RedisConfig:jdkRedisTemplate 初始化完毕");
+        return jdkRedisTemplate;
+    }
+
+    @Bean(name = "strRedisTemplateAuth12")
+    public RedisTemplate<String, Object> strRedisTemplateAuth12() {
+        RedisTemplate strRedisTemplate = new RedisTemplate();
+        strRedisTemplate.setConnectionFactory(createRedisConnectionFactory12());
         strRedisTemplate.setKeySerializer(new StringRedisSerializer());
         strRedisTemplate.setValueSerializer(new StringRedisSerializer());
         strRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
