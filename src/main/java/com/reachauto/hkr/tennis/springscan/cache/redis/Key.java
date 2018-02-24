@@ -37,4 +37,8 @@ public class Key {
         this.append(":");
         return this;
     }
+
+    public static Key build(String keyVal){
+        return new Key(keyVal);
+    }
 }

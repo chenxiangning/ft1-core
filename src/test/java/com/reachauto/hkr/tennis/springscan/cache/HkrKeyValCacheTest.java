@@ -22,11 +22,17 @@ public class HkrKeyValCacheTest extends AbstractJUnit {
     @Qualifier(value = "hkrKeyHashStrSerializeSpringRedisCache")
     private HkrKeyHashCache hkrKeyHashCache;
 
+    @Autowired
+    @Qualifier(value = "hkrRedisDBShiroHashStrCache")
+    private HkrKeyHashCache hkrRedisDBShiroHashStrCache;
+
 
     @Test
     public void xx() {
         System.out.println(hkrKeyValCache);
         System.out.println(hkrKeyHashCache);
+        System.out.println(new Key().append("xxx").colon().append("sdsd").getTrueKey());
+        System.out.println(Key.build("a:b").colon().append("xxx").colon().append("sdsd").getTrueKey());
     }
 
     @Test
@@ -45,21 +51,20 @@ public class HkrKeyValCacheTest extends AbstractJUnit {
 
         Key key = new Key().append("auth").colon().append("table");
 
-        hkrKeyHashCache.setStrValMap(key, stringStringMap);
+        hkrRedisDBShiroHashStrCache.setStrValMap(key, stringStringMap);
 
-        System.out.println(hkrKeyHashCache.getStrValMap(key));
+        System.out.println(hkrRedisDBShiroHashStrCache.getStrValMap(key));
 
 
-        System.out.println(hkrKeyHashCache.deleteHashKey(new Key().append("role").colon().append("1"),"log_operators:list:read","xlog_operators:list:read"));
+        System.out.println(hkrRedisDBShiroHashStrCache.deleteHashKey(new Key().append("role").colon().append("1"), "log_operators:list:read", "xlog_operators:list:read"));
         Map<String, String> xxx2 = new HashMap<>();
         xxx2.put("log_operators:list:read", "666111");
 
         Key key22 = new Key().append("role").colon().append("1");
 
-        hkrKeyHashCache.setStrValMap(key22, xxx2);
+        hkrRedisDBShiroHashStrCache.setStrValMap(key22, xxx2);
 
-        System.out.println(hkrKeyHashCache.getStrValMap(key22));
-
+        System.out.println(hkrRedisDBShiroHashStrCache.getStrValMap(key22));
 
 
     }
