@@ -51,7 +51,7 @@ public class FtRedisConfig {
         jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, redisPropertiesxx.getDatabase()));
         jdkRedisTemplate.setKeySerializer(new StringRedisSerializer());
         jdkRedisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-        LOGGER.info("######## RedisConfig:jdkRedisTemplate 初始化完毕");
+        LOGGER.info("######## RedisConfig:strRedisTemplate index {} 初始化完毕",redisPropertiesxx.getDatabase());
         return jdkRedisTemplate;
     }
 
@@ -63,7 +63,7 @@ public class FtRedisConfig {
         strRedisTemplate.setValueSerializer(new StringRedisSerializer());
         strRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
         strRedisTemplate.setHashValueSerializer(new StringRedisSerializer());
-        LOGGER.info("######## RedisConfig:strRedisTemplate 初始化完毕");
+        LOGGER.info("######## RedisConfig:strRedisTemplate index {} 初始化完毕",redisPropertiesxx.getDatabase());
         return strRedisTemplate;
     }
 
@@ -74,7 +74,7 @@ public class FtRedisConfig {
         jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, redisPropertiesxx.getDatabaseShiro()));
         jdkRedisTemplate.setKeySerializer(new StringRedisSerializer());
         jdkRedisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-        LOGGER.info("######## RedisConfig:jdkRedisTemplateShiro4 初始化完毕");
+        LOGGER.info("######## RedisConfig:strRedisTemplateShiro index {} 初始化完毕", redisPropertiesxx.getDatabaseShiro());
         return jdkRedisTemplate;
     }
 
@@ -86,7 +86,7 @@ public class FtRedisConfig {
         strRedisTemplate.setValueSerializer(new StringRedisSerializer());
         strRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
         strRedisTemplate.setHashValueSerializer(new StringRedisSerializer());
-        LOGGER.info("######## RedisConfig:strRedisTemplateShiro4 初始化完毕");
+        LOGGER.info("######## RedisConfig:strRedisTemplateShiro index {} 初始化完毕", redisPropertiesxx.getDatabaseShiro());
         return strRedisTemplate;
     }
 
@@ -96,7 +96,7 @@ public class FtRedisConfig {
         jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, redisPropertiesxx.getDatabaseAuth()));
         jdkRedisTemplate.setKeySerializer(new StringRedisSerializer());
         jdkRedisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-        LOGGER.info("######## RedisConfig:jdkRedisTemplateAuth12 初始化完毕");
+        LOGGER.info("######## RedisConfig:strRedisTemplateAuth index {} 初始化完毕", redisPropertiesxx.getDatabaseAuth());
         return jdkRedisTemplate;
     }
 
@@ -108,7 +108,7 @@ public class FtRedisConfig {
         strRedisTemplate.setValueSerializer(new StringRedisSerializer());
         strRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
         strRedisTemplate.setHashValueSerializer(new StringRedisSerializer());
-        LOGGER.info("######## RedisConfig:strRedisTemplateAuth12 初始化完毕");
+        LOGGER.info("######## RedisConfig:strRedisTemplateAuth index {} 初始化完毕", redisPropertiesxx.getDatabaseAuth());
         return strRedisTemplate;
     }
 }
