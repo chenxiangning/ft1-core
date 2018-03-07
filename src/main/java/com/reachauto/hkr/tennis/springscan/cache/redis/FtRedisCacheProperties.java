@@ -35,6 +35,10 @@ public class FtRedisCacheProperties {
      */
     @Value("${spring.redis.database}")
     protected int database = 0;
+    @Value("${spring.redis.auth.database:12}")
+    protected int databaseAuth;
+    @Value("${spring.redis.shiro.database:4}")
+    protected int databaseShiro;
 
     /**
      * Redis server host.
@@ -61,6 +65,22 @@ public class FtRedisCacheProperties {
 
     @Autowired
     private Pool pool;
+
+    public int getDatabaseAuth() {
+        return databaseAuth;
+    }
+
+    public void setDatabaseAuth(int databaseAuth) {
+        this.databaseAuth = databaseAuth;
+    }
+
+    public int getDatabaseShiro() {
+        return databaseShiro;
+    }
+
+    public void setDatabaseShiro(int databaseShiro) {
+        this.databaseShiro = databaseShiro;
+    }
 
     public int getDatabase() {
         return this.database;

@@ -4,10 +4,7 @@ import org.apache.commons.lang3.Validate;
 
 /**
  * token 共通类
- * <p>
- * <p>
  * Date 2015年8月11日 下午2:27:06
- * <p>
  *
  * @author fanjm
  */

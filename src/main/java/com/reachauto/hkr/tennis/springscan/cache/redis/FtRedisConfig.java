@@ -71,7 +71,7 @@ public class FtRedisConfig {
     @Bean(name = "jdkRedisTemplateShiro4")
     public RedisTemplate<String, Object> jdkRedisTemplateShiro4() {
         RedisTemplate jdkRedisTemplate = new RedisTemplate();
-        jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, 4));
+        jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, redisPropertiesxx.getDatabaseShiro()));
         jdkRedisTemplate.setKeySerializer(new StringRedisSerializer());
         jdkRedisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
         LOGGER.info("######## RedisConfig:jdkRedisTemplateShiro4 初始化完毕");
@@ -81,7 +81,7 @@ public class FtRedisConfig {
     @Bean(name = "strRedisTemplateShiro4")
     public RedisTemplate<String, Object> strRedisTemplateShiro4() {
         RedisTemplate strRedisTemplate = new RedisTemplate();
-        strRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, 4));
+        strRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, redisPropertiesxx.getDatabaseShiro()));
         strRedisTemplate.setKeySerializer(new StringRedisSerializer());
         strRedisTemplate.setValueSerializer(new StringRedisSerializer());
         strRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
@@ -93,7 +93,7 @@ public class FtRedisConfig {
     @Bean(name = "jdkRedisTemplateAuth12")
     public RedisTemplate<String, Object> jdkRedisTemplateAuth12() {
         RedisTemplate jdkRedisTemplate = new RedisTemplate();
-        jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, 12));
+        jdkRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, redisPropertiesxx.getDatabaseAuth()));
         jdkRedisTemplate.setKeySerializer(new StringRedisSerializer());
         jdkRedisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
         LOGGER.info("######## RedisConfig:jdkRedisTemplateAuth12 初始化完毕");
@@ -103,7 +103,7 @@ public class FtRedisConfig {
     @Bean(name = "strRedisTemplateAuth12")
     public RedisTemplate<String, Object> strRedisTemplateAuth12() {
         RedisTemplate strRedisTemplate = new RedisTemplate();
-        strRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, 12));
+        strRedisTemplate.setConnectionFactory(createRedisConnectionFactory(redisPropertiesxx, redisPropertiesxx.getDatabaseAuth()));
         strRedisTemplate.setKeySerializer(new StringRedisSerializer());
         strRedisTemplate.setValueSerializer(new StringRedisSerializer());
         strRedisTemplate.setHashKeySerializer(new StringRedisSerializer());

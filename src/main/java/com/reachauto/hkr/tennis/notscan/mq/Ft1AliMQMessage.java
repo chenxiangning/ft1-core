@@ -16,7 +16,7 @@ public class Ft1AliMQMessage {
      * 消息发送的message
      * @param jsonBody 消息体与mg中提供的接口一致
      * @param typeByTag  AliMqProperties.TagMsgPMS  AliMqProperties.TagMsgSMS
-     * @return
+     * @return m
      */
     public static Message buildHkrMgMessage(String jsonBody, String typeByTag) {
 

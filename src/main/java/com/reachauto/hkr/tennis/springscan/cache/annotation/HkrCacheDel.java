@@ -32,7 +32,7 @@ public @interface HkrCacheDel {
 
     /**
      * 是否删除model下的全部key
-     * @return
+     * @return key
      */
     boolean isModelAll() default false;
 

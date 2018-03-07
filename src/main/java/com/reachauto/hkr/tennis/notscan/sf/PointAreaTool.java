@@ -17,7 +17,7 @@ public class PointAreaTool {
      * @param ALon 1
      * @param ALat 2
      * @param jingWeiDuJiHeList 3
-     * @return
+     * @return b
      */
     public final static boolean isPtInPoly(double ALon, double ALat, List<Points> jingWeiDuJiHeList) {
         int iSum = 0, iCount = jingWeiDuJiHeList.size();
