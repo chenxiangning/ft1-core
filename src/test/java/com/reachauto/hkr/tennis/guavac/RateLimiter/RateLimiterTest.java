@@ -12,6 +12,19 @@ import java.util.concurrent.TimeUnit;
  * This is my work in reachauto code.
  * mail:chenxiangning@reachauto.com
  * Description:
+ * 我们再看看获取令牌的相关方法：
+ *
+ * double acquire(); // 阻塞直到获取一个许可，返回被限制的睡眠等待时间，单位秒
+ *
+ * double acquire(int permits); // 阻塞直到获取permits个许可，返回被限制的睡眠等待时间，单位秒
+ *
+ * boolean tryAcquire();  // 尝试获取一个许可
+ *
+ * boolean tryAcquire(int permits);  // 尝试获取permits个许可
+ *
+ * boolean tryAcquire(long timeout, TimeUnit unit);  // 尝试获取一个许可，最多等待timeout时间
+ *
+ * boolean tryAcquire(int permits, long timeout, TimeUnit unit);  // 尝试获取permits个许可，
  */
 public class RateLimiterTest {
 
@@ -31,7 +44,7 @@ public class RateLimiterTest {
     public void withRateLimiter_acquire() {
         Long start = System.currentTimeMillis();
         // 每秒不超过10个任务被提交
-        RateLimiter limiter = RateLimiter.create(10D);
+        RateLimiter limiter = RateLimiter.create(1d);
         for (int i = 0; i < 10; i++) {
             // 从RateLimiter获取一个许可，该方法会被阻塞直到获取到请求
             limiter.acquire();
@@ -114,8 +127,10 @@ public class RateLimiterTest {
              * 或者如果无法在timeout 过期之前获取得到许可的话， 那么立即返回false（无需等待）。
              * 该方法等同于tryAcquire(1, timeout, unit)。
              */
-            if (limiter.tryAcquire(100, TimeUnit.MILLISECONDS)) {
+            if (limiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
                 System.out.println("call execute.." + i);
+            } else {
+                System.out.println("X");
             }
         }
 

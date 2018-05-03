@@ -59,6 +59,21 @@ public class SimpleCache<K, V> {
     }
 
     /**
+     * 放入缓存
+     * @param key   键
+     * @param value 值
+     * @return 值
+     */
+    public V putIfAbsent(K key, V value) {
+        writeLock.lock();
+        try {
+            return cache.putIfAbsent(key, value);
+        } finally {
+            writeLock.unlock();
+        }
+    }
+
+    /**
      * 移除缓存
      *
      * @param key 键

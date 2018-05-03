@@ -2,6 +2,7 @@ package com.reachauto.hkr.tennis.springscan.demo;
 
 import com.reachauto.hkr.exception.HkrBusinessException;
 import com.reachauto.hkr.tennis.notscan.thread.ThreadPoolTool;
+import com.reachauto.hkr.tennis.springscan.guaua.annotation.ApiReteLimiterMap;
 import com.reachauto.hkr.tennis.springscan.handler.LoginContextTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -119,5 +120,19 @@ public class DemoController {
         }
 
         return "thread";
+    }
+
+
+    @RequestMapping(value = "ll_find", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    @ApiReteLimiterMap(key = "am:ll_find", qps = 1)
+    public String liuliang_panduan() {
+        return "ooo_del";
+    }
+
+    @RequestMapping(value = "nll_find", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public String liuliang_panduan2() {
+        return "liuliang_panduan2";
     }
 }

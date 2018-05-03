@@ -38,6 +38,9 @@ public class Key {
         return this;
     }
 
+    public static Key buildAndNew(String keyVal) {
+        return new Key().append(keyVal);
+    }
     public static Key build(String keyVal){
         return new Key(keyVal);
     }
