@@ -3,7 +3,7 @@ package com.reachauto.hkr.tennis.springscan.guaua.aop;
 import com.google.common.util.concurrent.RateLimiter;
 import com.reachauto.hkr.tennis.TennisToolException;
 import com.reachauto.hkr.tennis.notscan.guaua.RateLimiterMapTool;
-import com.reachauto.hkr.tennis.springscan.guaua.annotation.ApiReteLimiterMap;
+import com.reachauto.hkr.tennis.springscan.guaua.annotation.ApiRateLimiterMap;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Aspect
 @Slf4j
-public class ApiReteLimiterMapAspect {
+public class ApiRateLimiterMapAspect {
 
     /**
      * 参数异常会返回4010
@@ -35,14 +35,14 @@ public class ApiReteLimiterMapAspect {
     public static final int RETELIMITER_EXCEPTION = 429;
     public static final String RETELIMITER_EXCEPTION_MSG = "请求频率过快";
 
-    public ApiReteLimiterMapAspect() {
+    public ApiRateLimiterMapAspect() {
         log.info("########## init HkrReteLimiterMapAspect ##########");
     }
 
-    @Before("@annotation(com.reachauto.hkr.tennis.springscan.guaua.annotation.ApiReteLimiterMap)")
+    @Before("@annotation(com.reachauto.hkr.tennis.springscan.guaua.annotation.ApiRateLimiterMap)")
     public void bf(JoinPoint joinPoint) throws Throwable {
 
-        ApiReteLimiterMap hkrReteLimiter = getAnnotation(joinPoint, ApiReteLimiterMap.class);
+        ApiRateLimiterMap hkrReteLimiter = getAnnotation(joinPoint, ApiRateLimiterMap.class);
 
         RateLimiter rateLimiter = RateLimiterMapTool.updateResourceQps(hkrReteLimiter.key(), hkrReteLimiter.qps());
         if (!rateLimiter.tryAcquire(TIMEOUT, TimeUnit.MILLISECONDS)) {
