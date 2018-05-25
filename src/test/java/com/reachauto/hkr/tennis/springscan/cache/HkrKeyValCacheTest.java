@@ -33,6 +33,8 @@ public class HkrKeyValCacheTest extends AbstractJUnit {
         System.out.println(hkrKeyHashCache);
         System.out.println(new Key().append("xxx").colon().append("sdsd").getTrueKey());
         System.out.println(Key.build("a:b").colon().append("xxx").colon().append("sdsd").getTrueKey());
+        hkrKeyValCache.set(Key.buildAndNew("quota"), "10");
+        hkrKeyValCache.set(Key.buildAndNew("limit"), "1");
     }
 
     @Test
@@ -131,4 +133,56 @@ public class HkrKeyValCacheTest extends AbstractJUnit {
         System.out.println(hkrKeyHashCache.deleteHashKey(key, "333333"));
 
     }
+
+
+
+    @Test
+    public void xianliu_jshujujiegou() {
+
+        Map<String, String> stringStringMap = new HashMap<>();
+        stringStringMap.put("qps#GET#/hkr-am/api/v1/log_operators", "200");
+        stringStringMap.put("limit#GET#/hkr-am/api/v1/log_operators", "1");
+        stringStringMap.put("qps#GET#/hkr-bk/api/v1/log_operators", "200");
+        stringStringMap.put("limit#GET#/hkr-bk/api/v1/log_operators", "1");
+
+        Key key = Key.buildAndNew("ratelimit:individual");
+
+        hkrKeyHashCache.setStrValMap(key, stringStringMap);
+
+        System.out.println(hkrKeyHashCache.getStrValMap(key));
+        System.out.println(hkrKeyHashCache.keys(key));
+
+    }
+
+    @Test
+    public void xianliu_jshujujiegou2() {
+
+        Map<String, String> stringStringMap = new HashMap<>();
+        stringStringMap.put("qps#GET", "200");
+        stringStringMap.put("limit#GET", "1");
+        stringStringMap.put("qps#POST", "200");
+        stringStringMap.put("limit#POST", "1");
+        stringStringMap.put("qps#PUT", "200");
+        stringStringMap.put("limit#PUT", "1");
+
+        Key key = Key.buildAndNew("ratelimit:global");
+
+        hkrKeyHashCache.setStrValMap(key, stringStringMap);
+
+        System.out.println(hkrKeyHashCache.getStrValMap(key));
+        System.out.println(hkrKeyHashCache.keys(key));
+
+    }
+
+
+    @Test
+    public void xianliu_shishi() {
+
+        hkrKeyValCache.set(Key.buildAndNew("ratelimit:individual:qps-realtime#GET#/hkr-am/api/v1/log_operators"), "13");
+        hkrKeyValCache.set(Key.buildAndNew("ratelimit:individual:limit-window#GET#/hkr-am/api/v1/log_operators"), "1");
+
+        System.out.println(hkrKeyValCache.get(Key.buildAndNew("ratelimit:individual:qps-realtime#GET#/hkr-am/api/v1/log_operators")));
+        System.out.println(hkrKeyValCache.get(Key.buildAndNew("ratelimit:individual:limit-window#GET#/hkr-am/api/v1/log_operators")));
+    }
+
 }
