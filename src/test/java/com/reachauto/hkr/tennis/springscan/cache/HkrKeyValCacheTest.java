@@ -49,26 +49,74 @@ public class HkrKeyValCacheTest extends AbstractJUnit {
     public void hashMapSetTest() {
 
         Map<String, String> stringStringMap = new HashMap<>();
-        stringStringMap.put("/hkr-am/api/v1/log_operators*", "rest[log_operators:list]");
-
-        Key key = new Key().append("auth").colon().append("table");
-
+        stringStringMap.put("/hkr-am/api/v1/log_operators*", "log_operators:list");
+//
+        Key key = new Key("hkr:cache:api_auth:rule");
+//
         hkrRedisDBShiroHashStrCache.setStrValMap(key, stringStringMap);
 
-        System.out.println(hkrRedisDBShiroHashStrCache.getStrValMap(key));
 
 
-        System.out.println(hkrRedisDBShiroHashStrCache.deleteHashKey(new Key().append("role").colon().append("1"), "log_operators:list:read", "xlog_operators:list:read"));
+//        System.out.println(hkrRedisDBShiroHashStrCache.deleteHashKey(new Key().append("role").colon().append("1"), "log_operators:list:read", "xlog_operators:list:read"));
         Map<String, String> xxx2 = new HashMap<>();
         xxx2.put("log_operators:list:read", "666111");
 
-        Key key22 = new Key().append("role").colon().append("1");
+        Key key22 = new Key("hkr:cache:api_auth:role").colon().append("151");
 
         hkrRedisDBShiroHashStrCache.setStrValMap(key22, xxx2);
+//
+//        System.out.println(hkrRedisDBShiroHashStrCache.getStrValMap(key22));
 
-        System.out.println(hkrRedisDBShiroHashStrCache.getStrValMap(key22));
+
+    }
+
+    @Test
+    public void hashMapSetTestxx() {
+
+        Map<String, String> stringStringMap = new HashMap<>();
+        stringStringMap.put("post#cxn#/hkr-am/api/v1/ddd", "ddd:create");
+        stringStringMap.put("get#cxn#/hkr-am/api/v1/ddd/[^/]+", "ddd:one:read");
+        stringStringMap.put("put#cxn#/hkr-am/api/v1/ddd/[^/]+", "ddd:one:update");
+        stringStringMap.put("delete#cxn#/hkr-am/api/v1/ddd/[^/]+", "ddd:one:delete");
+        stringStringMap.put("get#cxn#/hkr-am/api/v1/ddd[^/]*", "ddd:list:read");
+        stringStringMap.put("post#cxn#/hkr-am/api/v1/ddd/asynchronous", "ddd:asynchronous:create");
+        for (int i = 0; i < 500; i++) {
+            stringStringMap.put("sdasd" + i, "");
+        }
+
+        stringStringMap.put("get#cxn#/hkr-am/api/v1/log_operators[^/]*", "ddd:list:read");
+
+//
+        Key key = new Key("hkr:cache:api_auth:rule_tt");
+//
+        hkrRedisDBShiroHashStrCache.setStrValMap(key, stringStringMap);
 
 
+
+//        System.out.println(hkrRedisDBShiroHashStrCache.deleteHashKey(new Key().append("role").colon().append("1"), "log_operators:list:read", "xlog_operators:list:read"));
+        Map<String, String> xxx2 = new HashMap<>();
+        xxx2.put("log_operators:list:read", "666111");
+
+        Key key22 = new Key("hkr:cache:api_auth:role").colon().append("151");
+
+        hkrRedisDBShiroHashStrCache.setStrValMap(key22, xxx2);
+//
+//        System.out.println(hkrRedisDBShiroHashStrCache.getStrValMap(key22));
+
+
+    }
+
+
+
+    @Test
+    public void hashMapSetTestx() {
+
+        Map<String, String> stringStringMap = new HashMap<>();
+        stringStringMap.put("10.10.142.171", "");
+//
+        Key key = new Key("hkr:cache:datareport:blacks_ip");
+//
+        hkrRedisDBShiroHashStrCache.setStrValMap(key, stringStringMap);
     }
 
     @Test
