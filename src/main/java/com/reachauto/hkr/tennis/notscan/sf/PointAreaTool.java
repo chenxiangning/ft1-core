@@ -1,5 +1,7 @@
 package com.reachauto.hkr.tennis.notscan.sf;
 
+import java.math.BigDecimal;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,8 +16,8 @@ public class PointAreaTool {
     /**
      * 判断一个指定的经纬度点是否落在一个多边形区域内
      *
-     * @param ALon 1
-     * @param ALat 2
+     * @param ALon              1
+     * @param ALat              2
      * @param jingWeiDuJiHeList 3
      * @return b
      */
@@ -59,6 +61,88 @@ public class PointAreaTool {
         return false;
     }
 
+    public static void main(String[] args) {
+        System.out.println(straightLine(new Points(123.433684, 41.704365), new Points(123.434376, 41.70213), 5));
+    }
+
+    public final static List<Points> straightLine(Points pointsa, Points pointsb, int duanshu) {
+        duanshu = duanshu + 1;
+        boolean xbs = true;
+        double xdengfen;
+        double[] x;
+        if (pointsa.lngX > pointsb.lngX) {
+            xdengfen = pointsa.lngX - pointsb.lngX;
+            double df = xdengfen / duanshu;
+
+            x = new double[duanshu];
+
+            for (int i = 0; i < duanshu; i++) {
+                x[i] = new BigDecimal(pointsb.lngX + (i + 1) * df).setScale(6, BigDecimal.ROUND_HALF_UP).doubleValue();
+
+            }
+
+            double[] temp = new double[duanshu];
+            for (int i = 0; i < duanshu; i++) {
+                temp[i] = x[x.length - i - 1];
+            }
+            x = temp;
+
+        } else {
+            xdengfen = pointsb.lngX - pointsa.lngX;
+            double df = xdengfen / duanshu;
+
+            x = new double[duanshu];
+
+            for (int i = 0; i < duanshu; i++) {
+
+                x[i] = new BigDecimal(pointsa.lngX + (i + 1) * df).setScale(6, BigDecimal.ROUND_HALF_UP).doubleValue();
+            }
+            xbs = false;
+        }
+
+        ////////
+        boolean ybs = true;
+        double ydengfen;
+        double[] y;
+        if (pointsa.latY > pointsb.latY) {
+            ydengfen = pointsa.latY - pointsb.latY;
+            double df = ydengfen / duanshu;
+
+            y = new double[duanshu];
+
+            for (int i = 0; i < duanshu; i++) {
+
+                y[i] = new BigDecimal(pointsb.latY + (i + 1) * df).setScale(6, BigDecimal.ROUND_HALF_UP).doubleValue();
+            }
+
+            double[] temp = new double[duanshu];
+            for (int i = 0; i < duanshu; i++) {
+                temp[i] = y[y.length - i - 1];
+            }
+            y = temp;
+
+        } else {
+            ydengfen = pointsb.latY - pointsa.latY;
+            double df = ydengfen / duanshu;
+
+            y = new double[duanshu];
+
+            for (int i = 0; i < duanshu; i++) {
+
+                y[i] = new BigDecimal(pointsa.latY + (i + 1) * df).setScale(6, BigDecimal.ROUND_HALF_UP).doubleValue();
+            }
+            ybs = false;
+        }
+
+        LinkedList<Points> points = new LinkedList<>();
+
+        for (int i = 0; i < duanshu; i++) {
+            points.add(new Points(x[i], y[i]));
+        }
+
+        return points;
+    }
+
 
     public static class Points {
         //lngX
@@ -69,6 +153,11 @@ public class PointAreaTool {
         public Points(double lngX, double latY) {
             this.lngX = lngX;
             this.latY = latY;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("[%s,%s]", lngX, latY);
         }
     }
 }
