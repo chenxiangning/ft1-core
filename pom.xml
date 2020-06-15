@@ -27,7 +27,7 @@
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
-        <commons-collections4.version>4.0</commons-collections4.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
         <org.slf4j.version>1.7.12</org.slf4j.version>
         <spring-boot.version>1.5.6.RELEASE</spring-boot.version>
         <ali.mq.version>1.7.0.Final</ali.mq.version>
