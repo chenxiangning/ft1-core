@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.reachauto.hkr.tennis.Slf4jTool</li>
+<li>com.rental.hkr.tennis.Slf4jTool</li>
 </ul>
 </li>
 </ul>
@@ -173,23 +173,23 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;java.lang.String&nbsp;format(java.lang.String&nbsp;messagePattern,
                                       java.lang.Object...&nbsp;args)</pre>
 <div class="block">格式化字符串,此方法是抽取slf4j的核心方法.
- 
- 
+
+
  在java中,常会拼接字符串生成新的字符串值,在字符串拼接过程中容易写错或者位置写错<br>
  <br>
  slf4j的log支持格式化输出log,比如:<br>
- 
- 
+
+
  <ul>
  <li>LOGGER.debug("{}","feilong");</li>
  <li>LOGGER.info("{},{}","feilong","hello");</li>
  </ul>
- 
+
  这些写法非常简洁且有效,不易出错
- 
+
  <br>
  因此,你可以在代码中出现这样的写法:
- 
+
  <pre class="code">
  throw new IllegalArgumentException(Slf4jUtil.format(
  "callbackUrl:[{}] ,length:[{}] can't <code>&gt;</code>{}",
@@ -197,9 +197,9 @@ extends java.lang.Object</pre>
  callbackUrlLength,
  callbackUrlMaxLength)
  </pre>
- 
+
  又或者
- 
+
  <pre class="code">
  return Slf4jUtil.format("{} [{}]", encode, encode.length());
  </pre></div>
@@ -211,8 +211,8 @@ extends java.lang.Object</pre>
 <dd>如果 <code>messagePattern</code> 是null,返回 null<br>
  如果 <code>args</code> 是null,返回 <code>messagePattern</code><br></dd>
 <dt><span class="seeLabel">另请参阅:</span></dt>
-<dd><code>FormattingTuple</code>, 
-<code>MessageFormatter.arrayFormat(String, Object[])</code>, 
+<dd><code>FormattingTuple</code>,
+<code>MessageFormatter.arrayFormat(String, Object[])</code>,
 <code>FormattingTuple.getMessage()</code></dd>
 </dl>
 </li>

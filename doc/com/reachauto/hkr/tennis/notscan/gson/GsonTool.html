@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.reachauto.hkr.tennis.notscan.gson.GsonTool</li>
+<li>com.rental.hkr.tennis.notscan.gson.GsonTool</li>
 </ul>
 </li>
 </ul>
@@ -117,55 +117,55 @@ extends java.lang.Object</pre>
  Date: 2017/9/21 21:28
  To change this template use File | Settings | File Templates.
  chenxiangning@reachauto.com
- 
+
  <blockquote>
- 
+
  <h3>示例:</h3>
- 
+
  </blockquote>
- 
+
  <blockquote>
  String jsonx = "{\"kkkkk\":null,\"name\":\"cxn\",\"age\":3,\"code\":1001,\"fen\":88.32,\"xxxxx\":null,\"time\":\"Sep 21, 2017 8:09:53 PM\",\"delFlag\":0,\"createAt\":1505976480000,\"curtime\":1505976606634}";
- 
+
  </blockquote>
  <blockquote>
  Map map = new HashMap();
- 
+
  map.put("name", "cxn");
  map.put("age", "3");
  map.put("time", new Date());
  map.put("xx", null);
  map.put("code", 1001);
  map.put("fen", 88.32);
- 
+
  Gbean gbean = GsonTool.jsonToBean(GsonTool.getGsonAll(), jsonx, Gbean.class);
  </blockquote>
 
  <blockquote>
  GsonTool.objectToJsonDateSerializer(gbean, "yyyy-MM-dd : HH:mm:ss");
  $$ 序列化时自定义date {"ooooxxx":null,"kkkkk":null,"name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":null,"time":"2017-09-21 : 20:09:53","createAt":"2017-09-21 : 14:48:00","curtime":"2017-09-21 : 14:50:06"}
- 
+
  GsonTool.objectToAllFieldEmptyJson(gbean);
  $$ 序列化bean中全部字段时null串替换为"" {"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
- 
+
  GsonTool.objectToAllFieldNullJson(gbean);
  $$ 序列化bean中全部字段 {"ooooxxx":null,"kkkkk":null,"name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":null,"time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
- 
+
  SGsonTool.objectToNotNullJson(gbean);
  $$ 序列化bean中不等于null的字段 {"name":"cxn","age":3,"code":1001,"fen":88.32,"time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}
- 
+
  GsonTool.objectToExposeJson(gbean);
  $$序列化bean中属性添加了@Export的字段 {"code":1001,"fen":88.32,"time":1505995793000,"curtime":1505976606634}
- 
+
   {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
   {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
   {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
   {ooooxxx='null'kkkkk='null'name='null', age=null, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=null, curtime=Thu Sep 21 14:50:06 CST 2017}
   {ooooxxx='null'kkkkk='null'name='cxn', age=3, code=1001, fen=88.32, xxxxx='null', time=Thu Sep 21 20:09:53 CST 2017, createAt=Thu Sep 21 14:48:00 CST 2017, curtime=Thu Sep 21 14:50:06 CST 2017}
- 
+
  String listJson = GsonTool.objectToAllFieldEmptyJson(Arrays.asList(gbean));
  String listJson2 = GsonTool.objectToAllFieldEmptyJson(gbean);
- 
+
  $$
  json:[{"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}]
  json2:{"ooooxxx":"","name":"cxn","age":3,"code":1001,"fen":88.32,"xxxxx":"","time":1505995793000,"createAt":1505976480000,"curtime":1505976606634}

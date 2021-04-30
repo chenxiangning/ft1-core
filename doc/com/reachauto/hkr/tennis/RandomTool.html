@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.reachauto.hkr.tennis.RandomTool</li>
+<li>com.rental.hkr.tennis.RandomTool</li>
 </ul>
 </li>
 </ul>
@@ -118,7 +118,7 @@ extends java.lang.Object</pre>
  To change this template use File | Settings | File Templates.
  chenxiangning@reachauto.com
  随机数工具类.
- 
+
  <ul>
  <li><code>Math.random()</code>底层也是调用的 new Random(),值＝Random nextDouble()</li>
  <li>把 <code>Random</code>对象作为一个全局实例(static)来使用.Java中 <code>Random</code> 是线程安全的(内部进行了加锁处理);</li>
@@ -127,8 +127,8 @@ extends java.lang.Object</pre>
  </ul></div>
 <dl>
 <dt><span class="seeLabel">另请参阅:</span></dt>
-<dd><code>Math.random()</code>, 
-<code>RandomUtils</code>, 
+<dd><code>Math.random()</code>,
+<code>RandomUtils</code>,
 <code>RandomStringUtils</code></dd>
 </dl>
 </li>
@@ -192,10 +192,10 @@ extends java.lang.Object</pre>
 <h4>createRandomWithLength</h4>
 <pre>public static&nbsp;long&nbsp;createRandomWithLength(int&nbsp;length)</pre>
 <div class="block">生成一个指定长度<code>length</code>的 <b>随机正整数</b>.
- 
+
  <h3>示例:</h3>
  <blockquote>
- 
+
  RandomUtil.createRandomWithLength(2)
  生成的结果是可能是 89
 
@@ -217,17 +217,17 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;java.lang.String&nbsp;createRandomFromString(java.lang.String&nbsp;str,
                                                       int&nbsp;length)</pre>
 <div class="block">随机抽取字符串<code>char</code>,拼接成指定长度<code>length</code>的字符串.
- 
+
  <h3>说明:</h3>
  <blockquote>
  <ol>
  <li>常用于生成验证码</li>
  </ol>
  </blockquote>
- 
+
  <h3>示例:</h3>
  <blockquote>
- 
+
  </blockquote></div>
 <dl>
 <dt><span class="paramLabel">参数:</span></dt>

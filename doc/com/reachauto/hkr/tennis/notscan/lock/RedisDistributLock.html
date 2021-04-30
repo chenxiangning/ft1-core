@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.reachauto.hkr.tennis.notscan.lock.RedisDistributLock</li>
+<li>com.rental.hkr.tennis.notscan.lock.RedisDistributLock</li>
 </ul>
 </li>
 </ul>
@@ -117,37 +117,37 @@ extends java.lang.Object</pre>
  Date: 2017-08-02 10:48
  chenxiangning@reachauto.com
  Description: redis 分布式锁
- 
+
  <blockquote>
  <h3>使用示例:</h3>
  </blockquote>
- 
+
  <blockquote>
  RedisDistributLock redisLock = new RedisDistributLock(redisTemplate, "锁头1(keyName)");
- 
+
  try {
- 
+
  if (redisLock.lock()) {
- 
+
  这块写需要同步执行的业务代码
  ...
- 
+
  }
- 
+
  } catch (InterruptedException e) {
- 
+
  LOGGER.error("{}", e);
- 
+
  redisLock.unlock();
- 
+
  Thread.currentThread().interrupt();
- 
+
  } finally {
- 
+
  redisLock.unlock();
- 
+
  }
- 
+
  </blockquote></div>
 </li>
 </ul>
