@@ -11,7 +11,7 @@
     <!--</parent>-->
 
 
-    <groupId>com.rental.hkr.tennis</groupId>
+    <groupId>com.hkr.architecture.tennis</groupId>
     <artifactId>tennis-core</artifactId>
     <version>dayan.8.6.rental</version>
     <packaging>jar</packaging>
